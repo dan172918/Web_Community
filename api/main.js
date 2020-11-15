@@ -168,8 +168,8 @@ app.post('/api/username',function(req,res){
 
 
 /*更改url可傳遞的大小*/
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.json({limit: '2000mb'}));
+app.use(express.urlencoded({limit: '2000mb'}));
 
 /*存發文text跟time*/
 app.post('/api/index',function(req,res){
