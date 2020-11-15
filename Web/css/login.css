@@ -1,0 +1,95 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family:  Microsoft JhengHei !important;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*---------------------------------------------*/
+body 
+{
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+  background: url("https://shoplineimg.com/594b474cd4e395a054002dd9/5de7954f07d4ba003cad2ae4/800x.jpg?");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  padding-top: 100px;
+}
+
+.login 
+{
+  background-color: rgba(0,0,0,.5);
+  border-radius: 20px;
+  border: 5px solid #fff;
+  box-shadow: 0 0 30px #000;
+  backdrop-filter: blur(5px);
+}
+.login:hover
+{
+  border: 5px solid #B3D9D9;
+}
+.login h1
+{
+  text-align: center;
+  color: #B3D9D9;
+  font-size: 28px;
+  font-family: Microsoft JhengHei;
+}
+
+.title
+{
+  padding-top:20px;
+  color: #fff; 
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+.forgot, .la
+{
+  color: #fff;
+  margin-bottom: 10px;
+}
+.forget
+{
+  margin: 20px 0 40px 0;
+}

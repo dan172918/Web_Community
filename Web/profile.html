@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--css link-->
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--title-->
+		<title>Profile</title>
+		<!--logo-->
+		<link rel="shortcut icon" href="img/Steam.ico">
+	</head>
+
+	<body>
+		<!-- Header Start-->
+		<header id="header">
+			<h1><a href="index.html">CONNECT</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">首頁</a></li>
+					<li><a href="group.html">社團</a></li>
+					<li><a href="anonymous.html">匿名</a></li>
+					<li><a href="friend.html">好友聊天</a></li>
+					<li><a href="profile.html">個人資料</a></li>
+					<li><a href="login.html" class="button special">登出</a></li>
+				</ul>
+			</nav>
+		</header>
+		<!-- Header End-->
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="container">
+				<header class="major">
+					<h2 class="pro">個人資料</h2>
+				</header>
+			</div>	
+			<!-- Text -->
+			<div class="container card" style="width: 40rem;">
+
+				<img class="bg"src="img/umi.jpg" width="100%" height="150px">
+				<img class="card-img-top picture user_pic" src="img/profile-pic.jpg" alt="Card image cap">
+		
+				<h2 class="uName user_name"><!--王小明--></h2>
+				<input class="editData" type="button" id="editBtn" value="" >
+		
+				<div class="dataList">
+					<ul class="list-group">
+						<li class="list-group-item">學校</li>
+						<li class="list-group-item">生日</li>
+						<li class="list-group-item">興趣與專長</li>
+						<li class="list-group-item">喜歡的國家</li>
+						<li class="list-group-item">可以交換的事情</li>
+						<li class="list-group-item">想嘗試的事情</li>
+					</ul>
+				</div>
+				<div class="data" id="Data">
+					<!--<ul class="list-group">
+						<li class="list-group-item">輔仁大學資工系</li>
+						<li class="list-group-item">1999/01/01</li>
+						<li class="list-group-item">寫程式</li>
+						<li class="list-group-item">台灣</li>
+						<li class="list-group-item">沒得交換</li>
+						<li class="list-group-item">發大財</li>
+					</ul>-->
+				</div>
+				<div class="clearfix"></div>
+
+				<form action="profile.html" method="post" class="forms">
+					<div class="form-group">
+						<input type="file" class="form-control " id="user_picture" name="user_picture" accept="image/gif, image/jpeg, image/png">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control list-card mt" id="user_school" name="user_school" placeholder="請輸入學校" autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input type="date" class="form-control list-card" id="user_age" name="user_age">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control list-card" id="user_hobit" name="user_hobit" placeholder="請輸入興趣" autocomplete="off"> 
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control list-card" id="user_nation" name="user_nation" placeholder="請輸入國家" autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control list-card" id="user_change" name="user_change" placeholder="請輸入欲交換項目" autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control list-card" id="user_try" name="user_try" placeholder="請輸入欲嘗試事情" autocomplete="off">
+					</div>
+
+					<div class="container btngroup">
+						<div class="row col-12 col-md-12 col-sm-12">
+							<div class="submitBtn col-md-6 col-6 ">
+								<button type="submit" id="sure" class="btn btn-secondary" autocomplete="off" onclick="profile()">確定</button>
+							</div>
+							<div class="cancBtn col-md-6 col-6 ">
+								<button type="button" id="not" class="btn btn-secondary" autocomplete="off" onmousedown="location='./profile.html'" >取消</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div> 
+		</section>	
+		
+		<!--js link-->
+		<script src="fragments/jquery/jquery-3.4.1.min.js"></script>
+		<script src="fragments/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="fragments/bootbox/bootbox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/profile.js"></script>  					         
+	</body>
+</html>

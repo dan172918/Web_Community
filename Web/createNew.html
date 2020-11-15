@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+        <link rel="stylesheet" href="fragments/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="fragments/fontawesome/css/all.css">
+		<link rel="stylesheet" href="css/style.css">
+        <!-- title -->
+		<title>CreateNew</title>
+		<!--logo-->
+		<link rel="shortcut icon" href="img/Steam.ico">
+    </head>
+    <body>
+        <div class="container">
+            <div class="wrappers">
+                <div class="leftBox">
+                    <h2>CONNECT</h2>
+                </div>
+                <div class="rightBox row justify-content-center">
+                    <h3 class="col-md-12 col-12">請輸入新密碼</h3>
+                    <form action="createNew.html">
+                        <input class="col-md-10 col-10 new" type="text" id="user_password">
+                        <input class="col-md-10 col-10 sub" type="button" value="OK" onclick="resetPwd()">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--js link-->
+		<script src="fragments/jquery/jquery-3.4.1.min.js"></script>
+		<script src="fragments/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="fragments/bootbox/bootbox.min.js"></script>
+		<script src="js/common.js"></script>
+        <script src="js/createNew.js"></script>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--css link-->
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="fragments/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--title-->
+		<title>Pickcard</title>
+		<!--logo-->
+		<link rel="shortcut icon" href="img/Steam.ico">
+	</head>
+	<body>
+		<!-- Header Star -->
+		<header id="header">
+			<h1><a href="index.html">CONNECT</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">首頁</a></li>
+					<li><a href="group.html">社團</a></li>
+					<li><a href="anonymous.html">匿名</a></li>
+					<li><a href="friend.html">好友聊天</a></li>
+					<li><a href="profile.html">個人資料</a></li>
+					<li><a href="login.html" class="button special">登出</a></li>
+				</ul>
+			</nav>
+		</header>
+		<!-- Header End -->
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="container">
+				<header class="major">
+					<h2 class="pro">新朋友!</h2>
+					<p>把握緣分，過去的不會再回來</p>
+				</header>
+				
+			</div>	
+			<div class="container pcard" style="width: 600px;">
+
+				<img class="picture user_pic" src="img/profile-pic.jpg" width="200px" height="200px">
+				<h2 class="uName user_name">王小美</h2>
+				<div class="invite" data-toggle="modal" data-target="#inviteModal">送出邀請</div>
+
+				<div class="row">
+					<section class="col-3 col-sm-4 col-md-4 ml-2">
+						<input class="pickChat lft " type="button" data-toggle="modal" data-target="#pickModal" >
+					</section>
+					<section class="col-3 col-sm-4 col-md-3 ml-1">
+						<input class="pickChat lft2" type="button" >
+					</section>
+					<section class="col-3 col-sm-4 col-md-4 ml-3">
+						<input class="pickChat lft3" type="button">
+					</section>	
+				</div>
+			</div> 
+		</section>	  
+	
+		<!--inviteForm-->
+		<div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="inviteModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="inviteModalLabel">申請成功</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true"></span>
+				  </button>
+				</div>
+				<div class="modal-body">
+					若在24小時內對方也送出邀請，就能成為好友囉~   祝你好運!!
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+		<!--pickForm-->	
+		<div class="modal fade chatbox" id="pickModal" tabindex="-1" role="dialog" aria-labelledby="pickModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="pickModalLabel">來聊天吧!</h4>
+						<button type="button" class="close" data-dismiss="modal"><span
+								aria-hidden="true">×</span></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="message-text" class="control-label">聊天內容</label>
+								<div class="box"></div>
+							</div>
+							<div class="form-group">                   
+								<textarea class="form-control"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">發送訊息</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--js link-->
+		<script src="fragments/jquery/jquery-3.4.1.min.js"></script>
+		<script src="fragments/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="fragments/bootbox/bootbox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>

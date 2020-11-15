@@ -1,0 +1,56 @@
+<!--<!DOCTYPE html>-->
+<html>
+	<head>
+		<!--css link-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+		<link rel="stylesheet" href="fragments/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="fragments/fontawesome/css/all.css">
+		<link rel="stylesheet" href="css/login.css">
+		<!-- title -->
+		<title>Forgot</title>
+		<!--logo-->
+		<link rel="shortcut icon" href="img/Steam.ico">
+		
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<aside class="col-sm-4"></aside>
+				<aside class="col-sm-4">
+					<div class="row justify-content-center align-items-center cards">
+						<article class="card-body login">
+							<h1>CONNECT</h1>
+							<h2 class="card-title text-center mb-4 mt-1 title">忘記密碼</h2>
+							<hr><br/>
+							<form action="forgot.html">
+								<!--email-->
+								<div class="form-group">
+									<div class="input-group forget">
+										<div class="input-group-prepend">
+											<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+										</div>
+										<input type="email" id="user_Email" class="form-control" placeholder="請輸入電子信箱">
+									</div>
+								</div>
+								<!--send email and cancel button-->
+								<div class="form-group">
+									<button type="button" class="btn btn-primary btn-block" onclick="forgotPwd()">發送驗證信</button>
+									<button type="button" class="btn btn-primary btn-block" onmousedown="location='./login.html'">返回</button>
+								</div>
+							</form>
+						</article>
+					</div>
+				</aside> 
+			</div>
+		</div> 
+		
+		<!--js link-->
+		<script src="fragments/jquery/jquery-3.4.1.min.js"></script>
+		<script src="fragments/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="fragments/bootbox/bootbox.min.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/forgot.js"></script>
+	</body>
+</html>
+
