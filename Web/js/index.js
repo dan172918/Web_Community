@@ -337,12 +337,12 @@ function fileUpLoad(_this){
 	fileReader.readAsDataURL(file);//將檔案讀取為Data URL 讀取結果放在result中
 	fileReader.onload = function(e){
 		var img = new Image,
-		/*var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
+		var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
 		imgCont.innerHTML = img;
-		img_string = this.result;*/
+		img_string = this.result;
 
 		
-		canvas = document.createElement("canvas"),
+		/*canvas = document.createElement("canvas"),
 		drawer = canvas.getContext("2d");
 		img.src = this.result;
 		canvas.width = file.width;
@@ -350,7 +350,7 @@ function fileUpLoad(_this){
 		drawer.drawImage(img,0,0,canvas.width, canvas.height);
 		img.src = canvas.toDataURL();
 		img_string = img.src.replace("data:image/jpeg;base64,","");
-		console.log(file.width,file.height,img_string);
+		console.log(file.width,file.height,img_string);*/
 
 	}
 }
