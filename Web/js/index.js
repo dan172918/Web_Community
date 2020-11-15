@@ -336,7 +336,7 @@ function fileUpLoad(_this){
 	var fileReader = new FileReader();
 	fileReader.readAsDataURL(file);//將檔案讀取為Data URL 讀取結果放在result中
 	fileReader.onload = function(e){
-		var img = new Image,
+		//var img = new Image,
 		var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
 		imgCont.innerHTML = img;
 		img_string = this.result;
