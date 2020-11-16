@@ -12,11 +12,11 @@ var firebase = require('firebase');
 var bodyParser = require('body-parser');
 var app = express();
 /*更改url可傳遞的大小*/
-app.use(bodyParser.json({limit: '50mb'}));
-/*app.use(bodyParser.urlencoded({parameterLimit: 500000,limit: '50mb',extended: true}));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({parameterLimit: 500000,limit: '50mb',extended: true}));
 app.use(express.json());
 
-app.use(bodyParser.json());*/
+app.use(bodyParser.json());
 
 
 /* backend info Start */
