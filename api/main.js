@@ -14,6 +14,12 @@ var app = express();
 
 app.use(bodyParser.json());
 
+
+/*更改url可傳遞的大小*/
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '2000mb',extended: true}));
+app.use(express.json());
+
 /* backend info Start */
 var host = "34.105.17.84";
 /* backend info End */
@@ -166,10 +172,6 @@ app.post('/api/username',function(req,res){
     });
 });
 
-
-/*更改url可傳遞的大小*/
-app.use(express.json({limit: '2000mb'}));
-app.use(express.urlencoded({limit: '2000mb'}));
 
 /*存發文text跟time*/
 app.post('/api/index',function(req,res){
