@@ -170,7 +170,7 @@ app.post('/api/username',function(req,res){
 
 /*更改url可傳遞的大小*/
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb',extended: true}));
+app.use(bodyParser.urlencoded({parameterLimit: 500000,limit: '50mb',extended: true}));
 app.use(express.json());
 
 /*存發文text跟time*/
