@@ -339,19 +339,7 @@ function fileUpLoad(_this){
 		//var img = new Image,
 		var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
 		imgCont.innerHTML = img;
-		img_string = this.result;
-
-		
-		/*canvas = document.createElement("canvas"),
-		drawer = canvas.getContext("2d");
-		img.src = this.result;
-		canvas.width = file.width;
-		canvas.height = file.height;
-		drawer.drawImage(img,0,0,canvas.width, canvas.height);
-		img.src = canvas.toDataURL();
-		img_string = img.src.replace("data:image/jpeg;base64,","");
-		console.log(file.width,file.height,img_string);*/
-
+		img_string = this.result.replace("data:image/jpeg;base64,","");
 	}
 }
 
