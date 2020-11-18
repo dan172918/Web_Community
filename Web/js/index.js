@@ -39,7 +39,7 @@ $(document).ready(function()
 					var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-											<p class="article_test">'+ msg[cnt].article_text +'<img src='+ msg[cnt].article_picture +'/></p>\
+											<p class="article_test">'+ msg[cnt].article_text +'<img src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\
@@ -139,38 +139,6 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
-				var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
-									<div>\
-										<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-										<p class="article_test">'+ msg[cnt].article_text +'<br>'+ msg[cnt].article_picture +'</p>\
-									</div>\
-									<div class="command"><!--文章底下-->\
-										<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\
-										<label class="like_counter">0</label>\
-										<hr/>\
-										<div class="form-group row col-12 col-md-12">\
-											<label for="" class="col-3 col-md-2 col-form-label command_id">我</label>\
-											<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
-										<!--upload pic、video-->\
-											<input id="picInput" type="file" class="form-control upload" accept="image/*">\
-											<label for="picInput" class="col-2 col-md-1 ">\
-												<img src="img/pic.svg" alt="" width="35px" height="35px">\
-											</label>\
-											<input id="videoInput" type="file" class="form-control upload" accept="audio/*,video/*">\
-											<label for="videoInput" class="col-2 col-md-1">\
-												<img src="img/video.svg" alt="" width="35px" height="35px">\
-											</label>\
-										</div>\
-										<div class="container">\
-											<button type="button" class="btn btn-secondary  open">展開/收合</button>\
-											<div class="row col-12 pdpd">\
-												<div class="col-12 command_box">\
-													<!--這邊放留言-->\
-												</div>\
-											</div>\
-										</div>\
-									</div>\
-								</section><br>';
 				if(msg[cnt].article_id % 2 == 0){
 					var newHtml = texthtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
