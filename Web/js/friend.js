@@ -91,6 +91,9 @@ function acceptFriend(thisFriend){
                                                 <h4><a href="#" id = "FriendName">' + $(thisFriend).closest(".row").find(FriendName).text() + '</a></h4>\
                                                 <br><br>\
                                             </div>\
+                                            <div class="col-md-2 col-sm-2 col-5">\
+                                                <input class="chat rr1" type="button" onclick="inviteFriend(this)">\
+                                            </div>\
                                         </div>';
                 $('#freindlist').prepend(SearchUsertexthtml);
                 $(thisFriend).closest(".row").remove();
