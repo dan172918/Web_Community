@@ -349,6 +349,48 @@ app.post('/api/inviteFriend', function(req, res) {
         res.send("success");
     });
 });
+/*顯示交友邀請*/
+app.post('/api/showinvite', function(req, res){
+    var uid = req.body.u_id.toString();
+    var getinvite = "select user_id,user_name \
+                    from user_info,(select user_id_self as id\
+                                    from friend\
+                                    where user_id_other=\""+uid+"\" and relation = 1)\
+                                    as newTable\
+                    where user_id=id";
+    con.query(getinvite,function(err,result){
+        if (err) throw err;
+        res.send(result);
+    });
+});
+/*同意加入好友*/
+app.post('/api/acceptFriend', function(req, res){
+    var uid = req.body.u_id.toString();
+    var fid = req.body.f_id.toString();
+    var addfriend = "SET SQL_SAFE_UPDATES=0;\
+                    update friend\
+                    set relation = 0\
+                    where (user_id_self = \""+uid+"\" and user_id_other = \""+fid+"\") \
+                    or (user_id_other = \""+fid+"\" and user_id_self = \""+uid+"\")";
+    con.query(addfriend,function(err,result){
+        if (err) throw err;
+        res.send("success");
+    });
+
+});
+/*拒絕加入好友*/
+app.post('/api/rejectFriend', function(req, res){
+    var uid = req.body.u_id.toString();
+    var fid = req.body.f_id.toString();
+    var deleteFriend = "SET SQL_SAFE_UPDATES=0;\
+                        delete from friend\
+                        where (user_id_self = \""+uid+"\" and user_id_other = \""+fid+"\" and relation = 1) \
+                        or (user_id_other = \""+fid+"\" and user_id_self = \""+uid+"\" and relation = 1)";
+    con.query(deleteFriend,function(err,result){
+        if (err) throw err;
+        res.send("success");
+    });
+});
 /* Password Process Start */
 // 加密
 function aesEncrypt(data, key) {

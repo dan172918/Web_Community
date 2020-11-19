@@ -96,6 +96,10 @@ var pwdError = "密碼不正確，請重新輸入或進行忘記密碼";
 var loginError = "登入失敗，請聯繫系統管理員";
 var notEmailVerified = "您尚未前往 Email 收驗證信";
 var inviteSuccess = "邀請成功，請等待對方回覆"; 
+var inviteError = "邀請失敗，請再次嘗試或連繫開發者";
+var addFriendError = "加入好友失敗";
+var finishAddFriend = "成功加為好友";
+var rejectError = "拒絕失敗，請再次嘗試或連繫開發者";
 
 var SuccessPost = '發文成功囉';
 var FailedPost = '發文失敗或登入逾時';
