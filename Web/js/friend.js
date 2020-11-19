@@ -92,7 +92,7 @@ function acceptFriend(thisFriend){
                                                 <br><br>\
                                             </div>\
                                         </div>';
-                $('#showSearch').prepend(SearchUsertexthtml);
+                $('#freindlist').prepend(SearchUsertexthtml);
                 $(thisFriend).closest(".row").remove();
                 if($('#showInvite').html()==null || $('#showInvite').html().length==0)
                     $("#friendinvite").css("display","none");
