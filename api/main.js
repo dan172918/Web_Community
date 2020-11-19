@@ -370,15 +370,18 @@ app.post('/api/acceptFriend', function(req, res){
     var fid = req.body.f_id.toString();
     var addfriend = "update friend\
                     set relation = 0\
-                    where (user_id_self = \""+uid+"\" and user_id_other = \""+fid+"\") \
-                    or (user_id_other = \""+fid+"\" and user_id_self = \""+uid+"\")";
-    con.query('SET SQL_SAFE_UPDATES=0;', function(err, result){
+                    where chat_id in \
+                    (select *\
+                    from (select chat_id\
+                        from friend\
+                        where user_id_other = \""+fid+"\" and user_id_self = \""+uid+"\") as A)";
+                   
+
+    con.query(addfriend,function(err,result){
         if (err) throw err;
-        con.query(addfriend,function(err,result){
-            if (err) throw err;
-            res.send("success");
-        });
+        res.send("success");
     });
+
 });
 /*拒絕加入好友*/
 app.post('/api/rejectFriend', function(req, res){
