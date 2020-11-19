@@ -367,8 +367,7 @@ app.post('/api/showinvite', function(req, res){
 app.post('/api/acceptFriend', function(req, res){
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
-    var addfriend = "SET SQL_SAFE_UPDATES=0;\
-                    update friend\
+    var addfriend = "update friend\
                     set relation = 0\
                     where (user_id_self = \""+uid+"\" and user_id_other = \""+fid+"\") \
                     or (user_id_other = \""+fid+"\" and user_id_self = \""+uid+"\")";
