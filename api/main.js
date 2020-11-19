@@ -365,6 +365,7 @@ app.post('/api/showinvite', function(req, res){
 });
 /*同意加入好友*/
 app.post('/api/acceptFriend', function(req, res){
+    console.log(req.body);
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
     var addfriend = "update friend\
