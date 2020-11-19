@@ -386,10 +386,12 @@ app.post('/api/acceptFriend', function(req, res){
 app.post('/api/rejectFriend', function(req, res){
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
-    var deleteFriend = "SET SQL_SAFE_UPDATES=0;\
-                        delete from friend\
-                        where (user_id_self = \""+uid+"\" and user_id_other = \""+fid+"\" and relation = 1) \
-                        or (user_id_other = \""+fid+"\" and user_id_self = \""+uid+"\" and relation = 1)";
+    var deleteFriend = "delete from friend\
+                        where chat_id in \
+                        (select *\
+                        from (select chat_id\
+                            from friend\
+                            where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\") as A)";
     con.query(deleteFriend,function(err,result){
         if (err) throw err;
         res.send("success");
