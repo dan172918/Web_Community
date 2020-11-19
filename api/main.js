@@ -372,12 +372,13 @@ app.post('/api/acceptFriend', function(req, res){
                     set relation = 0\
                     where (user_id_self = \""+uid+"\" and user_id_other = \""+fid+"\") \
                     or (user_id_other = \""+fid+"\" and user_id_self = \""+uid+"\")";
-    con.query('SET SQL_SAFE_UPDATES=0;');
-    con.query(addfriend,function(err,result){
+    con.query('SET SQL_SAFE_UPDATES=0;', function(err, result){
         if (err) throw err;
-        res.send("success");
+        con.query(addfriend,function(err,result){
+            if (err) throw err;
+            res.send("success");
+        });
     });
-
 });
 /*拒絕加入好友*/
 app.post('/api/rejectFriend', function(req, res){
