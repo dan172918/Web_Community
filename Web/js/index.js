@@ -142,9 +142,11 @@ $(document).ready(function()
 				if(msg[cnt].article_id % 2 == 0){
 					var newHtml = texthtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
+					//判斷愛心
 				}else{
 					var secondHtml = texthtml.replace('%%', 'background:#ECFFFF');
 					$(".lib").append(secondHtml);
+					//判斷愛心
 				}
 			}
 		}
