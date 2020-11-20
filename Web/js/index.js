@@ -39,7 +39,7 @@ $(document).ready(function()
 					var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-											<p class="article_test">'+ msg[cnt].article_text +'<img style="width:500px;height:500px;" src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
+											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\
@@ -109,7 +109,7 @@ $(document).ready(function()
 					var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-											<p class="article_test"><img src=data:image/png;base64'+ msg[cnt].article_picture +'/></p>\
+											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src=data:image/png;base64'+ msg[cnt].article_picture +'/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\

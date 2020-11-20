@@ -23,7 +23,6 @@ $(document).ready(function(){
                                     </div>\
                                     <div class="col-sm-2 col-md-2 col-5">\
                                         <input class="list-group-item chat rr3" data-toggle="modal" data-target="#myModal" data-whatever="好友'+i+'號" type="button" >\
-                                        <input class="chat rr4" type="button" >\
                                     </div>\
                                 </div>'
                 $('#freindlist').prepend(texthtml);
@@ -190,7 +189,7 @@ function SearchUser(){
                                                         <br><br>\
                                                     </div>\
                                                     <div class="col-md-2 col-sm-2 col-5">\
-                                                        <input class="chat rr1" type="button" onclick="inviteFriend(this)">\
+                                                        <input class="chat rr1 ml-4" type="button" onclick="inviteFriend(this)">\
                                                     </div>\
                                                 </div>';
                         $('#showSearch').append(SearchUsertexthtml);
