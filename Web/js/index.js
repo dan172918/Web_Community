@@ -39,7 +39,7 @@ $(document).ready(function()
 					var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-											<p class="article_test">'+ msg[cnt].article_text +'<img src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
+											<p class="article_test">'+ msg[cnt].article_text +'<img style="width:500px;height:500px;" src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\
@@ -251,20 +251,6 @@ $(document).ready(function(){
 var artid = 0;
 $(document).ready(function(){  
 	$("#user_Post").click(function(){
-		//var articleUser = $(".user_id").val();
-		var articletext = $("#Article").val();
-		if(articletext !== ""){
-			var texthtml = '<div class="textshow_%pID%"><h3 class="user_id">%textUser%</h3><p class="article_test">%textCommand%</p></div><div class="command"><!--文章底下--><img class="like" src="img/heart2.svg" alt="" width="30px" height="30px"><label class="like_counter">0</label><hr/><div class="form-group row col-12 col-md-12"><label for="" class="col-3 col-md-2 col-form-label  command_id">%cmdUser%</label><input type="text" class="col-5 col-md-6 form-control cmd" name="user_text" placeholder="留言..."><!--upload pic、video--><input id="picInput" type="file" class="form-control upload" accept="image/*"><label for="picInput" class="col-2 col-md-1 "><img src="img/pic.svg" alt="" width="35px" height="35px"></label><input id="videoInput" type="file" class="form-control upload" accept="audio/*,video/*"><label for="videoInput" class="col-2 col-md-1"><img src="img/video.svg" alt="" width="35px" height="35px"></label></div><div class="container"><button type="button" class="btn btn-secondary  open">展開/收合</button><div class="row col-12"><div class="col-12 command_box"><!--這邊放留言--></div>	</div></div><hr/></div>';
-			var newTexthtml = texthtml.replace('%textUser%', '我'); //直接去資料庫抓使用者名稱，不然會出現undefined(發文者)
-			newTexthtml = newTexthtml.replace('%cmdUser%', '我'); //直接去資料庫抓使用者名稱，不然會出現undefined(留言者)
-			newTexthtml = newTexthtml.replace('%textCommand%', articletext); //貼文內容
-			newTexthtml = newTexthtml.replace('%pID%', artid); //貼文計數
-			$(".article_id").prepend(newTexthtml);
-			var all_Inputs = $("#Article");
-			all_Inputs.val("");		
-			$("#postArticle").hide(500); 
-			artid++;
-
 			var likes = 'trigger';
 			var counter = $(".like_counter").html().trim();	
    
