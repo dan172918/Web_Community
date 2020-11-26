@@ -42,7 +42,7 @@ $(document).ready(function()
 											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
-											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" button onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
@@ -77,7 +77,7 @@ $(document).ready(function()
 											<p class="article_test">'+ msg[cnt].article_text +'</p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
-											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" button onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
@@ -112,7 +112,7 @@ $(document).ready(function()
 											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src=data:image/png;base64'+ msg[cnt].article_picture +'/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
-											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" button onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
