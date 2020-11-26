@@ -213,6 +213,7 @@ app.post('/api/index',function(req,res){
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
         res.send(result);
+        console.log(result);
     });
  });
 
