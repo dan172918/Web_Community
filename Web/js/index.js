@@ -235,7 +235,7 @@ function StoreCmd(thiscmd,event){
 /*---------------------------like功能---------------------------------*/
 var like_art;
 var likes = 'trigger';
-var counter = $(".like_counter").html().trim();
+var counter = $(".like_counter").html();
 function storelike(thislike){
 	$(".like").click(function(){
 		if(likes == 'trigger'){
