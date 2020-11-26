@@ -145,13 +145,13 @@ $(document).ready(function()
 					// if(有按愛心){
 					// 	newHtml = newHtml.replace('%%%', 'background:red');
 					// }
-					// $(".lib").append(newHtml);
+					 $(".lib").append(newHtml);
 				}else{
 					var secondHtml = texthtml.replace('%%', 'background:#ECFFFF');
 					// if(有按愛心){
 					// 	secondHtml = secondHtml.replace('%%%', 'background:red');
 					// }
-					// $(".lib").append(secondHtml);
+					$(".lib").append(secondHtml);
 				}
 			}
 		}
