@@ -34,7 +34,7 @@ $(document).ready(function()
 		success: function(msg){
 			var cnt;
 			for(cnt=0;cnt<msg.length;cnt++){
-				if(msg[cnt].article_text!=="" && msg[cnt].article_picture!== "")
+				if(msg[cnt].article_text!=="" && msg[cnt].article_picture!== "null")
 				{
 					//button onclick = "storelike(this)"
 					var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
@@ -70,7 +70,7 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
-				else if(msg[cnt].article_text!=="" && msg[cnt].article_picture == "")
+				else if(msg[cnt].article_text!=="" && msg[cnt].article_picture == 'null')
 				{
 					var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
@@ -105,7 +105,7 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
-				else if(msg[cnt].article_text == "" && msg[cnt].article_picture !== "")
+				else if(msg[cnt].article_text == "" && msg[cnt].article_picture !== 'null')
 				{
 					var texthtml = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
