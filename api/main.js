@@ -190,7 +190,6 @@ app.post('/api/index',function(req,res){
             res.send("success");
         });
     }
-
  });
 
  app.post('/api/article',function(req,res){
@@ -240,34 +239,46 @@ app.post('/api/take_command',function(req,res){
     });
  });
 
- /*初始化 設定格式大小*/
+app.post('/api/like',function(req,res){
+    var art_id = Number(req.body.article_id);
+    var u_id = req.body.user_id.toString();
+    var like = Number(req.body.like);
+    if(like == 0)   //取消愛心
+    {
+        var delete_like = 'SET SQL_SAFE_UPDATES=0;\
+                           delete from Connect_db.like where user_id = \"' + u_id + '\" and article_id = \"' + art_id + '\";';
+        var update_art_like_minus = 'update Connect_db.article set like=like-1 where article_id = \"' + art_id + '\"';
+        con.query(delete_like,function(err,result){
+            if(err) throw err;
+            res.send("success");
+        });
+        con.query(update_art_like_minus,function(err,result){
+            if(err) throw err;
+            res.send("success");
+        });
+    }
+    else if(like == 1)  //按下愛心
+    {
+        var insert_like = 'insert into Connect_db.like(user_id,article_id) value(\"' + u_id + '\",\"' + art_id + '\")';
+        var update_art_like_pius = 'update Connect_db.article set like=like+1 where article_id = \"' + art_id + '\"';
+        con.query(insert_like,function(err,result){
+            if(err) throw err;
+            res.send("success");
+        });
+        con.query(update_art_like_pius,function(err,result){
+            if(err) throw err;
+            res.send("success");
+        });
+    }
+});
 
-
- 
- /*將圖片存入mysql*/
- 
- /*app.post('/api/art_pic',upload.array('image'),async(req,res,next) => {
-     console.log('file => ',req.file);
-     var insert_art_pic = 'insert into Connect_db.article(article_picture) value (\"'+ req.file.buffer +'\")';
-     
-     con.query(insert_art_pic,function(err,result){
-         if(err) throw err;
-     });
-     res.send({
-         success: true,
-         message: '上傳成功'
-     });
- });
-
-app.get('api/index',async(req,res) => {
-    const[art_pic] = await con.query('select img from Connect_db.article where article_id = "${req.Connect_db.article.article_id}"');
-    //轉換格式
-    art_pic.img = Buffer.from(art_pic.img).toString('base64');
-    res.send({
-        success: true,
-        art_pic,
+app.post('api/show_like',function(req,res){
+    var select_like = 'select like.article_id,like.user_id form like';
+    con.query(insert_like,function(err,result){
+        if(err) throw err;
+        res.send(result);
     });
-})*/
+})
 
 app.post('/api/profile',function(req,res){
     console.log(req.body);

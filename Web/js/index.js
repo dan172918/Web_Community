@@ -42,7 +42,7 @@ $(document).ready(function()
 											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
-											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
@@ -77,7 +77,7 @@ $(document).ready(function()
 											<p class="article_test">'+ msg[cnt].article_text +'</p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
-											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
@@ -112,7 +112,7 @@ $(document).ready(function()
 											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src=data:image/png;base64'+ msg[cnt].article_picture +'/></p>\
 										</div>\
 										<div class="command"><!--文章底下-->\
-											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px">\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
@@ -141,12 +141,16 @@ $(document).ready(function()
 				}
 				if(msg[cnt].article_id % 2 == 0){
 					var newHtml = texthtml.replace('%%', 'background:#FFF7FB');
-					$(".lib").append(newHtml);
-					//判斷愛心
+					// if(有按愛心){
+					// 	newHtml = newHtml.replace('%%%', 'background:red');
+					// }
+					// $(".lib").append(newHtml);
 				}else{
 					var secondHtml = texthtml.replace('%%', 'background:#ECFFFF');
-					$(".lib").append(secondHtml);
-					//判斷愛心
+					// if(有按愛心){
+					// 	secondHtml = secondHtml.replace('%%%', 'background:red');
+					// }
+					// $(".lib").append(secondHtml);
 				}
 			}
 		}
@@ -168,6 +172,23 @@ $(document).ready(function()
 			}
 		}
 	});
+
+	/*$.ajax({
+		url: "http://"+ host + port +"/api/show_like",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(comd){
+			var cnt1;
+			for(cnt1=0;cnt1<comd.length;cnt1++){
+				var texthtml1 = '<p class="command_user">'+comd[cnt1].user_name+'\
+									<span class="command_line">'+comd[cnt1].user_command+'\
+									</span>\
+								</p>';
+				$("#"+comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+			}
+		}
+	});*/
 
 	$.ajax({
 		url: "http://"+ host + port +"/api/username",
@@ -212,69 +233,44 @@ function StoreCmd(thiscmd,event){
 };
 
 /*---------------------------like功能---------------------------------*/
-/*var likes = 'trigger';
-var counter = $(".like_counter").html().trim();	
-
-$(document).ready(function(){   
+var like_art;
+var likes = 'trigger';
+var counter = $(".like_counter").html().trim();
+function storelike(thislike){
 	$(".like").click(function(){
 		if(likes == 'trigger'){
 			$(".like").addClass("red");
+			like_art = 1;
 			counter++;
 			$(".like_counter").html(counter);
 			likes = 'unTrigger';
 		}else if(likes == 'unTrigger'){
 			$(".like").removeClass("red");
+			like_art = 0;
 			counter--;
 			$(".like_counter").html(counter);
 			likes = 'trigger';
-		}	 
-	});
-});*/
-/*---------------------------------留言顯示------------------------------*/
-/*$(document).ready(function(){  //之後要跟著文章id和留言id去做控制(不同文章的留言互不影響)，並且要把留言存入資料庫(打撈、刪除)
-	document.addEventListener('keypress', function(event){
-		if(event.keyCode === 13 || event.which === 13){ //which能兼容舊版瀏覽器
-			var inputText = $(".cmd").val();
-			var inputName = $(".command_id").html();
-			if(inputText !== ""){
-				var html = '<p class="command_user">%user%<span class="command_line">%command%</span><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></p><hr/>';
-				var newHtml = html.replace('%command%', inputText);
-				newHtml = newHtml.replace('%user%', inputName);
-				$(".command_box").append(newHtml);
-
-				var all_Inputs = $("input[type=text]");
-				all_Inputs.val("");	
+		}
+		var like_data = {
+			article_id: $(thislike).parents("section").attr("id"),
+			like: like_art,
+			user_id: getCookie("token")
+		};
+		$.ajax({
+			url: "http://"+ host + port +"/api/like",
+			type: 'POST',
+			data: JSON.stringify(like_data),
+			contentType: "application/json;charset=utf-8",
+			success: function(msg){
+			},
+			error: function(xhr, ajaxOptions, thrownError){
+				alertMsg(ErrorMsg);
 			}
-		}
+		});
 	});
-});*/
-/*---------------------------------貼文顯示 & like功能------------------------------*/
-/*
-var artid = 0;
-$(document).ready(function(){  
-	$("#user_Post").click(function(){
-			var likes = 'trigger';
-			var counter = $(".like_counter").html().trim();	
-   
-			$(".like").click(function(){
-				if(likes == 'trigger'){
-					$(".like").addClass("red");
-					counter++;
-					$(".like_counter").html(counter);
-					likes = 'unTrigger';
-				}else if(likes == 'unTrigger'){
-					$(".like").removeClass("red");
-					counter--;
-					$(".like_counter").html(counter);
-					likes = 'trigger';
-				}	 
-			});
-		}
-	});
+}
 
 
-});
-*/
 var img_string="";
 var imgCont = document.getElementById("showImg"); 
 var ipt = document.getElementById("#picInput"); 
@@ -300,12 +296,14 @@ function fileUpLoad(_this){
 }
 
 
+
+
 /*store article and reload index.html*/
 function article(){
-	if($('#Article').val() == '' && $('#picInput').val() == '' && $('#videoInput').val() == ''){
+	if($('#Article').val() == '' && $('#picInput').val() == ''){
 		alertMsg(NullPost);
 	}
-	else if($('#Article').val() !== ''){
+	else if($('#Article').val() !== '' || $('#picInput').val() !== ''){
 		var post_data = {
 			user_id : getCookie("token"),
 			post_level : '0',
