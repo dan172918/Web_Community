@@ -201,13 +201,13 @@ function storelike(thislike){
 	if(thislike.style.background=='red'){
 		$(".like").removeAttr("style");
 		like_art = 0;
-		counter++;
+		counter--;
 		$(".like_counter").html(counter);
 	}
 	else{
 		thislike.style.background='red';
 		like_art = 1;
-		counter--;
+		counter++;
 		$(".like_counter").html(counter);
 	}
 	var like_data = {
