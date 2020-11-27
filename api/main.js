@@ -194,20 +194,21 @@ app.post('/api/index',function(req,res){
 
  app.post('/api/article',function(req,res){
     var u_id = req.body.user_id.toString();
-    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name \
-                        from user_info,article,(select user_id\
-                                                from user_info,((select user_id_self as id\
-                                                                from friend\
-                                                                where user_id_other=\"'+u_id+'\")\
-                                                                union\
-                                                                (select user_id_other as id\
-                                                                from friend\
-                                                                where user_id_self=\"'+u_id+'\")\
-                                                                union\
-                                                                (select user_info.user_id\
-                                                                from user_info\
-                                                                where user_id = \"'+u_id+'\")) as newTable0\
-                                                where user_id=id) as newTable1\
+    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id\
+                        from user_info,(select user_id\
+                                        from user_info,((select user_id_self as id\
+                                                        from friend\
+                                                        where user_id_other=\"'+u_id+'\")\
+                                                        union\
+                                                        (select user_id_other as id\
+                                                        from friend\
+                                                        where user_id_self=\"'+u_id+'\")\
+                                                        union\
+                                                        (select user_info.user_id\
+                                                        from user_info\
+                                                        where user_id = \"'+u_id+'\")) as newTable0\
+                                        where user_id=id) as newTable1\
+                                        ,article left join likes on likes.article_id = article.article_id\
                         where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id\
                         order by article.article_time desc limit 10';
     con.query(art_text_sql,function(err,result){
@@ -247,7 +248,7 @@ app.post('/api/like',function(req,res){
     if(like == 0)   //取消愛心
     {
         var delete_like = 'SET SQL_SAFE_UPDATES=0;\
-                           delete from Connect_db.like where user_id = \"' + u_id + '\" and article_id = \"' + art_id + '\";';
+                           delete from Connect_db.likes where user_id = \"' + u_id + '\" and article_id = \"' + art_id + '\";';
         var update_art_like_minus = 'update Connect_db.article set like=like-1 where article_id = \"' + art_id + '\"';
         con.query(delete_like,function(err,result){
             if(err) throw err;
@@ -260,7 +261,7 @@ app.post('/api/like',function(req,res){
     }
     else if(like == 1)  //按下愛心
     {
-        var insert_like = 'insert into Connect_db.like(user_id,article_id) value(\"' + u_id + '\",\"' + art_id + '\")';
+        var insert_like = 'insert into Connect_db.likes(user_id,article_id) value(\"' + u_id + '\",\"' + art_id + '\")';
         var update_art_like_pius = 'update Connect_db.article set like=like+1 where article_id = \"' + art_id + '\"';
         con.query(insert_like,function(err,result){
             if(err) throw err;
@@ -273,13 +274,6 @@ app.post('/api/like',function(req,res){
     }
 });
 
-app.post('api/show_like',function(req,res){
-    var select_like = 'select like.article_id,like.user_id form like';
-    con.query(insert_like,function(err,result){
-        if(err) throw err;
-        res.send(result);
-    });
-})
 
 app.post('/api/profile',function(req,res){
     console.log(req.body);
