@@ -120,15 +120,16 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
+				var finialhtml = texthtml1+texthtml2;
+				if(msg[cnt].article_id % 2 == 0){
+					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
+					$(".lib").append(newHtml);
+				}else{
+					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
+					$(".lib").append(secondHtml);
+				}
 			}
-			var finialhtml = texthtml1+texthtml2;
-			if(msg[cnt].article_id % 2 == 0){
-				var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
-				$(".lib").append(newHtml);
-			}else{
-				var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
-				$(".lib").append(secondHtml);
-			}
+
 		}
 	});
 	
