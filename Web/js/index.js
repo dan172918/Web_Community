@@ -32,6 +32,7 @@ $(document).ready(function()
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(msg){
+			console.log(msg);
 			var cnt;
 			for(cnt=0;cnt<msg.length;cnt++){
 				if(msg[cnt].article_text!=="" && msg[cnt].article_picture!== null || msg[cnt].article_picture!== "")
