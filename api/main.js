@@ -268,11 +268,9 @@ app.post('/api/like',function(req,res){
         var update_art_like_pius = 'update Connect_db.article set article.like=article.like+1 where article_id = \"' + art_id + '\"';
         con.query(insert_like,function(err,result){
             if(err) throw err;
-            res.send("success");
         });
         con.query(update_art_like_pius,function(err,result){
             if(err) throw err;
-            res.send("success");
         });
     }
 });
