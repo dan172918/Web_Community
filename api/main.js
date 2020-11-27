@@ -247,12 +247,15 @@ app.post('/api/like',function(req,res){
     var like = Number(req.body.like);
     if(like == 0)   //取消愛心
     {
-        var delete_like = 'SET SQL_SAFE_UPDATES=0;\
-                           delete from Connect_db.likes where user_id = \"' + u_id + '\" and article_id = \"' + art_id + '\";';
+        var select_like_id = 'select likes.like_id from Connect_db.likes where user_id = \"' + u_id + '\" and article_id = \"' + art_id + '\"';
         var update_art_like_minus = 'update Connect_db.article set like=like-1 where article_id = \"' + art_id + '\"';
-        con.query(delete_like,function(err,result){
+        con.query(select_like_id,function(err,result){
             if(err) throw err;
-            res.send("success");
+            var delete_like = 'delete from Connect_db.likes where likes.like_id = \"' + result + '\"';
+            con.query(delete_like,function(err,result){
+                if(err) throw err;
+                res.send("success");
+            });
         });
         con.query(update_art_like_minus,function(err,result){
             if(err) throw err;

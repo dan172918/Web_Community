@@ -63,7 +63,7 @@ $(document).ready(function()
 				if(msg[cnt].like_id !== "" || msg[cnt].like_id !== null)
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
-											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" button onclick = "storelike(this)">\
+											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
@@ -93,7 +93,7 @@ $(document).ready(function()
 				else if(msg[cnt].like_id == "" || msg[cnt].like_id == null)
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
-											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" button onclick = "storelike(this)">\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
 											<label class="like_counter">0</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
@@ -194,39 +194,37 @@ function StoreCmd(thiscmd,event){
 
 /*---------------------------like功能---------------------------------*/
 var like_art;
-var likes = 'trigger';
-var counter = $(".like_counter").html();
+
 function storelike(thislike){
-	$(".like").click(function(){
-		if(likes == 'trigger'){
-			$(".like").addClass("red");
-			like_art = 1;
-			counter++;
-			$(".like_counter").html(counter);
-			likes = 'unTrigger';
-		}else if(likes == 'unTrigger'){
-			$(".like").removeClass("red");
-			like_art = 0;
-			counter--;
-			$(".like_counter").html(counter);
-			likes = 'trigger';
+	var counter = $(".like_counter").html();
+	
+	if(thislike.style.background=='red'){
+		$(".like").removeAttr("style");
+		like_art = 0;
+		counter++;
+		$(".like_counter").html(counter);
+	}
+	else{
+		thislike.style.background='red';
+		like_art = 1;
+		counter--;
+		$(".like_counter").html(counter);
+	}
+	var like_data = {
+		article_id: $(thislike).parents("section").attr("id"),
+		like: like_art,
+		user_id: getCookie("token")
+	};
+	$.ajax({
+		url: "http://"+ host + port +"/api/like",
+		type: 'POST',
+		data: JSON.stringify(like_data),
+		contentType: "application/json;charset=utf-8",
+		success: function(msg){
+		},
+		error: function(xhr, ajaxOptions, thrownError){
+			alertMsg(ErrorMsg);
 		}
-		var like_data = {
-			article_id: $(thislike).parents("section").attr("id"),
-			like: like_art,
-			user_id: getCookie("token")
-		};
-		$.ajax({
-			url: "http://"+ host + port +"/api/like",
-			type: 'POST',
-			data: JSON.stringify(like_data),
-			contentType: "application/json;charset=utf-8",
-			success: function(msg){
-			},
-			error: function(xhr, ajaxOptions, thrownError){
-				alertMsg(ErrorMsg);
-			}
-		});
 	});
 }
 
