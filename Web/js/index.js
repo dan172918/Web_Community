@@ -220,7 +220,7 @@ function storelike(thislike){
 		type: 'POST',
 		data: JSON.stringify(like_data),
 		contentType: "application/json;charset=utf-8",
-		success: function(msg){
+		success: function(){
 		},
 		error: function(xhr, ajaxOptions, thrownError){
 			alertMsg(ErrorMsg);

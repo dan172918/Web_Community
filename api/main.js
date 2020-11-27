@@ -254,12 +254,12 @@ app.post('/api/like',function(req,res){
             var delete_like = 'delete from Connect_db.likes where likes.like_id = \"' + result + '\"';
             con.query(delete_like,function(err,result){
                 if(err) throw err;
-                res.send("success");
+                //res.send("success");
             });
         });
         con.query(update_art_like_minus,function(err,result){
             if(err) throw err;
-            res.send("success");
+            //res.send("success");
         });
     }
     else if(like == 1)  //按下愛心
