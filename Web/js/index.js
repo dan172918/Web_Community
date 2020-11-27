@@ -34,7 +34,7 @@ $(document).ready(function()
 		success: function(msg){
 			var cnt;
 			for(cnt=0;cnt<msg.length;cnt++){
-				if(msg[cnt].article_text!=="" && msg[cnt].article_picture!== "null" || msg[cnt].article_picture!== "")
+				if(msg[cnt].article_text!=="" && msg[cnt].article_picture!== null || msg[cnt].article_picture!== "")
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
@@ -42,7 +42,7 @@ $(document).ready(function()
 											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
 										</div>';
 				}
-				else if(msg[cnt].article_text!=="" && msg[cnt].article_picture == 'null' || msg[cnt].article_picture == "")
+				else if(msg[cnt].article_text!=="" && msg[cnt].article_picture == null || msg[cnt].article_picture == "")
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
@@ -50,7 +50,7 @@ $(document).ready(function()
 											<p class="article_test">'+ msg[cnt].article_text +'</p>\
 										</div>';
 				}
-				else if(msg[cnt].article_text =="" && msg[cnt].article_picture!== "null" || msg[cnt].article_picture!== "")
+				else if(msg[cnt].article_text =="" && msg[cnt].article_picture!== null || msg[cnt].article_picture!== "")
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
@@ -59,7 +59,7 @@ $(document).ready(function()
 										</div>';
 				}
 
-				if(msg[cnt].like_id !== "" || msg[cnt].like_id !== "null")
+				if(msg[cnt].like_id !== "" || msg[cnt].like_id !== null)
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" button onclick = "storelike(this)">\
@@ -89,7 +89,7 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
-				else if(msg[cnt].like_id == "" || msg[cnt].like_id == "null")
+				else if(msg[cnt].like_id == "" || msg[cnt].like_id == null)
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" button onclick = "storelike(this)">\
@@ -147,7 +147,7 @@ $(document).ready(function()
 			}
 		}
 	});
-	
+
 	$.ajax({
 		url: "http://"+ host + port +"/api/username",
 		type: 'POST',
