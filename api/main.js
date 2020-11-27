@@ -214,7 +214,6 @@ app.post('/api/index',function(req,res){
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
         res.send(result);
-        console.log(result);
     });
  });
 
@@ -242,6 +241,7 @@ app.post('/api/take_command',function(req,res){
  });
 
 app.post('/api/like',function(req,res){
+    console.log(req.body);
     var art_id = Number(req.body.article_id);
     var u_id = req.body.user_id.toString();
     var like = Number(req.body.like);
