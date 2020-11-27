@@ -60,7 +60,7 @@ $(document).ready(function()
 										</div>';
 				}
 
-				if(msg[cnt].like_id != "" || msg[cnt].like_id != null)
+				if(msg[cnt].like_id != "")
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
@@ -90,7 +90,7 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
-				else if(msg[cnt].like_id == "" || msg[cnt].like_id == null)
+				else if(msg[cnt].like_id == "")
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
