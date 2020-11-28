@@ -40,9 +40,9 @@ $(document).ready(function()
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "data:image/png;base64,'+ msg[cnt].article_picture +'"/></p>\
+											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "'+ msg[cnt].article_picture +'"/></p>\
 										</div>';
-				}
+				}//data:image/png;base64,
 				else if(msg[cnt].article_text && !msg[cnt].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
@@ -56,9 +56,9 @@ $(document).ready(function()
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src=data:image/png;base64,'+ msg[cnt].article_picture +'/></p>\
+											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src="'+ msg[cnt].article_picture +'"/></p>\
 										</div>';
-				}
+				}//data:image/png;base64,
 
 				if(msg[cnt].like_id)
 				{
@@ -249,8 +249,8 @@ function fileUpLoad(_this){
 		//var img = new Image,
 		var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
 		imgCont.innerHTML = img;
-		img_string = this.result.replace("data:image/jpeg;base64,","");
-	}
+		img_string = this.result
+	}//.replace("data:image/jpeg;base64,","");
 }
 
 
