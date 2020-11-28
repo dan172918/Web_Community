@@ -56,7 +56,7 @@ $(document).ready(function()
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
-											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src=data:image/png;base64'+ msg[cnt].article_picture +'/></p>\
+											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src=data:image/png;base64,'+ msg[cnt].article_picture +'/></p>\
 										</div>';
 				}
 
