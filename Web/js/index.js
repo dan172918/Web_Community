@@ -42,7 +42,7 @@ $(document).ready(function()
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
 											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "'+ msg[cnt].article_picture +'"/></p>\
 										</div>';
-				}//data:image/png;base64,
+				}
 				else if(msg[cnt].article_text && !msg[cnt].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
@@ -58,7 +58,7 @@ $(document).ready(function()
 											<h3 class="user_id">'+msg[cnt].user_name+'</h3>\
 											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src="'+ msg[cnt].article_picture +'"/></p>\
 										</div>';
-				}//data:image/png;base64,
+				}
 
 				if(msg[cnt].like_id)
 				{
@@ -67,7 +67,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].like+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">我</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											<!--upload pic、video-->\
 												<input id="picInput" type="file" class="form-control upload" accept="image/*">\
@@ -97,7 +97,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].like+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">我</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											<!--upload pic、video-->\
 												<input id="picInput" type="file" class="form-control upload" accept="image/*">\
@@ -228,6 +228,148 @@ function storelike(thislike){
 	});
 }
 
+/*多10篇*/
+function add_article(){
+	var data = {
+		user_id :getCookie("token")
+	}
+	/* show article */
+	$.ajax({
+		url: "http://"+ host + port +"/api/add_article",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		async: false,
+		success: function(add){
+			console.log(add);
+			var cnt;
+			for(cnt=0;cnt<msg.length;cnt++){
+				if(add[cnt].article_text && add[cnt].article_picture)
+				{
+					var texthtml1 = '<section style="%%" class="article_id" id=\"'+add[cnt].article_id+'\">\
+										<div>\
+											<h3 class="user_id">'+add[cnt].user_name+'</h3>\
+											<p class="article_test">'+ add[cnt].article_text +'<br/><br/><img style="width:700px;height:450px;" src= "'+ add[cnt].article_picture +'"/></p>\
+										</div>';
+				}
+				else if(add[cnt].article_text && !add[cnt].article_picture)
+				{
+					var texthtml1 = '<section style="%%" class="article_id" id=\"'+add[cnt].article_id+'\">\
+										<div>\
+											<h3 class="user_id">'+add[cnt].user_name+'</h3>\
+											<p class="article_test">'+ add[cnt].article_text +'</p>\
+										</div>';
+				}
+				else if(!add[cnt].article_text && add[cnt].article_picture)
+				{
+					var texthtml1 = '<section style="%%" class="article_id" id=\"'+add[cnt].article_id+'\">\
+										<div>\
+											<h3 class="user_id">'+add[cnt].user_name+'</h3>\
+											<p class="article_test"><br/><br/><img style="width:700px;height:450px;" src="'+ add[cnt].article_picture +'"/></p>\
+										</div>';
+				}
+
+				if(add[cnt].like_id)
+				{
+					var texthtml2 = '<div class="command"><!--文章底下-->\
+											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
+											<label class="like_counter">'+add[cnt].like+'</label>\
+											<hr/>\
+											<div class="form-group row col-12 col-md-12">\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
+												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
+											<!--upload pic、video-->\
+												<input id="picInput" type="file" class="form-control upload" accept="image/*">\
+												<label for="picInput" class="col-2 col-md-1 ">\
+													<img src="img/pic.svg" alt="" width="35px" height="35px">\
+												</label>\
+												<input id="videoInput" type="file" class="form-control upload" accept="audio/*,video/*">\
+												<label for="videoInput" class="col-2 col-md-1">\
+													<img src="img/video.svg" alt="" width="35px" height="35px">\
+												</label>\
+											</div>\
+											<div class="container">\
+												<button type="button" class="btn btn-secondary  open">展開/收合</button>\
+												<div class="row col-12 pdpd">\
+													<div class="col-12 command_box">\
+														<!--這邊放留言-->\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</section><br>';
+				}
+				else if(!add[cnt].like_id)
+				{
+					var texthtml2 = '<div class="command"><!--文章底下-->\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
+											<label class="like_counter">'+add[cnt].like+'</label>\
+											<hr/>\
+											<div class="form-group row col-12 col-md-12">\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
+												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
+											<!--upload pic、video-->\
+												<input id="picInput" type="file" class="form-control upload" accept="image/*">\
+												<label for="picInput" class="col-2 col-md-1 ">\
+													<img src="img/pic.svg" alt="" width="35px" height="35px">\
+												</label>\
+												<input id="videoInput" type="file" class="form-control upload" accept="audio/*,video/*">\
+												<label for="videoInput" class="col-2 col-md-1">\
+													<img src="img/video.svg" alt="" width="35px" height="35px">\
+												</label>\
+											</div>\
+											<div class="container">\
+												<button type="button" class="btn btn-secondary  open">展開/收合</button>\
+												<div class="row col-12 pdpd">\
+													<div class="col-12 command_box">\
+														<!--這邊放留言-->\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</section><br>';
+				}
+				var finialhtml = texthtml1+texthtml2;
+				if(add[cnt].article_id % 2 == 0){
+					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
+					$(".lib").append(newHtml);
+				}else{
+					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
+					$(".lib").append(secondHtml);
+				}
+			}
+
+		}
+	});
+	
+	$.ajax({
+		url: "http://"+ host + port +"/api/take_command",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(add_comd){
+			var cnt1;
+			for(cnt1=0;cnt1<comd.length;cnt1++){
+				var texthtml1 = '<p class="command_user">'+add_comd[cnt1].user_name+'\
+									<span class="command_line">'+add_comd[cnt1].user_command+'\
+									</span>\
+								</p>';
+				$("#"+add_comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+			}
+		}
+	});
+
+	$.ajax({
+		url: "http://"+ host + port +"/api/username",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(name){
+			$('#user_name').text(name[0].user_name);
+		}
+	})
+}
+
 
 var img_string="";
 var imgCont = document.getElementById("showImg"); 
@@ -250,7 +392,7 @@ function fileUpLoad(_this){
 		var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
 		imgCont.innerHTML = img;
 		img_string = this.result
-	}//.replace("data:image/jpeg;base64,","");
+	}
 }
 
 
@@ -261,7 +403,7 @@ function article(){
 	if($('#Article').val() == '' && $('#picInput').val() == ''){
 		alertMsg(NullPost);
 	}
-	else if($('#Article').val() !== '' || $('#picInput').val() !== ''){
+	else{
 		var post_data = {
 			user_id : getCookie("token"),
 			post_level : '0',
@@ -287,3 +429,6 @@ function article(){
 	}
 };
 
+function add_article(){
+
+}
