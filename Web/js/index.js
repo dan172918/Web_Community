@@ -51,7 +51,7 @@ $(document).ready(function()
 											<p class="article_test">'+ msg[cnt].article_text +'</p>\
 										</div>';
 				}
-				else if(!msg[cnt].article_text && msg[cnt].article_picture == 1)
+				else if(!msg[cnt].article_text && msg[cnt].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
