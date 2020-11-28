@@ -64,7 +64,7 @@ $(document).ready(function()
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
-											<label class="like_counter">0</label>\
+											<label class="like_counter">'+msg[cnt].like+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">我</label>\
@@ -94,7 +94,7 @@ $(document).ready(function()
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
-											<label class="like_counter">0</label>\
+											<label class="like_counter">'+msg[cnt].like+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">我</label>\
