@@ -22,8 +22,32 @@ $(document).ready(function()
   	});*/
 });
 
+var img_string="";
+var imgCont = document.getElementById("showImg"); 
+var ipt = document.getElementById("#picInput"); 
+function fileUpLoad(_this){
+	var file = _this.files[0];
+	if(!/image\/\w+/.test(file.type)){ //html中已經用accept='image/*'限制上傳的是圖片了，此處判斷可省略
+		alert("檔案必須為圖片！"); 
+		return false; 
+	} 
+	if(!FileReader){
+		alert("你的瀏覽器不支援H5的FileReader");
+		ipt.setAttribute("disabled","disabled");//瀏覽器不支援禁用input type='file'檔案上傳標籤
+		return;
+	}
+	var fileReader = new FileReader();
+	fileReader.readAsDataURL(file);//將檔案讀取為Data URL 讀取結果放在result中
+	fileReader.onload = function(e){
+		var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
+		imgCont.innerHTML = img;
+		img_string = this.result
+	}
+}
+
 function profile(){
 	var profile_data = {
+		user_picture : img_string,
 		user_id : getCookie("token"),
 		user_school : $('#user_school').val(),
 		user_age : $('#user_age').val(),
@@ -39,6 +63,37 @@ function profile(){
 		contentType : "application/json;charset=utf-8",
 		success: function(){
 			alerMsgThenGoToSomewhere(ProfileSucess,"./profile.html");
+		}
+	})
+}
+
+
+function take_profile(){
+	var data = {
+		user_id : getCookie("token"),
+	}
+	$.ajax({
+		url:"http://"+ host + port +"/api/show_profile",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType : "application/json;charset=utf-8",
+		success: function(pof){
+			var texthtml = '<ul class="list-group">\
+								<li class="list-group-item">'+ pof.user_school +'</li>\
+								<li class="list-group-item">'+ pof.user_age +'</li>\
+								<li class="list-group-item">'+ pof.user_hobby +'</li>\
+								<li class="list-group-item">'+ pof.user_like_country +'</li>\
+								<li class="list-group-item">'+ pof.user_change +'</li>\
+								<li class="list-group-item">'+ pof.user_try +'</li>\
+							</ul>';
+			if(pof.user_picture)
+			{
+				$(".card-img-top picture user_pic").attr("src",pof.user_picture);
+			}
+			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
+			{
+				$(".data").append(texthtml);
+			}
 		}
 	})
 }

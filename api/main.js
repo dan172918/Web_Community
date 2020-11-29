@@ -217,7 +217,7 @@ app.post('/api/index',function(req,res){
     });
  });
 
-    var cnt=10;
+var cnt=10;
  app.post('/api/add_article',function(req,res){
     var u_id = req.body.user_id.toString();
     var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.like\
@@ -302,7 +302,7 @@ app.post('/api/like',function(req,res){
     }
 });
 
-
+/*store profile*/
 app.post('/api/profile',function(req,res){
     console.log(req.body);
 
@@ -313,30 +313,27 @@ app.post('/api/profile',function(req,res){
     var u_nation = req.body.user_nation.toString();
     var u_change = req.body.user_change.toString();
     var u_try = req.body.user_try.toString();
+    var u_picture = req.body.user_picture.toString();
 
-    console.log(u_id,u_schoolj,u_age,u_hobit,u_nation,u_change,u_try);
+    //console.log(u_id,u_schoolj,u_age,u_hobit,u_nation,u_change,u_try);
 
-    var insert_profile_info =  'update Connect_db.user_info set user_school = \"'+ u_school +'\",user_age = \"'+ u_age +'\",user_hobby = \"'+u_hobit+'\",user_like_country = \"'+u_nation+'\" ,user_change = \"'+u_change+'\",user_try = \"'+u_try+'\" where user_id = \"'+u_id+'\"';
+    var insert_profile_info =  'update Connect_db.user_info set user_picture = \"'+ u_schu_picture +'\",user_school = \"'+ u_school +'\",user_age = \"'+ u_age +'\",user_hobby = \"'+u_hobit+'\",user_like_country = \"'+u_nation+'\" ,user_change = \"'+u_change+'\",user_try = \"'+u_try+'\" where user_id = \"'+u_id+'\"';
     con.query(insert_profile_info, function(err, result) {
         if (err) throw err;
     });
 });
 
-/*將圖片update存入profile_mysql*/
-/*
-app.post('/api/profile',upload.single('user_picture'),async(req,res) => {
-    console.log('file => ',req.file);
-    var update_user_pic = ('update Connect_db.user_info set user_picture = ? where user_id = "${req.Connect_db.user_info.user_id}"',req.file.buffer);
-    
-    con.query(update_user_pic,function(err,result){
+app.post('/api/show_profile',function(req,res){
+    var u_id = req.body.user_id.toString();
+    var select_profile = 'select user_picture,user_school,user_age,user_hobby,user_like_country,user_change,user_try\
+                            from Connect_db.user_info\
+                            where user_info.user_id = \"'+ u_id +'\"';
+    con.query(select_profile,function(err,result){
         if(err) throw err;
+        res.send(result);
     });
-    res.send({
-        success: true,
-        message: '上傳成功'
-    });
-});
-*/
+ });
+
 /*好友名單*/
 app.post('/api/loadFriendlist', function(req, res) {
     var uid = req.body.u_id.toString();
@@ -354,6 +351,7 @@ app.post('/api/loadFriendlist', function(req, res) {
         res.send(result);
     });
 });
+
 /*搜尋好友*/
 app.post('/api/SearchFriend', function(req, res) {
     var uid = req.body.u_id.toString();
