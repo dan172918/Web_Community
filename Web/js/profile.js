@@ -32,11 +32,11 @@ $(document).ready(function()
 								<li class="list-group-item">'+ pof.user_change +'</li>\
 								<li class="list-group-item">'+ pof.user_try +'</li>\
 							</ul>';
-			if(pof.user_picture)
+			if(pof.user_picture == true)
 			{
 				$(".card-img-top picture user_pic").attr("src",pof.user_picture);
 			}
-			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
+			if((pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try) == true)
 			{
 				$(".data").append(texthtml);
 			}
