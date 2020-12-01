@@ -67,8 +67,7 @@ function profile(){
 	})
 }
 
-
-function take_profile(){
+$(document).ready(function take_profile(){
 	var data = {
 		user_id : getCookie("token"),
 	}
@@ -97,4 +96,4 @@ function take_profile(){
 			}
 		}
 	})
-}
+});
