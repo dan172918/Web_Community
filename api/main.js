@@ -315,8 +315,6 @@ app.post('/api/profile',function(req,res){
     var u_try = req.body.user_try.toString();
     var u_picture = req.body.user_picture.toString();
 
-    //console.log(u_id,u_schoolj,u_age,u_hobit,u_nation,u_change,u_try);
-
     var insert_profile_info =  'update Connect_db.user_info set user_picture = \"'+ u_schu_picture +'\",user_school = \"'+ u_school +'\",user_age = \"'+ u_age +'\",user_hobby = \"'+u_hobit+'\",user_like_country = \"'+u_nation+'\" ,user_change = \"'+u_change+'\",user_try = \"'+u_try+'\" where user_id = \"'+u_id+'\"';
     con.query(insert_profile_info, function(err, result) {
         if (err) throw err;
