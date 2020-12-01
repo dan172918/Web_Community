@@ -331,6 +331,7 @@ app.post('/api/show_profile',function(req,res){
     con.query(select_profile,function(err,result){
         if(err) throw err;
         res.send(result);
+        console.log(result);
     });
  });
 
@@ -450,3 +451,4 @@ app.listen(process.env.PORT || 3000, function() {
     console.log("Start port 3000");
   });
 
+ 

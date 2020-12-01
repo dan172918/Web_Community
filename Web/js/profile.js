@@ -78,6 +78,7 @@ function take_profile(){
 		data: JSON.stringify(data),
 		contentType : "application/json;charset=utf-8",
 		success: function(pof){
+			console.log(pof);
 			var texthtml = '<ul class="list-group">\
 								<li class="list-group-item">'+ pof.user_school +'</li>\
 								<li class="list-group-item">'+ pof.user_age +'</li>\
