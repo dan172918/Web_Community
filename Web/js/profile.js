@@ -25,12 +25,12 @@ $(document).ready(function()
 		success: function(pof){
 			console.log(pof);
 			var texthtml = '<ul class="list-group">\
-								<li class="list-group-item">'+ pof.user_school[0] +'</li>\
-								<li class="list-group-item">'+ pof.user_age +'</li>\
-								<li class="list-group-item">'+ pof.user_hobby +'</li>\
-								<li class="list-group-item">'+ pof.user_like_country +'</li>\
-								<li class="list-group-item">'+ pof.user_change +'</li>\
-								<li class="list-group-item">'+ pof.user_try +'</li>\
+								<li class="list-group-item">\"'+pof.user_school+'\"</li>\
+								<li class="list-group-item">\"'+pof.user_age+'\"</li>\
+								<li class="list-group-item">\"'+pof.user_hobby+'\"</li>\
+								<li class="list-group-item">\"'+pof.user_like_country+'\"</li>\
+								<li class="list-group-item">\"'+pof.user_change+'\"</li>\
+								<li class="list-group-item">\"'+pof.user_try+'\"</li>\
 							</ul>';
 			$("#user_pic").attr("src",pof.user_picture);
 			$("#Data").append(texthtml);
