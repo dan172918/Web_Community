@@ -1,4 +1,4 @@
-/*$(document).ready(function()
+$(document).ready(function()
 {
   	$("#editBtn").click(function()
   	{
@@ -13,13 +13,9 @@
 		$(".dataList").show();  //隱藏原個人資料
   		$(".forms").hide(); //顯示編輯模式
   	});
-
-});*/
-
-$(document).ready(function()
-{
+	
 	var data = {
-		user_id : getCookie("token"),
+		user_id : getCookie("token")
 	}
 	$.ajax({
 		url:"http://"+ host + port +"/api/show_profile",
@@ -29,18 +25,18 @@ $(document).ready(function()
 		success: function(pof){
 			console.log(pof);
 			var texthtml = '<ul class="list-group">\
-								<li class="list-group-item">'+ pof.user_school +'</li>\
-								<li class="list-group-item">'+ pof.user_age +'</li>\
-								<li class="list-group-item">'+ pof.user_hobby +'</li>\
-								<li class="list-group-item">'+ pof.user_like_country +'</li>\
-								<li class="list-group-item">'+ pof.user_change +'</li>\
-								<li class="list-group-item">'+ pof.user_try +'</li>\
+								<li class="list-group-item">'+ pof.user_school[0] +'</li>\
+								<li class="list-group-item">'+ pof.user_age[0] +'</li>\
+								<li class="list-group-item">'+ pof.user_hobby[0] +'</li>\
+								<li class="list-group-item">'+ pof.user_like_country[0] +'</li>\
+								<li class="list-group-item">'+ pof.user_change[0] +'</li>\
+								<li class="list-group-item">'+ pof.user_try[0] +'</li>\
 							</ul>';
 			if(pof.user_picture)
 			{
 				$(".card-img-top picture user_pic").attr("src",pof.user_picture);
 			}
-			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
+			if(pof.user_school[0] || pof.user_age[0] || pof.user_hobby[0] || pof.user_like_country[0] || pof.user_change[0] || pof.user_try[0])
 			{
 				$(".data").append(texthtml);
 			}
