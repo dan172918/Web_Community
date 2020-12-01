@@ -1,4 +1,4 @@
-$(document).ready(function()
+/*$(document).ready(function()
 {
   	$("#editBtn").click(function()
   	{
@@ -14,12 +14,38 @@ $(document).ready(function()
   		$(".forms").hide(); //顯示編輯模式
   	});
 
-  	/*---已修改資料送出後，先存回資料庫，再從資料庫把值撈回來顯示---*/
-  	/*$("#sure").click(function()
-  	{
-  		var School=$("#school").html();
-		$("#s").html(School);
-  	});*/
+});*/
+
+$(document).ready(function()
+{
+	var data = {
+		user_id : getCookie("token"),
+	}
+	$.ajax({
+		url:"http://"+ host + port +"/api/show_profile",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType : "application/json;charset=utf-8",
+		success: function(pof){
+			console.log(pof);
+			var texthtml = '<ul class="list-group">\
+								<li class="list-group-item">'+ pof.user_school +'</li>\
+								<li class="list-group-item">'+ pof.user_age +'</li>\
+								<li class="list-group-item">'+ pof.user_hobby +'</li>\
+								<li class="list-group-item">'+ pof.user_like_country +'</li>\
+								<li class="list-group-item">'+ pof.user_change +'</li>\
+								<li class="list-group-item">'+ pof.user_try +'</li>\
+							</ul>';
+			if(pof.user_picture)
+			{
+				$(".card-img-top picture user_pic").attr("src",pof.user_picture);
+			}
+			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
+			{
+				$(".data").append(texthtml);
+			}
+		}
+	})
 });
 
 var img_string="";
@@ -66,34 +92,3 @@ function profile(){
 		}
 	})
 }
-
-$(document).ready(function take_profile(){
-	var data = {
-		user_id : getCookie("token"),
-	}
-	$.ajax({
-		url:"http://"+ host + port +"/api/show_profile",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType : "application/json;charset=utf-8",
-		success: function(pof){
-			console.log(pof);
-			var texthtml = '<ul class="list-group">\
-								<li class="list-group-item">'+ pof.user_school +'</li>\
-								<li class="list-group-item">'+ pof.user_age +'</li>\
-								<li class="list-group-item">'+ pof.user_hobby +'</li>\
-								<li class="list-group-item">'+ pof.user_like_country +'</li>\
-								<li class="list-group-item">'+ pof.user_change +'</li>\
-								<li class="list-group-item">'+ pof.user_try +'</li>\
-							</ul>';
-			if(pof.user_picture)
-			{
-				$(".card-img-top picture user_pic").attr("src",pof.user_picture);
-			}
-			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
-			{
-				$(".data").append(texthtml);
-			}
-		}
-	})
-});
