@@ -45,8 +45,7 @@ $(document).ready(function()
 });
 
 var img_string="";
-var imgCont = document.getElementById("showImg"); 
-var ipt = document.getElementById("#picInput"); 
+var ipt = document.getElementById("#user_picture"); 
 function fileUpLoad(_this){
 	var file = _this.files[0];
 	if(!/image\/\w+/.test(file.type)){ //html中已經用accept='image/*'限制上傳的是圖片了，此處判斷可省略
@@ -61,9 +60,7 @@ function fileUpLoad(_this){
 	var fileReader = new FileReader();
 	fileReader.readAsDataURL(file);//將檔案讀取為Data URL 讀取結果放在result中
 	fileReader.onload = function(e){
-		var img = '<img src="'+this.result+'"width=250px; height=250px;/>';
-		imgCont.innerHTML = img;
-		img_string = this.result
+		img_string = this.result;
 	}
 }
 
