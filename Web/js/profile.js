@@ -34,11 +34,11 @@ $(document).ready(function()
 							</ul>';
 			if(pof.user_picture)
 			{
-				$(".card-img-top picture user_pic").attr("src",pof.user_picture);
+				$("#user_pic").attr("src",pof.user_picture);
 			}
 			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
 			{
-				$(".data").append(texthtml);
+				$("#Data").append(texthtml);
 			}
 		}
 	})
