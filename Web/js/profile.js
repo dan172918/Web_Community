@@ -32,14 +32,16 @@ $(document).ready(function()
 								<li class="list-group-item">'+ pof.user_change +'</li>\
 								<li class="list-group-item">'+ pof.user_try +'</li>\
 							</ul>';
-			if(pof.user_picture)
+			$("#user_pic").attr("src",pof.user_picture);
+			$("#Data").append(texthtml);
+			/*if(pof.user_picture)
 			{
 				$("#user_pic").attr("src",pof.user_picture);
 			}
 			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
 			{
 				$("#Data").append(texthtml);
-			}
+			}*/
 		}
 	})
 });
