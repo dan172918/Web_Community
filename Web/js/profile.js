@@ -25,7 +25,7 @@ $(document).ready(function()
 		success: function(pof){
 			console.log(pof);
 			var texthtml = '<ul class="list-group">\
-								<li class="list-group-item">\"'+pof[0].user_school+'\"</li>\
+								<li class="list-group-item">'+pof[0].user_school+'</li>\
 								<li class="list-group-item">\"'+pof[0].user_age+'\"</li>\
 								<li class="list-group-item">\"'+pof[0].user_hobby+'\"</li>\
 								<li class="list-group-item">\"'+pof[0].user_like_country+'\"</li>\
