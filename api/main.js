@@ -236,7 +236,7 @@ var cnt=10;
                                         where user_id=id) as newTable1\
                                         ,article left join likes on likes.article_id = article.article_id\
                         where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id\
-                        order by article.article_time desc limit \"'+cnt+'\",10';
+                        order by article.article_time desc limit '+cnt+',10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
         res.send(result);
