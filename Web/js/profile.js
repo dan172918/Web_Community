@@ -26,17 +26,17 @@ $(document).ready(function()
 			console.log(pof);
 			var texthtml = '<ul class="list-group">\
 								<li class="list-group-item">'+pof[0].user_school+'</li>\
-								<li class="list-group-item">\"'+pof[0].user_age+'\"</li>\
-								<li class="list-group-item">\"'+pof[0].user_hobby+'\"</li>\
-								<li class="list-group-item">\"'+pof[0].user_like_country+'\"</li>\
-								<li class="list-group-item">\"'+pof[0].user_change+'\"</li>\
-								<li class="list-group-item">\"'+pof[0].user_try+'\"</li>\
+								<li class="list-group-item">'+pof[0].user_age+'</li>\
+								<li class="list-group-item">'+pof[0].user_hobby+'</li>\
+								<li class="list-group-item">'+pof[0].user_like_country+'</li>\
+								<li class="list-group-item">'+pof[0].user_change+'</li>\
+								<li class="list-group-item">'+pof[0].user_try+'</li>\
 							</ul>';
 			//$("#user_pic").attr("src",pof[0].user_picture);
 			//$("#Data").append(texthtml);
 			if(pof[0].user_picture)
 			{
-				$("#user_pic").attr("src",pof.user_picture);
+				$("#user_pic").replace("img/profile-pic.jpg",pof.user_picture);
 			}
 			if(pof[0].user_school || pof[0].user_age || pof[0].user_hobby || pof[0].user_like_country || pof[0].user_change || pof[0].user_try)
 			{
