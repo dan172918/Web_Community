@@ -36,7 +36,8 @@ $(document).ready(function()
 			//$("#Data").append(texthtml);
 			if(pof[0].user_picture)
 			{
-				$("#user_pic").replace("img/profile-pic.jpg",pof.user_picture);
+				$("#user_pic").attr('src',pof[0].user_picture);
+
 			}
 			if(pof[0].user_school || pof[0].user_age || pof[0].user_hobby || pof[0].user_like_country || pof[0].user_change || pof[0].user_try)
 			{
