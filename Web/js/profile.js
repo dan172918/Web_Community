@@ -25,23 +25,23 @@ $(document).ready(function()
 		success: function(pof){
 			console.log(pof);
 			var texthtml = '<ul class="list-group">\
-								<li class="list-group-item">\"'+pof.user_school+'\"</li>\
-								<li class="list-group-item">\"'+pof.user_age+'\"</li>\
-								<li class="list-group-item">\"'+pof.user_hobby+'\"</li>\
-								<li class="list-group-item">\"'+pof.user_like_country+'\"</li>\
-								<li class="list-group-item">\"'+pof.user_change+'\"</li>\
-								<li class="list-group-item">\"'+pof.user_try+'\"</li>\
+								<li class="list-group-item">\"'+pof[0].user_school+'\"</li>\
+								<li class="list-group-item">\"'+pof[0].user_age+'\"</li>\
+								<li class="list-group-item">\"'+pof[0].user_hobby+'\"</li>\
+								<li class="list-group-item">\"'+pof[0].user_like_country+'\"</li>\
+								<li class="list-group-item">\"'+pof[0].user_change+'\"</li>\
+								<li class="list-group-item">\"'+pof[0].user_try+'\"</li>\
 							</ul>';
-			$("#user_pic").attr("src",pof.user_picture);
-			$("#Data").append(texthtml);
-			/*if(pof.user_picture)
+			//$("#user_pic").attr("src",pof[0].user_picture);
+			//$("#Data").append(texthtml);
+			if(pof[0].user_picture)
 			{
 				$("#user_pic").attr("src",pof.user_picture);
 			}
-			if(pof.user_school || pof.user_age || pof.user_hobby || pof.user_like_country || pof.user_change || pof.user_try)
+			if(pof[0].user_school || pof[0].user_age || pof[0].user_hobby || pof[0].user_like_country || pof[0].user_change || pof[0].user_try)
 			{
 				$("#Data").append(texthtml);
-			}*/
+			}
 		}
 	})
 });
