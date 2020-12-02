@@ -159,16 +159,11 @@ $(document).ready(function()
 		}
 	});
 
-	var stop=true;
 	$(window).scroll(function(){
 		var totalheight = $("body").height() - $(window).height();
 		if($(window).scrollTop()>=totalheight)
 		{
-			if(stop)
-			{
-				stop = false;
-				add_article();
-			}
+			add_article();
 		}
 	});
 }); 
