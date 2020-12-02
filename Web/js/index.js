@@ -158,7 +158,20 @@ $(document).ready(function()
 		success: function(name){
 			$('#user_name').text(name[0].user_name);
 		}
-	})
+	});
+
+	var stop=true;
+	$(window).scroll(function(){
+		totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+		if($(document).height()<=totalheight)
+		{
+			if(stop)
+			{
+				stop = false;
+				add_article();
+			}
+		}
+	});
 }); 
 
 function StoreCmd(thiscmd,event){
