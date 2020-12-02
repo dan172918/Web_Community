@@ -255,7 +255,7 @@ function add_article(){
 		success: function(add){
 			console.log(add);
 			var cnt;
-			for(cnt=0;cnt<msg.length;cnt++){
+			for(cnt=0;cnt<add.length;cnt++){
 				if(add[cnt].article_text && add[cnt].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+add[cnt].article_id+'\">\
@@ -361,7 +361,7 @@ function add_article(){
 		contentType: "application/json;charset=utf-8",
 		success: function(add_comd){
 			var cnt1;
-			for(cnt1=0;cnt1<comd.length;cnt1++){
+			for(cnt1=0;cnt1<add_comd.length;cnt1++){
 				var texthtml1 = '<p class="command_user">'+add_comd[cnt1].user_name+'\
 									<span class="command_line">'+add_comd[cnt1].user_command+'\
 									</span>\
