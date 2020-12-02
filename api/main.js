@@ -336,12 +336,12 @@ app.post('/api/show_profile',function(req,res){
 /*好友名單*/
 app.post('/api/loadFriendlist', function(req, res) {
     var uid = req.body.u_id.toString();
-    var getFriend = "select user_id,user_name \
-                    from user_info,((select user_id_self as id\
+    var getFriend = "select chat_id,user_id,user_name \
+                    from user_info,((select chat_id,user_id_self as id\
                                     from friend\
                                     where user_id_other=\""+uid+"\" and relation = 0)\
                                     union\
-                                    (select user_id_other as id\
+                                    (select chat_id,user_id_other as id\
                                     from friend\
                                     where user_id_self=\""+uid+"\" and relation = 0)) as newTable\
                     where user_id=id";

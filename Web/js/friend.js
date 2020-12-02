@@ -22,7 +22,8 @@ $(document).ready(function(){
                                         <br><br>\
                                     </div>\
                                     <div class="col-sm-2 col-md-2 col-5">\
-                                        <input class="list-group-item chat rr3" data-toggle="modal" data-target="#myModal" data-whatever="好友'+i+'號" type="button" >\
+                                        <input class="list-group-item chat rr3" data-toggle="modal" data-target="#myModal" data-whatever=\"'+msg[i].chat_id+" "+msg[i].user_id+" "+msg[i].user_name+'\" type="button" >\
+                                        <input class="chat rr4" type="button" >\
                                     </div>\
                                 </div>'
                 $('#freindlist').prepend(texthtml);
@@ -90,12 +91,8 @@ function acceptFriend(thisFriend){
                                                 <h4><a href="#" id = "FriendName">' + $(thisFriend).closest(".row").find(FriendName).text() + '</a></h4>\
                                                 <br><br>\
                                             </div>\
-                                            <div class="col-sm-2 col-md-2 col-5">\
-                                                <input class="list-group-item chat rr3" data-toggle="modal" data-target="#myModal" type="button" >\
-                                                <input class="chat rr4" type="button" >\
-                                            </div>\
                                         </div>';
-                $('#freindlist').prepend(SearchUsertexthtml);
+                $('#showSearch').prepend(SearchUsertexthtml);
                 $(thisFriend).closest(".row").remove();
                 if($('#showInvite').html()==null || $('#showInvite').html().length==0)
                     $("#friendinvite").css("display","none");
@@ -189,7 +186,7 @@ function SearchUser(){
                                                         <br><br>\
                                                     </div>\
                                                     <div class="col-md-2 col-sm-2 col-5">\
-                                                        <input class="chat rr1 ml-4" type="button" onclick="inviteFriend(this)">\
+                                                        <input class="chat rr1" type="button" onclick="inviteFriend(this)">\
                                                     </div>\
                                                 </div>';
                         $('#showSearch').append(SearchUsertexthtml);
@@ -231,3 +228,12 @@ function inviteFriend(invite){
         }
     });
 }
+$('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var recipient = button.data('whatever')
+    recipient = recipient.split(' ');
+    var modal = $(this);
+    modal.find('.modal-content').attr("id",recipient[0]);
+    modal.find('.modal-title').attr("id",recipient[1]);
+    modal.find('.modal-title').text(recipient[2]);
+})
