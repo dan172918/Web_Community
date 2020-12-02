@@ -162,8 +162,8 @@ $(document).ready(function()
 
 	var stop=true;
 	$(window).scroll(function(){
-		totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
-		if($(document).height()<=totalheight)
+		var totalheight = $("body").height() - $(window).height();
+		if($(window).scrollTop()>=totalheight)
 		{
 			if(stop)
 			{
@@ -442,6 +442,3 @@ function article(){
 	}
 };
 
-function add_article(){
-
-}
