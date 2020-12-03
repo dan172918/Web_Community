@@ -298,8 +298,8 @@ function sameCode(event){
     else{
         formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
         formData["user_id"] = getCookie("token");
-        formData["user_name"] = $("#user_name").text().replace(/\r\n|\n/g,"");
-        formData["Msg"] = $('#inputMsg').val();
+        formData["user_name"] = $("#user_name").text();
+        formData["Msg"] = $('#inputMsg').val().replace(/\r\n|\n/g,"");
         $("#inputMsg").val("");
         socket.emit("send", formData);
     }
