@@ -34,7 +34,7 @@ $(document).ready(function(){
                                         <br><br>\
                                     </div>\
                                     <div class="col-sm-2 col-md-2 col-5">\
-                                        <input class="list-group-item chat rr3" data-toggle="modal" data-target="#myModal" data-whatever=\"'+msg[i].chat_id+" "+msg[i].user_id+" "+msg[i].user_name+'\" type="button" >\
+                                        <input class="list-group-item chat rr3" data-toggle="modal" data-target="#myModal" data-whatever=\"'+msg[i].chat_id+" "+msg[i].user_id+" "+msg[i].user_name+'\" type="button">\
                                         <input class="chat rr4" type="button" >\
                                     </div>\
                                 </div>'
@@ -244,7 +244,7 @@ function inviteFriend(invite){
 
 
 $('#myModal').on('show.bs.modal', function (event) {
-    $('#box').remove();
+    $('.box').remove();
     var button = $(event.relatedTarget)
     var recipient = button.data('whatever')
     recipient = recipient.split(' ');
