@@ -251,65 +251,64 @@ $('#myModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     modal.find('.modal-content').attr("id",recipient[0]);
     modal.find('.modal-title').attr("id",recipient[1]);
-    modal.find('.modal-title').text(recipient[2]);
-
-    var socket = io('http://34.105.17.84:3000');
-    socket.on("connect", function () {
-        var formData = {};
-        formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
-        socket.emit("chat_info",formData);
-    });
-
-    socket.on("msg", function (d) {
-        if(d.chat_id == $('#myModal').find('.modal-content').attr("id"))
-        {
-            var msgBox = document.createElement("div")
-                msgBox.className = "msg";
-            var nameBox = document.createElement("span");
-                nameBox.className = "name";
-            var name = document.createTextNode(d.user_name);
-            var msg = document.createTextNode(d.Msg);
-
-            nameBox.appendChild(name);
-            msgBox.appendChild(nameBox);
-            msgBox.appendChild(msg);
-            $(".box").append(msgBox);
-        }
-    });
-
-    $('#sendMsg').click(function (e) {
-        e.preventDefault();
-        var formData = {};
-        if($('#inputMsg').val() =="")
-            alertMsg(NotNull);
-        else{
-            formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
-            formData["user_id"] = getCookie("token");
-            formData["user_name"] = $("#user_name").text();
-            formData["Msg"] = $('#inputMsg').val();
-            $("#inputMsg").val("");
-            socket.emit("send", formData);
-        }    
-    });
-    /*
-    $("#inputMsg").keyup(function(event){
-        if(event.keyCode == 13 || event.which == 13){
-            var command_val = $("#inputMsg").val();
-            if(command_val !== ''){
-                event.preventDefault();
-                var formData = {};
-                if($('#inputMsg').val() =="")
-                    alertMsg(NotNull);
-                else{
-                    formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
-                    formData["user_id"] = getCookie("token");
-                    formData["user_name"] = $("#user_name").text();
-                    formData["Msg"] = $('#inputMsg').val();
-                    $("#inputMsg").val("");
-                    socket.emit("send", formData);
-                }    
-            }
-        }
-    });
-    */
+    modal.find('.modal-title').text(recipient[2]); 
 })
+
+var socket = io('http://34.105.17.84:3000');
+socket.on("connect", function () {
+    var formData = {};
+    formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
+    socket.emit("chat_info",formData);
+});
+
+socket.on("msg", function (d) {
+    if(d.chat_id == $('#myModal').find('.modal-content').attr("id"))
+    {
+        var msgBox = document.createElement("div")
+            msgBox.className = "msg";
+        var nameBox = document.createElement("span");
+            nameBox.className = "name";
+        var name = document.createTextNode(d.user_name);
+        var msg = document.createTextNode(d.Msg);
+
+        nameBox.appendChild(name);
+        msgBox.appendChild(nameBox);
+        msgBox.appendChild(msg);
+        $(".box").append(msgBox);
+    }
+});
+
+$('#sendMsg').click(function (e) {
+    e.preventDefault();
+    var formData = {};
+    if($('#inputMsg').val() =="")
+        alertMsg(NotNull);
+    else{
+        formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
+        formData["user_id"] = getCookie("token");
+        formData["user_name"] = $("#user_name").text();
+        formData["Msg"] = $('#inputMsg').val();
+        $("#inputMsg").val("");
+        socket.emit("send", formData);
+    }    
+});
+
+$("#inputMsg").keyup(function(event){
+    if(event.keyCode == 13 || event.which == 13){
+        var command_val = $("#inputMsg").val();
+        if(command_val !== ''){
+            event.preventDefault();
+            var formData = {};
+            if($('#inputMsg').val() =="")
+                alertMsg(NotNull);
+            else{
+                formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
+                formData["user_id"] = getCookie("token");
+                formData["user_name"] = $("#user_name").text();
+                formData["Msg"] = $('#inputMsg').val();
+                $("#inputMsg").val("");
+                socket.emit("send", formData);
+            }    
+        }
+    }
+});
