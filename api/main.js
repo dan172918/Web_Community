@@ -440,7 +440,7 @@ app.post('/api/rejectFriend', function(req, res){
     });
 });
 
-io.on('connection', (socket) => {
+/*io.on('connection', (socket) => {
     socket.on("testConnect", (msg1) => {
         console.log("UID : "+msg1.user_id+" NAME : "+msg1.user_name+" Connect Success");
     });
@@ -448,7 +448,7 @@ io.on('connection', (socket) => {
         console.log(msg2);
         io.emit("msg", msg2);
     });
-});
+});*/
 
 /* Password Process Start */
 // 加密
