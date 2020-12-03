@@ -33,6 +33,7 @@ $(document).ready(function()
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(msg){
+			console.log(msg.article_id);
 			setArt("ArtCnt",0);
 			cookcnt=0;
 			var cnt;
@@ -124,7 +125,7 @@ $(document).ready(function()
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				if(msg[cnt].article_id % 2 == 0){
+				if(cook_id % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
