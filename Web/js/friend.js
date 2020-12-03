@@ -1,19 +1,22 @@
 $(document).ready(function(){
     $(".canc").click(function(){
 		$(".go_search").hide(500);
-	});
-    var data={
-        u_id :getCookie("token")
-    };
+    });
+    var data1 = {
+		user_id :getCookie("token")
+	}
     $.ajax({
 		url: "http://"+ host + port +"/api/username",
 		type: 'POST',
-		data: JSON.stringify(data),
+		data: JSON.stringify(data1),
 		contentType: "application/json;charset=utf-8",
 		success: function(name){
 			$('#user_name').text(name[0].user_name);
 		}
 	});
+    var data={
+        u_id :getCookie("token")
+    };
     $.ajax({
         url : "http://"+ host + port +"/api/loadFriendlist",
         type : 'POST',
@@ -279,7 +282,7 @@ $('#myModal').on('show.bs.modal', function (event) {
             formData["user_id"] = getCookie("token");
             formData["user_name"] = $("#myModalLabel").val();
             formData["Msg"] = $('#inputMsg').val();
-            $("#inputMsg").textContent="";
+            $("#inputMsg").val="";
             socket.emit("send", formData);
         }    
     });
