@@ -6,6 +6,15 @@ $(document).ready(function(){
         u_id :getCookie("token")
     };
     $.ajax({
+		url: "http://"+ host + port +"/api/username",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(name){
+			$('#user_name').text(name[0].user_name);
+		}
+	});
+    $.ajax({
         url : "http://"+ host + port +"/api/loadFriendlist",
         type : 'POST',
         data : JSON.stringify(data),
@@ -270,7 +279,8 @@ $('#myModal').on('show.bs.modal', function (event) {
             formData["user_id"] = getCookie("token");
             formData["user_name"] = $("#myModalLabel").val();
             formData["Msg"] = $('#inputMsg').val();
-        }
+            $("#inputMsg").textContent="";
             socket.emit("send", formData);
+        }    
     });
 })
