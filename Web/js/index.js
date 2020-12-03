@@ -410,8 +410,6 @@ function fileUpLoad(_this){
 }
 
 
-
-
 /*store article and reload index.html*/
 function article(){
 	if($('#Article').val() == '' && $('#picInput').val() == ''){
@@ -425,7 +423,7 @@ function article(){
 			article_text : $('#Article').val(),
 			article_pic : img_string
 		};
-		console.log(post_data.article_pic);
+		console.log(post_data.cookie_art);
 		$.ajax({
 			url: "http://"+ host + port +"/api/index",
 			type: 'POST',
