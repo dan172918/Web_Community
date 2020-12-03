@@ -244,7 +244,7 @@ function inviteFriend(invite){
 function enterMsg(event){
     var socket = io('http://34.105.17.84:3000');
     if(event.keyCode == 13 || event.which == 13){
-        e.preventDefault();
+        event.preventDefault();
         var formData = {};
         if($('#inputMsg').val() =="")
             alertMsg(NotNull);
