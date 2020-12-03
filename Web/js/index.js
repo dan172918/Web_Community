@@ -23,7 +23,6 @@ $(document).ready(function()
 	});	  
 	
 	var data = {
-		//cookie_art: getCookie("ArtCnt"),
 		user_id :getCookie("token")
 	}
 	/* show article */
@@ -34,12 +33,10 @@ $(document).ready(function()
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(msg){
-			console.log(msg);
 			setArt("ArtCnt",0);
 			cookcnt=0;
 			var cnt;
 			for(cnt=0;cnt<msg.length;cnt++){
-				var cook_id = getCookie("ArtCnt");
 				if(msg[cnt].article_text && msg[cnt].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
@@ -126,7 +123,7 @@ $(document).ready(function()
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				if(cook_id % 2 == 0){
+				if(cnt % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
@@ -246,7 +243,6 @@ function storelike(thislike){
 /*多10篇*/
 function add_article(){
 	var data = {
-		cookie_art: getCookie("ArtCnt"),
 		user_id :getCookie("token")
 	}
 	/* show article */
@@ -414,6 +410,8 @@ function fileUpLoad(_this){
 }
 
 
+
+
 /*store article and reload index.html*/
 function article(){
 	if($('#Article').val() == '' && $('#picInput').val() == ''){
@@ -422,10 +420,12 @@ function article(){
 	else{
 		var post_data = {
 			user_id : getCookie("token"),
+			cookie_art: getCookie("ArtCnt"),
 			post_level : '0',
 			article_text : $('#Article').val(),
 			article_pic : img_string
 		};
+		console.log(post_data.article_pic);
 		$.ajax({
 			url: "http://"+ host + port +"/api/index",
 			type: 'POST',
