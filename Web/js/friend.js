@@ -241,23 +241,7 @@ function inviteFriend(invite){
     });
 }
 
-function enterMsg(this,event){
-    var socket = io('http://34.105.17.84:3000');
-    if(event.keyCode == 13 || event.which == 13){
-        e.preventDefault();
-        var formData = {};
-        if($('#inputMsg').val() =="")
-            alertMsg(NotNull);
-        else{
-            formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
-            formData["user_id"] = getCookie("token");
-            formData["user_name"] = $("#user_name").text();
-            formData["Msg"] = $('#inputMsg').val();
-            $("#inputMsg").val("");
-            socket.emit("send", formData);
-        }    
-    }
-}
+
 
 $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
@@ -304,5 +288,21 @@ $('#myModal').on('show.bs.modal', function (event) {
         }    
     });
 
+    function enterMsg(event){
+        if(event.keyCode == 13 || event.which == 13){
+            e.preventDefault();
+            var formData = {};
+            if($('#inputMsg').val() =="")
+                alertMsg(NotNull);
+            else{
+                formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
+                formData["user_id"] = getCookie("token");
+                formData["user_name"] = $("#user_name").text();
+                formData["Msg"] = $('#inputMsg').val();
+                $("#inputMsg").val("");
+                socket.emit("send", formData);
+            }    
+        }
+    }
     
 })
