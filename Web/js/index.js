@@ -37,6 +37,7 @@ $(document).ready(function()
 			cookcnt=0;
 			var cnt;
 			for(cnt=0;cnt<msg.length;cnt++){
+				var cook_id = getCookie("ArtCnt");
 				if(msg[cnt].article_text && msg[cnt].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
@@ -123,7 +124,7 @@ $(document).ready(function()
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				if(cnt % 2 == 0){
+				if(cook_id % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
