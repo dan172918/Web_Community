@@ -241,21 +241,24 @@ function inviteFriend(invite){
     });
 }
 
-function enterMsg(event){
+function enterMsg(thiscmd,event){
     var socket = io('http://34.105.17.84:3000');
     if(event.keyCode == 13 || event.which == 13){
-        event.preventDefault();
-        var formData = {};
-        if($('#inputMsg').val() =="")
-            alertMsg(NotNull);
-        else{
-            formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
-            formData["user_id"] = getCookie("token");
-            formData["user_name"] = $("#user_name").text();
-            formData["Msg"] = $('#inputMsg').val();
-            $("#inputMsg").val("");
-            socket.emit("send", formData);
-        }    
+        var command_val = $(thiscmd).val();
+        if(command_val !== ''){
+            event.preventDefault();
+            var formData = {};
+            if($('#inputMsg').val() =="")
+                alertMsg(NotNull);
+            else{
+                formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
+                formData["user_id"] = getCookie("token");
+                formData["user_name"] = $("#user_name").text();
+                formData["Msg"] = $('#inputMsg').val();
+                $("#inputMsg").val("");
+                socket.emit("send", formData);
+            }    
+        }
     }
 }
 
