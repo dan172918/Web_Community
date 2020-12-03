@@ -244,6 +244,7 @@ function inviteFriend(invite){
 
 
 $('#myModal').on('show.bs.modal', function (event) {
+    $('#box').remove();
     var button = $(event.relatedTarget)
     var recipient = button.data('whatever')
     recipient = recipient.split(' ');
