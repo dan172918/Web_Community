@@ -257,7 +257,7 @@ $('#myModal').on('show.bs.modal', function (event) {
         nameBox.appendChild(name);
         msgBox.appendChild(nameBox);
         msgBox.appendChild(msg);
-        $(".box").appendChild(msgBox);
+        $(".box").append(msgBox);
     });
 
     $('#sendMsg').click(function (e) {
