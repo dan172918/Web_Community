@@ -163,14 +163,14 @@ $(document).ready(function()
 			$('#user_name').text(name[0].user_name);
 		}
 	});
-
+	/*
 	$(window).scroll(function(){
 		var totalheight = $("body").height() - $(window).height();
 		if($(window).scrollTop()>=totalheight)
 		{
 			add_article();
 		}
-	});
+	});*/
 }); 
 
 function StoreCmd(thiscmd,event){
@@ -240,12 +240,12 @@ function storelike(thislike){
 	});
 }
 
-/*多10篇*/
+/*
 function add_article(){
 	var data = {
 		user_id :getCookie("token")
 	}
-	/* show article */
+
 	$.ajax({
 		url: "http://"+ host + port +"/api/add_article",
 		type: 'POST',
@@ -372,7 +372,7 @@ function add_article(){
 			}
 		}
 	});
-
+	
 	$.ajax({
 		url: "http://"+ host + port +"/api/username",
 		type: 'POST',
@@ -383,7 +383,7 @@ function add_article(){
 		}
 	})
 }
-
+*/
 
 var img_string="";
 var imgCont = document.getElementById("showImg"); 
