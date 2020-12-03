@@ -11,7 +11,7 @@ var express = require('express');
 var firebase = require('firebase');
 var bodyParser = require('body-parser');
 var app = express();
-const server = require('http').Server(app);
+/*const server = require('http').Server(app);
 const io = require("socket.io")(server, {
     cors: {
       origin: "*",
@@ -19,7 +19,7 @@ const io = require("socket.io")(server, {
       allowedHeaders: ["my-custom-header"],
       credentials: true
     }
-});
+});*/
 /*更改url可傳遞的大小*/
 app.use(express.json({limit: '5000mb'}));
 app.use(express.urlencoded({limit: '5000mb',extended: true}));
@@ -467,8 +467,8 @@ function aesDecrypt(encrypted, key) {
 }
 /* Password Process End */
 
-server.listen(process.env.PORT || 3000, function() {
+/*server.listen(process.env.PORT || 3000, function() {
     console.log("Start port 3000");
   });
-
+*/
  
