@@ -467,8 +467,8 @@ function aesDecrypt(encrypted, key) {
 }
 /* Password Process End */
 
-/*server.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3000, function() {
     console.log("Start port 3000");
   });
-*/
+
  
