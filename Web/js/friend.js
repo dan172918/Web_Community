@@ -291,11 +291,15 @@ $("#inputMsg").keyup(function(event){
     }
 });
 function sameCode(event){
+    var ok = true;
     event.preventDefault();
     var formData = {};
-    if($('#inputMsg').val() =="")
-        alertMsg(NotNull);
+    if($('#inputMsg').val() ==""){
+        ok = false;
+        $("#inputMsg").classList.add("error");
+    }    
     else{
+        $("#inputMsg").classList.remove("error");
         formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
         formData["user_id"] = getCookie("token");
         formData["user_name"] = $("#user_name").text();
