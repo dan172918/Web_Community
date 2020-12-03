@@ -23,11 +23,12 @@ $(document).ready(function()
 	});	  
 	
 	var data = {
+		cookie_art: getCookie("ArtCnt"),
 		user_id :getCookie("token")
 	}
 	/* show article */
 	$.ajax({
-		url: "http://"+ host + port +"/api/article",
+		url: "http://"+ host + port +"/api/add_article",
 		type: 'POST',
 		data: JSON.stringify(data),
 		contentType: "application/json;charset=utf-8",
