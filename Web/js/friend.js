@@ -229,7 +229,7 @@ function inviteFriend(invite){
     });
 }
 
-var socket = io('http://34.105.17.84:3000');
+
 $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
     var recipient = button.data('whatever')
@@ -241,6 +241,7 @@ $('#myModal').on('show.bs.modal', function (event) {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
+    var socket = io('http://34.105.17.84:3000');
     socket.on("connect", function () {
         var formData = {};
         formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
