@@ -33,7 +33,7 @@ $(document).ready(function()
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(msg){
-			console.log(msg.article_id);
+			console.log(msg);
 			setArt("ArtCnt",0);
 			cookcnt=0;
 			var cnt;
