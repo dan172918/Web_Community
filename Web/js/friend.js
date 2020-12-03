@@ -278,8 +278,19 @@ socket.on("msg", function (d) {
     }
 });
 
-$('#sendMsg').click(function (e) {
-    e.preventDefault();
+$('#sendMsg').click(function (event) {
+    sameCode(event);   
+});
+$("#inputMsg").keyup(function(event){
+    if(event.keyCode == 13 || event.which == 13){
+        var command_val = $("#inputMsg").val();
+        if(command_val !== ''){
+            sameCode(event);  
+        }
+    }
+});
+function sameCode(event){
+    event.preventDefault();
     var formData = {};
     if($('#inputMsg').val() =="")
         alertMsg(NotNull);
@@ -290,25 +301,5 @@ $('#sendMsg').click(function (e) {
         formData["Msg"] = $('#inputMsg').val();
         $("#inputMsg").val("");
         socket.emit("send", formData);
-    }    
-});
-
-$("#inputMsg").keyup(function(event){
-    if(event.keyCode == 13 || event.which == 13){
-        var command_val = $("#inputMsg").val();
-        if(command_val !== ''){
-            event.preventDefault();
-            var formData = {};
-            if($('#inputMsg').val() =="")
-                alertMsg(NotNull);
-            else{
-                formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
-                formData["user_id"] = getCookie("token");
-                formData["user_name"] = $("#user_name").text();
-                formData["Msg"] = $('#inputMsg').val();
-                $("#inputMsg").val("");
-                socket.emit("send", formData);
-            }    
-        }
     }
-});
+}
