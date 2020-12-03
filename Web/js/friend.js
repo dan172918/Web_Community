@@ -291,7 +291,7 @@ $('#myModal').on('show.bs.modal', function (event) {
             socket.emit("send", formData);
         }    
     });
-
+    /*
     $("#inputMsg").keyup(function(event){
         if(event.keyCode == 13 || event.which == 13){
             var command_val = $("#inputMsg").val();
@@ -311,5 +311,5 @@ $('#myModal').on('show.bs.modal', function (event) {
             }
         }
     });
-    
+    */
 })
