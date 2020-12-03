@@ -286,4 +286,21 @@ $('#myModal').on('show.bs.modal', function (event) {
             socket.emit("send", formData);
         }    
     });
+
+    function enterMsg(this,event){
+        if(event.keyCode == 13 || event.which == 13){
+            e.preventDefault();
+            var formData = {};
+            if($('#inputMsg').val() =="")
+                alertMsg(NotNull);
+            else{
+                formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
+                formData["user_id"] = getCookie("token");
+                formData["user_name"] = $("#user_name").text();
+                formData["Msg"] = $('#inputMsg').val();
+                $("#inputMsg").val("");
+                socket.emit("send", formData);
+            }    
+        }
+    }
 })
