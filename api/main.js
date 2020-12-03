@@ -439,11 +439,12 @@ app.post('/api/rejectFriend', function(req, res){
 });
 
 io.on('connection', (socket) => {
-    socket.on("chat_info", (msg1) => {
-        socket.on("send", (msg2) => {
-            console.log(msg2);
-            io.emit("msg", msg2);
-        });
+    socket.on("testConnect", (msg1) => {
+        console.log("UID : "+msg1.user_id+" NAME : "+msg1.user_name+" Connect Success");
+    });
+    socket.on("send", (msg2) => {
+        console.log(msg2);
+        io.emit("msg", msg2);
     });
 });
 

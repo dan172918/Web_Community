@@ -257,8 +257,9 @@ $('#myModal').on('show.bs.modal', function (event) {
 var socket = io('http://34.105.17.84:3000');
 socket.on("connect", function () {
     var formData = {};
-    formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
-    socket.emit("chat_info",formData);
+    formData["user_id"] = getCookie("token");
+    formData["user_name"] = $("#user_name").text();
+    socket.emit("testConnect",formData);
 });
 
 socket.on("msg", function (d) {
