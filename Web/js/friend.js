@@ -271,7 +271,7 @@ socket.on("msg", function (d) {
         var name = document.createTextNode(d.user_name);
         var msg = document.createTextNode(d.Msg);
 
-        nameBox.appendChild(name);
+        nameBox.appendChild(name+" : ");
         msgBox.appendChild(nameBox);
         msgBox.appendChild(msg);
         $(".box").append(msgBox);
