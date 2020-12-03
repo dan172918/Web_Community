@@ -11,6 +11,15 @@ var express = require('express');
 var firebase = require('firebase');
 var bodyParser = require('body-parser');
 var app = express();
+const server = require('http').Server(app);
+const io = require("socket.io")(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"],
+      allowedHeaders: ["my-custom-header"],
+      credentials: true
+    }
+});
 /*更改url可傳遞的大小*/
 app.use(express.json({limit: '5000mb'}));
 app.use(express.urlencoded({limit: '5000mb',extended: true}));
@@ -428,6 +437,16 @@ app.post('/api/rejectFriend', function(req, res){
         res.send("success");
     });
 });
+
+io.on('connection', (socket) => {
+    socket.on("chat_info", (msg1) => {
+        socket.on("send", (msg2) => {
+            if(msg1.chat_id == msg2.chat_id)
+                io.emit("msg", msg2);
+        });
+    });
+});
+
 /* Password Process Start */
 // 加密
 function aesEncrypt(data, key) {
