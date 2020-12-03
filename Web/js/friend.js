@@ -241,7 +241,7 @@ $('#myModal').on('show.bs.modal', function (event) {
 
     socket.on("connect", function () {
         var formData = {};
-        formData[chat_id] = modal.find('.modal-content').attr("id");
+        formData["chat_id"] = modal.find('.modal-content').attr("id");
         socket.emit("chat_info",formData);
     });
 
@@ -265,10 +265,10 @@ $('#myModal').on('show.bs.modal', function (event) {
         if($('#inputMsg').val() =="")
             alertMsg(NotNull);
         else{
-            formData[chat_id] = modal.find('.modal-content').attr("id");
-            formData[user_id] = getCookie("token");
-            formData[user_name] = $("#myModalLabel").val();
-            formData[Msg] = $('#inputMsg').val();
+            formData["chat_id"] = modal.find('.modal-content').attr("id");
+            formData["user_id"] = getCookie("token");
+            formData["user_name"] = $("#myModalLabel").val();
+            formData["Msg"] = $('#inputMsg').val();
         }
             socket.emit("send", formData);
     });
