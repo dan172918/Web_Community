@@ -280,7 +280,7 @@ $('#myModal').on('show.bs.modal', function (event) {
         else{
             formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
             formData["user_id"] = getCookie("token");
-            formData["user_name"] = $("#user_name").val();
+            formData["user_name"] = $("#user_name").text();
             formData["Msg"] = $('#inputMsg').val();
             $("#inputMsg").textContent="";
             socket.emit("send", formData);
