@@ -247,7 +247,17 @@ $('#myModal').on('show.bs.modal', function (event) {
     });
 
     socket.on("msg", function (d) {
-        $(".box").append(d.user_name+" : "+d.Msg);
+        var msgBox = document.createElement("div")
+            msgBox.className = "msg";
+        var nameBox = document.createElement("span");
+            nameBox.className = "name";
+        var name = document.createTextNode(d.user_name);
+        var msg = document.createTextNode(d.Msg);
+
+        nameBox.appendChild(name);
+        msgBox.appendChild(nameBox);
+        msgBox.appendChild(msg);
+        $(".box").append(msgBox);
     });
 
     $('#sendMsg').click(function (e) {
