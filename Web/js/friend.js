@@ -288,7 +288,7 @@ $('#myModal').on('show.bs.modal', function (event) {
         }    
     });
 
-    $("#inputMsg").onkeyup(function(event){
+    $("#inputMsg").keyup(function(event){
         if(event.keyCode == 13 || event.which == 13){
             var command_val = $("#inputMsg").val();
             if(command_val !== ''){
