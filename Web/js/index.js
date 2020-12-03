@@ -244,6 +244,7 @@ function storelike(thislike){
 /*多10篇*/
 function add_article(){
 	var data = {
+		cookie_art: getCookie("ArtCnt"),
 		user_id :getCookie("token")
 	}
 	/* show article */
@@ -419,12 +420,10 @@ function article(){
 	else{
 		var post_data = {
 			user_id : getCookie("token"),
-			cookie_art: getCookie("ArtCnt"),
 			post_level : '0',
 			article_text : $('#Article').val(),
 			article_pic : img_string
 		};
-		console.log(post_data.cookie_art);
 		$.ajax({
 			url: "http://"+ host + port +"/api/index",
 			type: 'POST',
