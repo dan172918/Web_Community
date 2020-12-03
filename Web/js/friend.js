@@ -295,7 +295,10 @@ function sameCode(event){
     event.preventDefault();
     var formData = {};
     if($('#inputMsg').val().replace(/\r\n|\n/g,"") =="")
+    {
         alert("不能為空"); 
+        $("#inputMsg").val("");
+    }
     else{
         formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
         formData["user_id"] = getCookie("token");
