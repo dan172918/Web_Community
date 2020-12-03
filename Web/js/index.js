@@ -124,7 +124,7 @@ $(document).ready(function()
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				if(cook_id % 2 == 0){
+				if(msg[cnt].article_id % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
