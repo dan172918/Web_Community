@@ -238,7 +238,9 @@ $('#myModal').on('show.bs.modal', function (event) {
     modal.find('.modal-content').attr("id",recipient[0]);
     modal.find('.modal-title').attr("id",recipient[1]);
     modal.find('.modal-title').text(recipient[2]);
+})
 
+document.addEventListener("DOMContentLoaded", () => {
     socket.on("connect", function () {
         var formData = {};
         formData["chat_id"] = modal.find('.modal-content').attr("id");
@@ -272,4 +274,4 @@ $('#myModal').on('show.bs.modal', function (event) {
         }
             socket.emit("send", formData);
     });
-})
+});
