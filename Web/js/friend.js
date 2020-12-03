@@ -296,10 +296,11 @@ function sameCode(event){
     var formData = {};
     if($('#inputMsg').val().replace(/\r\n|\n/g,"") =="")
     {
-        alert("不能為空"); 
+        $("#errorMsg").css("display","block");
         $("#inputMsg").val("");
     }
     else{
+        $("#errorMsg").css("display","none");
         formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
         formData["user_id"] = getCookie("token");
         formData["user_name"] = $("#user_name").text();
