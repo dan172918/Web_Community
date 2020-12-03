@@ -52,6 +52,11 @@ function setCookie(keyword, value, minutes) {
     document.cookie = keyword + "=" + value + ";" + expires + ";path=/";
 }
 
+function setArt(artid,num){
+    document.cookie = artid + "=" + num + ";path=/"
+}
+
+
 function getCookie(keyword) {
     var key = keyword + "=";
     var ca = document.cookie.split(';');

@@ -1,3 +1,4 @@
+var cookcnt=0
 $(document).ready(function()
 {
 	/*發文切換*/
@@ -32,6 +33,8 @@ $(document).ready(function()
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(msg){
+			setArt("ArtCnt",0);
+			cookcnt=0;
 			var cnt;
 			for(cnt=0;cnt<msg.length;cnt++){
 				if(msg[cnt].article_text && msg[cnt].article_picture)
@@ -120,12 +123,14 @@ $(document).ready(function()
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				if(msg[cnt].article_id % 2 == 0){
+				if(cnt % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
+					setArt("ArtCnt",cookcnt++);
 				}else{
 					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
 					$(".lib").append(secondHtml);
+					setArt("ArtCnt",cookcnt++);
 				}
 			}
 
@@ -340,9 +345,11 @@ function add_article(){
 				if(add[cnt].article_id % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
+					setArt("ArtCnt",cookcnt++);
 				}else{
 					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
 					$(".lib").append(secondHtml);
+					setArt("ArtCnt",cookcnt++);
 				}
 			}
 
@@ -413,6 +420,7 @@ function article(){
 	else{
 		var post_data = {
 			user_id : getCookie("token"),
+			cookie_art: getCookie("ArtCnt"),
 			post_level : '0',
 			article_text : $('#Article').val(),
 			article_pic : img_string

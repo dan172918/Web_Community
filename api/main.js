@@ -217,9 +217,10 @@ app.post('/api/index',function(req,res){
     });
  });
 
-var cnt=10;
+
  app.post('/api/add_article',function(req,res){
     var u_id = req.body.user_id.toString();
+    var cook_art = Number(req.body.cookie_art);
     var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.like\
                         from user_info,(select user_id\
                                         from user_info,((select user_id_self as id\
@@ -236,13 +237,11 @@ var cnt=10;
                                         where user_id=id) as newTable1\
                                         ,article left join likes on likes.article_id = article.article_id\
                         where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id\
-                        order by article.article_time desc limit '+cnt+',10';
+                        order by article.article_time desc limit '+cook_art+',10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
         res.send(result);
     });
-    cnt+=10;
-    console.log(cnt);
  });
 
 app.post('/api/command',function(req,res){
