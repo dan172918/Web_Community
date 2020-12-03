@@ -282,7 +282,7 @@ $('#myModal').on('show.bs.modal', function (event) {
             formData["user_id"] = getCookie("token");
             formData["user_name"] = $("#user_name").text();
             formData["Msg"] = $('#inputMsg').val();
-            $("#inputMsg").textContent="";
+            $("#inputMsg").val("");
             socket.emit("send", formData);
         }    
     });
