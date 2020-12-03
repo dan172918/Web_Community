@@ -294,7 +294,7 @@ function sameCode(event){
     var ok = true;
     event.preventDefault();
     var formData = {};
-    if($('#inputMsg').val() =="")
+    if($('#inputMsg').value =="")
         alert("不能為空"); 
     else{
         formData["chat_id"] = $('#myModal').find('.modal-content').attr("id");
