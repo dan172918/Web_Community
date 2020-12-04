@@ -216,7 +216,7 @@ function storelike(thislike){
 	var counter = $("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html();
 	console.log(counter);
 	if(thislike.style.background=='red'){
-		$(".like").removeAttr("style");
+		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like").removeAttr("style");
 		like_art = 0;
 		counter--;
 		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html(counter);
