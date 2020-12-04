@@ -13,7 +13,7 @@ $(document).ready(function()
 		$(".dataList").toggle();  //隱藏原個人資料
 		$(".forms").toggle(); //顯示編輯模式
 		$("#user_school").attr('value',school);
-		$("#user_age").attr('value',birthday);
+		//$("#user_age").attr('value',birthday);
 		$("#user_hobit").attr('value',hobby);
 		$("#user_nation").attr('value',country);
 		$("#user_change").attr('value',change);
