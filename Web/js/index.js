@@ -113,7 +113,7 @@ $(document).ready(function()
 												</label>\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse(cthis)">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
