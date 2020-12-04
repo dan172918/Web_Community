@@ -244,6 +244,7 @@ function inviteFriend(invite){
 
 function scrool(){
     setTimeout(function(){
+        console.log("幹");
         $(".box").scrollTop($(".box")[0].scrollHeight); 
     },500);
 };
