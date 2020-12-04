@@ -66,7 +66,7 @@ $(document).ready(function()
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
-											<label class="like_counter">'+msg[cnt].like+'</label>\
+											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
@@ -96,7 +96,7 @@ $(document).ready(function()
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
-											<label class="like_counter">'+msg[cnt].like+'</label>\
+											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
@@ -240,7 +240,7 @@ function storelike(thislike){
 	});
 }
 
-/*
+
 function add_article(){
 	var data = {
 		user_id :getCookie("token")
@@ -285,7 +285,7 @@ function add_article(){
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
-											<label class="like_counter">'+add[cnt].like+'</label>\
+											<label class="like_counter">'+add[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
@@ -315,7 +315,7 @@ function add_article(){
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
-											<label class="like_counter">'+add[cnt].like+'</label>\
+											<label class="like_counter">'+add[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
@@ -383,7 +383,7 @@ function add_article(){
 		}
 	})
 }
-*/
+
 
 var img_string="";
 var imgCont = document.getElementById("showImg"); 
