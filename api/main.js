@@ -448,6 +448,7 @@ app.post('/api/loadMsg', function(req, res){
                         where chat_id = "+cid+" order by chat_time desc";
     con.query(laodChatMsg,function(err,result){
         if (err) throw err;
+        console.log(result);
         res.send(result);
     });
 });
