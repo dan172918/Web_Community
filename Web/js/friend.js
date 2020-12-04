@@ -268,17 +268,8 @@ $('#myModal').on('show.bs.modal', function (event) {
         success: function(msg) {
             var i;
             for(i=0;i<msg.length;i++){
-                var msgBox = document.createElement("div")
-                    msgBox.className = "msg";
-                var nameBox = document.createElement("span");
-                    nameBox.className = "name";
-                var name = document.createTextNode(msg[i].chat_name.toString()+" : ");
-                var msg = document.createTextNode(msg[i].chat_text.toString()+" "+msg[i].chat_time.toString());
-
-                nameBox.appendChild(name);
-                msgBox.appendChild(nameBox);
-                msgBox.appendChild(msg);
-                $(".box").prepend(msgBox);
+                var textMsg = '<div class="msg"><span class="name">\"'+msg[i].chat_name+'\" : </span>\"'+msg[i].chat_text+'\"</div>';
+                $(".box").prepend(textMsg);
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {
