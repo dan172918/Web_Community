@@ -2,7 +2,7 @@ $(document).ready(function()
 {
   	$("#editBtn").click(function()
   	{
-		var school = $("#school").val();
+		var school = $("#school").text();
 		var birthday = $("#birthday").val();
 		var hobby = $("#hobby").val();
 		var country = $("#country").val();
