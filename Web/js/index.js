@@ -175,7 +175,7 @@ $(document).ready(function()
 }); 
 
 function collapse(cthis){
-	$(cthis).click(function(){$(".command_box").slideToggle(500);});
+	$(".open").click(function(){$(".command_box").slideToggle(500);});
 }
 
 function StoreCmd(thiscmd,event){
