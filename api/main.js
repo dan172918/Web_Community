@@ -326,7 +326,14 @@ app.post('/api/profile',function(req,res){
     var u_try = req.body.user_try.toString();
     var u_picture = req.body.user_picture.toString();
 
-    var insert_profile_info =  'update Connect_db.user_info set user_picture = \"'+ u_picture +'\",user_school = \"'+ u_school +'\",user_age = \"'+ u_age +'\",user_hobby = \"'+u_hobit+'\",user_like_country = \"'+u_nation+'\" ,user_change = \"'+u_change+'\",user_try = \"'+u_try+'\" where user_id = \"'+u_id+'\"';
+    var update_pic = 'update Connect_db.user_info set user_picture = \"'+ u_picture +'\"';
+    var insert_profile_info =  'update Connect_db.user_info set user_school = \"'+ u_school +'\",user_age = \"'+ u_age +'\",user_hobby = \"'+u_hobit+'\",user_like_country = \"'+u_nation+'\" ,user_change = \"'+u_change+'\",user_try = \"'+u_try+'\" where user_id = \"'+u_id+'\"';
+    if(u_picture)
+    {
+        con.query(update_pic, function(err, result) {
+            if (err) throw err;
+        });
+    }
     con.query(insert_profile_info, function(err, result) {
         if (err) throw err;
     });
