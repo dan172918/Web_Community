@@ -303,7 +303,7 @@ app.post('/api/like',function(req,res){
     else if(like == 1)  //按下愛心
     {
         var insert_like = 'insert into Connect_db.likes(user_id,article_id) value(\"' + u_id + '\",\"' + art_id + '\")';
-        var update_art_like_pius = 'update Connect_db.article set article.like=article.like+1 where article_id = \"' + art_id + '\"';
+        var update_art_like_pius = 'update Connect_db.article set article.likes=article.likes+1 where article_id = \"' + art_id + '\"';
         con.query(insert_like,function(err,result){
             if(err) throw err;
         });

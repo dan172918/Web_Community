@@ -164,14 +164,14 @@ $(document).ready(function()
 			$('#user_name').text(name[0].user_name);
 		}
 	});
-	/*
+	
 	$(window).scroll(function(){
 		var totalheight = $("body").height() - $(window).height();
 		if($(window).scrollTop()>=totalheight)
 		{
 			add_article();
 		}
-	});*/
+	});
 }); 
 
 function StoreCmd(thiscmd,event){
