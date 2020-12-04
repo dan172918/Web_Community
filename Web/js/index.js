@@ -219,13 +219,13 @@ function storelike(thislike){
 		$(".like").removeAttr("style");
 		like_art = 0;
 		counter--;
-		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").val(counter);
+		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html(counter);
 	}
 	else{
 		thislike.style.background='red';
 		like_art = 1;
 		counter++;
-		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").val(counter);
+		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html(counter);
 	}
 	var like_data = {
 		article_id: $(thislike).parents("section").attr("id"),
