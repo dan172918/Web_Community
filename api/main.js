@@ -289,7 +289,7 @@ app.post('/api/like',function(req,res){
         con.query(select_like_id,function(err,result){
             if(err) throw err;
             console.log(result);
-            var delete_like = 'delete from Connect_db.likes where likes.like_id = \"' + result + '\"';
+            var delete_like = 'delete from Connect_db.likes where likes.like_id = \"' + result[0].like_id + '\"';
             con.query(delete_like,function(err,result){
                 if(err) throw err;
                 //res.send("success");
