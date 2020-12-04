@@ -1,4 +1,10 @@
 $(document).ready(function(){
+    function scrool(){
+        setTimeout(function(){
+            console.log("幹");
+            $(".box").scrollTop($(".box")[0].scrollHeight); 
+        },500);
+    };
     $(".canc").click(function(){
 		$(".go_search").hide(500);
     });
@@ -242,12 +248,7 @@ function inviteFriend(invite){
     });
 }
 
-function scrool(){
-    setTimeout(function(){
-        console.log("幹");
-        $(".box").scrollTop($(".box")[0].scrollHeight); 
-    },500);
-};
+
 
 $('#myModal').on('show.bs.modal', function (event) {
     //$('.box').empty();
