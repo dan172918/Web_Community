@@ -4,8 +4,6 @@ $(document).ready(function()
 	/*發文切換*/
 	$(".post").click(function(){$("#postArticle").fadeToggle(500); });
 	$("#cancel").click(function(){$("#postArticle").hide(500); });
-	/*留言展開收合(之後會根據article_id來分別做收合)*/
-	$(".open").click(function(){$(".command_box").slideToggle(500);});
 	/*modal對話框切換*/
 	/*$('#myModal').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget); // 按下訊息按鈕觸發以下事件
@@ -175,7 +173,7 @@ $(document).ready(function()
 }); 
 
 function collapse(cthis){
-	$(".open").click(function(){$(".command_box").slideToggle(500);});
+	$(cthis).parents(".container").find(".command_box").slideToggle(500);
 }
 
 function StoreCmd(thiscmd,event){
