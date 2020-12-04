@@ -203,7 +203,7 @@ app.post('/api/index',function(req,res){
 
  app.post('/api/article',function(req,res){
     var u_id = req.body.user_id.toString();
-    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.like\
+    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes\
                         from user_info,(select user_id\
                                         from user_info,((select user_id_self as id\
                                                         from friend\
@@ -232,7 +232,7 @@ app.post('/api/index',function(req,res){
     var u_id = req.body.user_id.toString();
     var cook_art = Number(req.body.cookie_art) + 1;
     console.log(cook_art);
-    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.like\
+    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes\
                         from user_info,(select user_id\
                                         from user_info,((select user_id_self as id\
                                                         from friend\
