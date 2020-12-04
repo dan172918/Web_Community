@@ -113,7 +113,7 @@ $(document).ready(function()
 												</label>\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(cthis)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -174,8 +174,8 @@ $(document).ready(function()
 	});
 }); 
 
-function collapse(){
-	$(".open").click(function(){$(".command_box").slideToggle(500);});
+function collapse(cthis){
+	$(cthis).click(function(){$(".command_box").slideToggle(500);});
 }
 
 function StoreCmd(thiscmd,event){
