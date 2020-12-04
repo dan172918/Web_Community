@@ -272,8 +272,8 @@ $('#myModal').on('show.bs.modal', function (event) {
                     msgBox.className = "msg";
                 var nameBox = document.createElement("span");
                     nameBox.className = "name";
-                var name = document.createTextNode(msg[i].chat_name+" : ");
-                var msg = document.createTextNode(msg[i].chat_text+" "+msg[i].chat_time);
+                var name = document.createTextNode(msg[i].chat_name.toString()+" : ");
+                var msg = document.createTextNode(msg[i].chat_text.toString()+" "+msg[i].chat_time.toString());
 
                 nameBox.appendChild(name);
                 msgBox.appendChild(nameBox);
