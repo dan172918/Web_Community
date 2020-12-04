@@ -32,8 +32,6 @@ $(document).ready(function()
 								<li class="list-group-item">'+pof[0].user_change+'</li>\
 								<li class="list-group-item">'+pof[0].user_try+'</li>\
 							</ul>';
-			//$("#user_pic").attr("src",pof[0].user_picture);
-			//$("#Data").append(texthtml);
 			if(pof[0].user_picture)
 			{
 				$("#user_pic").attr('src',pof[0].user_picture);
