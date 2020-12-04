@@ -213,7 +213,7 @@ var like_art;
 
 function storelike(thislike){
 	//var counter = $(".like_counter").html();
-	var counter = $("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").val();
+	var counter = $("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html();
 	console.log(counter);
 	if(thislike.style.background=='red'){
 		$(".like").removeAttr("style");
