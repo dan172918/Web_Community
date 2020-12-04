@@ -48,6 +48,7 @@ $(document).ready(function(){
     showinviteFunc();
 
 });
+
 /*顯示交友邀請*/
 function showinviteFunc(){
     var data={
@@ -241,7 +242,11 @@ function inviteFriend(invite){
     });
 }
 
-
+function scrool(){
+    setTimeout(function(){
+        $(".box").scrollTop($(".box")[0].scrollHeight); 
+    },500);
+};
 
 $('#myModal').on('show.bs.modal', function (event) {
     $('.box').empty();
@@ -252,6 +257,35 @@ $('#myModal').on('show.bs.modal', function (event) {
     modal.find('.modal-content').attr("id",recipient[0]);
     modal.find('.modal-title').attr("id",recipient[1]);
     modal.find('.modal-title').text(recipient[2]); 
+    var data={
+        chat_id : recipient[0]
+    };
+    $.ajax({
+        url : "http://"+ host + port +"/api/loadMsg",
+        type : 'POST',
+        data : JSON.stringify(data),
+        contentType : "application/json;charset=utf-8",
+        success: function(msg) {
+            var i;
+            for(i=0;i<msg.length;i++){
+                var msgBox = document.createElement("div")
+                    msgBox.className = "msg";
+                var nameBox = document.createElement("span");
+                    nameBox.className = "name";
+                var name = document.createTextNode(msg[i].chat_name+" : ");
+                var msg = document.createTextNode(msg[i].chat_text+" "+msg[i].chat_time);
+
+                nameBox.appendChild(name);
+                msgBox.appendChild(nameBox);
+                msgBox.appendChild(msg);
+                $(".box").prepend(msgBox);
+            }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log(xhr.responseText);
+        }
+    });
+    
 })
 
 var socket = io('http://34.105.17.84:3000');
@@ -305,6 +339,7 @@ function sameCode(event){
         formData["user_id"] = getCookie("token");
         formData["user_name"] = $("#user_name").text();
         formData["Msg"] = $('#inputMsg').val().replace(/\r\n|\n/g,"");
+        $(".box").scrollTop($(".box")[0].scrollHeight);
         $("#inputMsg").val("");
         socket.emit("send", formData);
     }

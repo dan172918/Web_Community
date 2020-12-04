@@ -11,7 +11,7 @@ var express = require('express');
 var firebase = require('firebase');
 var bodyParser = require('body-parser');
 var app = express();
-/*const server = require('http').Server(app);
+const server = require('http').Server(app);
 const io = require("socket.io")(server, {
     cors: {
       origin: "*",
@@ -19,7 +19,7 @@ const io = require("socket.io")(server, {
       allowedHeaders: ["my-custom-header"],
       credentials: true
     }
-});*/
+});
 /*更改url可傳遞的大小*/
 app.use(express.json({limit: '5000mb'}));
 app.use(express.urlencoded({limit: '5000mb',extended: true}));
@@ -440,15 +440,31 @@ app.post('/api/rejectFriend', function(req, res){
     });
 });
 
-/*io.on('connection', (socket) => {
+/*訊息載入*/
+app.post('/api/loadMsg', function(req, res){
+    var cid = req.body.chat_id.toString();
+    var laodChatMsg = "select chat_name,chat_text,chat_time\
+                        from chat\
+                        where chat_id = "+cid+" order by chat_time desc";
+    con.query(laodChatMsg,function(err,result){
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+io.on('connection', (socket) => {
     socket.on("testConnect", (msg1) => {
         console.log("UID : "+msg1.user_id+" NAME : "+msg1.user_name+" Connect Success");
     });
     socket.on("send", (msg2) => {
         console.log(msg2);
-        io.emit("msg", msg2);
+        var chat_send_Msg = "insert into chat(chat_id,chat_user,chat_name,chat_time,chat_text) value(\""+msg2.chat_id+"\",\""+msg2.user_id+"\",\""+msg2.user_name+"\",now(),\""+msg2.Msg+"\");";
+        con.query(chat_send_Msg,function(err,result){
+            if(err)throw err;
+            io.emit("msg", msg2);
+        })
     });
-});*/
+});
 
 /* Password Process Start */
 // 加密
@@ -467,7 +483,7 @@ function aesDecrypt(encrypted, key) {
 }
 /* Password Process End */
 
-app.listen(process.env.PORT || 3000, function() {
+server.listen(process.env.PORT || 3000, function() {
     console.log("Start port 3000");
   });
 
