@@ -8,6 +8,7 @@ $(document).ready(function()
 		var country = $("#country").val();
 		var change = $("#change").val();
 		var wtry = $("#try").val();
+		console.log(school);
 		$("#Data").toggle();  //隱藏原個人資料
 		$(".dataList").toggle();  //隱藏原個人資料
 		$(".forms").toggle(); //顯示編輯模式
