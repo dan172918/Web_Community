@@ -3,16 +3,21 @@ $(document).ready(function()
   	$("#editBtn").click(function()
   	{
 		var school = $("#school").text();
-		var birthday = $("#birthday").val();
-		var hobby = $("#hobby").val();
-		var country = $("#country").val();
-		var change = $("#change").val();
-		var wtry = $("#try").val();
+		var birthday = $("#birthday").text();
+		var hobby = $("#hobby").text();
+		var country = $("#country").text();
+		var change = $("#change").text();
+		var wtry = $("#try").text();
 		console.log(school);
 		$("#Data").toggle();  //隱藏原個人資料
 		$(".dataList").toggle();  //隱藏原個人資料
 		$(".forms").toggle(); //顯示編輯模式
 		$("#user_school").attr('value',school);
+		$("#user_age").attr('value',birthday);
+		$("#user_hobit").attr('value',hobby);
+		$("#user_nation").attr('value',country);
+		$("#user_change").attr('value',change);
+		$("#user_try").attr('value',wtry);
 	});
 	
 	$("#not").click(function()
