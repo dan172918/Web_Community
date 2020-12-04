@@ -33,12 +33,12 @@ $(document).ready(function()
 		success: function(pof){
 			console.log(pof);
 			var texthtml = '<ul class="list-group">\
-								<li class="list-group-item">'+pof[0].user_school+'</li>\
-								<li class="list-group-item">'+pof[0].user_age+'</li>\
-								<li class="list-group-item">'+pof[0].user_hobby+'</li>\
-								<li class="list-group-item">'+pof[0].user_like_country+'</li>\
-								<li class="list-group-item">'+pof[0].user_change+'</li>\
-								<li class="list-group-item">'+pof[0].user_try+'</li>\
+								<li class="list-group-item" id="school">'+pof[0].user_school+'</li>\
+								<li class="list-group-item" id="birthday">'+pof[0].user_age+'</li>\
+								<li class="list-group-item" id="hobby">'+pof[0].user_hobby+'</li>\
+								<li class="list-group-item" id="country">'+pof[0].user_like_country+'</li>\
+								<li class="list-group-item" id="change">'+pof[0].user_change+'</li>\
+								<li class="list-group-item" id="try">'+pof[0].user_try+'</li>\
 							</ul>';
 			if(pof[0].user_picture)
 			{
