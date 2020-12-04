@@ -2,9 +2,16 @@ $(document).ready(function()
 {
   	$("#editBtn").click(function()
   	{
+		var school = $("#school").val();
+		var birthday = $("#birthday").val();
+		var hobby = $("#hobby").val();
+		var country = $("#country").val();
+		var change = $("#change").val();
+		var wtry = $("#try").val();
 		$("#Data").toggle();  //隱藏原個人資料
 		$(".dataList").toggle();  //隱藏原個人資料
-  		$(".forms").toggle(); //顯示編輯模式
+		$(".forms").toggle(); //顯示編輯模式
+		$("#user_school").attr('value',school);
 	});
 	
 	$("#not").click(function()
@@ -44,6 +51,8 @@ $(document).ready(function()
 		}
 	})
 });
+
+
 
 var img_string="";
 var ipt = document.getElementById("#user_picture"); 
