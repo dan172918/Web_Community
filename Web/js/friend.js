@@ -245,7 +245,7 @@ function inviteFriend(invite){
 function scrool(){
     setTimeout(function(){
         $(".box").scrollTop($(".box")[0].scrollHeight); 
-    },500);
+    },700);
 };
 
 $('#myModal').on('hide.bs.modal',function(){
