@@ -244,6 +244,7 @@ function storelike(thislike){
 
 function add_article(){
 	var data = {
+		cookie_art: getCookie("ArtCnt"),
 		user_id :getCookie("token")
 	}
 
@@ -421,7 +422,6 @@ function article(){
 	else{
 		var post_data = {
 			user_id : getCookie("token"),
-			cookie_art: getCookie("ArtCnt"),
 			post_level : '0',
 			article_text : $('#Article').val(),
 			article_pic : img_string
