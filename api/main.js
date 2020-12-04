@@ -279,7 +279,6 @@ app.post('/api/take_command',function(req,res){
  });
 
 app.post('/api/like',function(req,res){
-    console.log(req.body);
     var art_id = Number(req.body.article_id);
     var u_id = req.body.user_id.toString();
     var like = Number(req.body.like);
@@ -289,6 +288,7 @@ app.post('/api/like',function(req,res){
         var update_art_like_minus = 'update Connect_db.article set article.likes=article.likes-1 where article_id = \"' + art_id + '\"';
         con.query(select_like_id,function(err,result){
             if(err) throw err;
+            console.log(result);
             var delete_like = 'delete from Connect_db.likes where likes.like_id = \"' + result + '\"';
             con.query(delete_like,function(err,result){
                 if(err) throw err;
