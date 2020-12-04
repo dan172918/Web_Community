@@ -173,6 +173,7 @@ $(document).ready(function()
 }); 
 
 function collapse(cthis){
+	console.log(cthis);
 	console.log($(cthis).parents(".container").find(".command_box").slideToggle(500));
 }
 
