@@ -7,12 +7,12 @@ $(document).ready(function()
 	/*留言展開收合(之後會根據article_id來分別做收合)*/
 	$(".open").click(function(){$(".command_box").slideToggle(500);});
 	/*modal對話框切換*/
-	$('#myModal').on('show.bs.modal', function (event) {
+	/*$('#myModal').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget); // 按下訊息按鈕觸發以下事件
 		var name = button.data('whatever'); // data-whatever的內容
 		var modal = $(this);  //指向事件物件本身
 		modal.find('.modal-title').text(name);  //更改modal-title
-	});
+	});*/
 	/*好友搜尋展示*/
 	$(".goSearch").click(function(){
 		if($("#scrh").val() !== '')
@@ -83,7 +83,7 @@ $(document).ready(function()
 												</label>\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -113,7 +113,7 @@ $(document).ready(function()
 												</label>\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -173,6 +173,10 @@ $(document).ready(function()
 		}
 	});
 }); 
+
+function collapse(){
+	$(".open").click(function(){$(".command_box").slideToggle(500);});
+}
 
 function StoreCmd(thiscmd,event){
 	if(event.keyCode == 13 || event.which == 13){
@@ -303,7 +307,7 @@ function add_article(){
 												</label>\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -333,7 +337,7 @@ function add_article(){
 												</label>\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
