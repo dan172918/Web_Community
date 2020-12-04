@@ -174,7 +174,7 @@ $(document).ready(function()
 
 function collapse(cthis){
 	console.log(cthis);
-	console.log($(cthis).parents("section").attr("id").find(".command_box").slideToggle(500));
+	$("#"+$(cthis).parents("section").attr("id").toString()).find(".command_box").slideToggle(500);
 }
 
 function StoreCmd(thiscmd,event){
