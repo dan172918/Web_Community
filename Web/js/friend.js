@@ -249,7 +249,7 @@ function scrool(){
 };
 
 $('#myModal').on('show.bs.modal', function (event) {
-    $('.box').empty();
+    //$('.box').empty();
     var button = $(event.relatedTarget)
     var recipient = button.data('whatever')
     recipient = recipient.split(' ');
