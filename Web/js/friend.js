@@ -268,7 +268,7 @@ $('#myModal').on('show.bs.modal', function (event) {
         success: function(msg) {
             var i;
             for(i=0;i<msg.length;i++){
-                var textMsg = '<div class="msg"><span class="name">\"'+msg[i].chat_name+'\" : </span>\"'+msg[i].chat_text+'\"</div>';
+                var textMsg = '<div class="msg"><span class="name">'+msg[i].chat_name+' : </span>'+msg[i].chat_text+'</div>';
                 $(".box").prepend(textMsg);
             }
         },
