@@ -212,19 +212,19 @@ function StoreCmd(thiscmd,event){
 var like_art;
 
 function storelike(thislike){
-	var counter = $(".like_counter").html();
-	
+	//var counter = $(".like_counter").html();
+	var counter = $("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html(counter);
 	if(thislike.style.background=='red'){
 		$(".like").removeAttr("style");
 		like_art = 0;
 		counter--;
-		$(".like_counter").html(counter);
+		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html(counter);
 	}
 	else{
 		thislike.style.background='red';
 		like_art = 1;
 		counter++;
-		$(".like_counter").html(counter);
+		$("#"+$(thislike).parents("section").attr("id").toString()).find(".like_counter").html(counter);
 	}
 	var like_data = {
 		article_id: $(thislike).parents("section").attr("id"),
