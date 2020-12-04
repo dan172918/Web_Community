@@ -173,7 +173,7 @@ $(document).ready(function()
 }); 
 
 function collapse(cthis){
-	$(cthis).parents(".container").find(".command_box").slideToggle(500);
+	console.log($(cthis).parents(".container").find(".command_box").slideToggle(500));
 }
 
 function StoreCmd(thiscmd,event){
