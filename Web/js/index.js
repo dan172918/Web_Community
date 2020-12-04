@@ -37,6 +37,7 @@ $(document).ready(function()
 			cookcnt=0;
 			var cnt;
 			for(cnt=0;cnt<msg.length;cnt++){
+				console.log(msg[cnt].likes);
 				if(msg[cnt].article_text && msg[cnt].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
