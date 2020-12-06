@@ -45,13 +45,11 @@
 					<li><a href="group.html">社團</a></li>
 					<li><a href="anonymous.html">匿名</a></li>
 					<li><a href="friend.html">好友聊天</a></li>
-					<li><a href="profile.html">個人資料</a></li>
+					<li><a href="profile.html" id="user_name"></a></li>
 					<li><a href="login.html" class="button special">登出</a></li>
 				</ul>
 			</nav>
 
-			<input type="text" id="scrh" name="search" placeholder="請輸入關鍵字" autocomplete="off">
-			<input class="go" type="submit" value="GO">
 		
 		</header>
 		<!-- Header End -->
@@ -66,35 +64,25 @@
 						<div class="col-md-6 article " id="postArticle">
 							<form action="anonymous.html">
 								<h3 class="card-title text-center mb-4 mt-1 title">發表文章</h3>
-								<textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+								<textarea class="form-control" id="AnmsArticle" rows="10"></textarea>
 								
 								<div class="row col-12 col-md-12">
-									<input id="picInput" type="file" multiple class="upload" accept="image/*">
+									<input id="Anmspic" type="file" multiple onchange="fileUpLoad(this);" class="upload" accept="image/*">
 									<label for="picInput" class="btn btn-secondary pic mr-5"  id="post_Pic" ></label>
-									<input class="btn btn-secondary col-md-3 col-12 " type="submit" id="user_Post" value="發布">
+									<input class="btn btn-secondary col-md-3 col-12 " type="submit" id="user_Post" onclick="article()" value="發布">
 									<input class="btn btn-secondary col-md-3 col-12" type="button" id="cancel" value="取消">
 								</div>
 							</form>
 						</div>
 					</div>
 				</header>
-
+				<div id="AnmsshowImg">
+				</div>
+				<!-- Text -->
+				<div class="lib">
+				</div>
 				<button type="button" id="BackTop" class="toTop-arrow"><span><i class="fas fa-arrow-circle-up"></i></span></button>
 
-				<!-- show Text -->
-				<section>
-					<h3>貼文</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic id sequi placeat ducimus rem magnam saepe aperiam dolorem suscipit atque illo,
-						aliquid eos blanditiis est? Vero harum aliquid delectus distinctio officiis iste consectetur corporis ratione sint vel doloribus iure accusantium 
-						porro dolorum qui modi, nemo reprehenderit numquam exercitationem voluptates omnis similique? Nesciunt quam possimus rerum aperiam dolorem saepe odit quo!</p>
-					<hr />
-
-					<h3>貼文</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic id sequi placeat ducimus rem magnam saepe aperiam dolorem suscipit atque illo,
-						aliquid eos blanditiis est? Vero harum aliquid delectus distinctio officiis iste consectetur corporis ratione sint vel doloribus iure accusantium 
-						porro dolorum qui modi, nemo reprehenderit numquam exercitationem voluptates omnis similique? Nesciunt quam possimus rerum aperiam dolorem saepe odit quo!</p>
-					<hr />
-				</section>
 			</div>
 		</section>
 		

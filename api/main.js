@@ -218,7 +218,7 @@ app.post('/api/index',function(req,res){
                                                         where user_id = \"'+u_id+'\")) as newTable0\
                                         where user_id=id) as newTable1\
                                         ,article left join likes on likes.article_id = article.article_id\
-                        where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id\
+                        where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id and article.post_level = "0"\
                         order by article.article_time desc limit 10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
@@ -227,7 +227,7 @@ app.post('/api/index',function(req,res){
     });
  });
 
-
+/*好友顯示多10篇貼文*/
  app.post('/api/add_article',function(req,res){
     var u_id = req.body.user_id.toString();
     var cook_art = Number(req.body.cookie_art) + 1;
@@ -326,7 +326,7 @@ app.post('/api/profile',function(req,res){
     var u_try = req.body.user_try.toString();
     var u_picture = req.body.user_picture.toString();
 
-    var update_pic = 'update Connect_db.user_info set user_picture = \"'+ u_picture +'\"';
+    var update_pic = 'update Connect_db.user_info set user_picture = \"'+ u_picture +'\" where user_id = \"'+u_id+'\"';
     var insert_profile_info =  'update Connect_db.user_info set user_school = \"'+ u_school +'\",user_age = \"'+ u_age +'\",user_hobby = \"'+u_hobit+'\",user_like_country = \"'+u_nation+'\" ,user_change = \"'+u_change+'\",user_try = \"'+u_try+'\" where user_id = \"'+u_id+'\"';
     if(u_picture)
     {
@@ -348,6 +348,44 @@ app.post('/api/show_profile',function(req,res){
         if(err) throw err;
         res.send(result);
         console.log(result);
+    });
+ });
+
+/*匿名顯示貼文*/
+ app.post('/api/anmsarticle',function(req,res){
+    var show_anmsart_text = 'select article.article_id,article.article_text,article.article_picture,likes.like_id,article.likes\
+                       from article left join likes on likes.article_id = article.article_id\
+                       where article.post_level = "3"\
+                       order by article.article_time desc limit 10';
+
+    con.query(show_anmsart,function(err,result){
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
+    });
+ });
+
+ /*匿名留言貼文*/
+ app.post('/api/take_anmscommand',function(req,res){
+    var show_anmscommand_text= 'select command.article_id,command.user_command\
+                            from command';
+    con.query(show_anmscommand_text,function(err,result){
+        if(err) throw err;
+        res.send(result);
+    });
+ });
+
+/*匿名顯示多10篇貼文*/
+ app.post('/api/add_anmsarticle',function(req,res){
+    var cook_art = Number(req.body.cookie_art) + 1;
+    console.log(cook_art);
+    var art_text_sql = 'select article.article_id,article.article_text,article.article_picture,likes.like_id,article.likes\
+                        from article left join likes on likes.article_id = article.article_id\
+                        where article.post_level = "3"\
+                        order by article.article_time desc limit '+cook_art+',10';
+    con.query(art_text_sql,function(err,result){
+        if(err) throw err;
+        res.send(result);
     });
  });
 

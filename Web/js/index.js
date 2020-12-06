@@ -325,7 +325,7 @@ function add_article(){
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				if(add[cnt].article_id % 2 == 0){
+				if(cnt % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
