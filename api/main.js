@@ -358,7 +358,7 @@ app.post('/api/show_profile',function(req,res){
                        where article.post_level = "3"\
                        order by article.article_time desc limit 10';
 
-    con.query(show_anmsart,function(err,result){
+    con.query(show_anmsart_text,function(err,result){
         if(err) throw err;
         res.send(result);
         console.log(result);
