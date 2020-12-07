@@ -114,11 +114,11 @@ $(document).ready(function()
 				var finialhtml = texthtml1+texthtml2;
 				if(cnt % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
-					$(".lib").append(newHtml);
+					$(".anmslib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
 				}else{
 					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
-					$(".lib").append(secondHtml);
+					$(".anmslib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
 			}
@@ -336,7 +336,7 @@ function add_anmsarticle(){
 					setArt("ArtCnt",cookcnt++);
 				}else{
 					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
-					$(".lib").append(secondHtml);
+					$(".anmslib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
 			}
