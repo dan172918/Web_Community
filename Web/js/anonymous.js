@@ -37,6 +37,8 @@ $(document).ready(function()
 	$.ajax({
 		url: "http://"+ host + port +"/api/anmsarticle",
 		type: 'POST',
+		data: JSON.stringify(),
+		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(msg){
 			setArt("ArtCnt",0);
