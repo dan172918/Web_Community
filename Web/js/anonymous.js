@@ -332,7 +332,7 @@ function add_anmsarticle(){
 				var finialhtml = texthtml1+texthtml2;
 				if(add[cnt].article_id % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
-					$(".lib").append(newHtml);
+					$(".anmslib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
 				}else{
 					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
@@ -345,14 +345,14 @@ function add_anmsarticle(){
 	});
 	
 	$.ajax({
-		url: "http://"+ host + port +"/api/take_command",
+		url: "http://"+ host + port +"/api/take_anmscommand",
 		type: 'POST',
 		data: JSON.stringify(data),
 		contentType: "application/json;charset=utf-8",
 		success: function(add_comd){
 			var cnt1;
 			for(cnt1=0;cnt1<add_comd.length;cnt1++){
-				var texthtml1 = '<p class="command_user">'+add_comd[cnt1].user_name+'\
+				var texthtml1 = '<p class="command_user">沒有人\
 									<span class="command_line">'+add_comd[cnt1].user_command+'\
 									</span>\
 								</p>';
