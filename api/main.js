@@ -247,7 +247,7 @@ app.post('/api/index',function(req,res){
                                                         where user_id = \"'+u_id+'\")) as newTable0\
                                         where user_id=id) as newTable1\
                                         ,article left join likes on likes.article_id = article.article_id\
-                        where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id\
+                        where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id and article.post_level = "0"\
                         order by article.article_time desc limit '+cook_art+',10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
