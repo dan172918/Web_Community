@@ -1649,15 +1649,15 @@
 		{
 			display: block;
 			border-radius:10px !important;
-			margin-left: 10px;
 			background:#005AB5;
 			width: 130px;
 			height: 60px;
 			color:#fff;	
-			margin:0 auto;
+			margin: 0 auto;
 			text-align: center;
 			font-size: 17px;
 			line-height: 3.5;
+			padding-left: 0;
 		}
 		.invite:hover
 		{
@@ -1693,7 +1693,7 @@
 		.lft
 		{
 			padding: 0 0 0 0 !important;
-			margin-left: -40px;
+			margin-left: -16px;
 			background-image:url('../img/send.svg') ;
 		}
 		.lft2
@@ -1711,12 +1711,12 @@
 		}
 		.pcard .container
 		{
-			width: 100% !important;
-			padding: 0 0 0 0 !important;
+			/* width: 100% !important;
+			padding: 0 0 0 0 !important; */
 		}
 		.pcard .row
 		{
-			width: 105% !important;
+			/* width: 105% !important; */
 			margin: 0 0 0 0 !important;
 		}
 		.pcard section

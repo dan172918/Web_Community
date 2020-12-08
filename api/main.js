@@ -502,23 +502,23 @@ app.post('/api/loadMsg', function(req, res){
 app.post('/api/showCardFriend', function(req, res){
     var uid = req.body.user_id.toString();
     //顯示今天抽出的卡友
-    var showtodayCard = 'select chat_id,user_id,user_name,user_picture\
-                            from user_info,(select chat_id,user_id_self as id\
+    var showtodayCard = 'select chat_id,user_id,user_name,user_picture,newTable.relation\
+                            from user_info,(select chat_id,user_id_self as id,relation\
                                             from friend\
-                                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4\
+                                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW())\
                                             union\
-                                            select chat_id,user_id_other as id\
+                                            select chat_id,user_id_other as id,relation\
                                             from friend\
-                                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4) as newTable\
+                                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW())) as newTable\
                             where user_id=id';
     //判斷今天是否抽取
     var isRandSelFriend = 'select user_id_self as id\
                             from friend\
-                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4\
+                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW())\
                             union\
                             select user_id_other as id\
                             from friend\
-                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4';
+                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW())';
     con.query(isRandSelFriend,function(err,result){
         if(err) throw err;
         if(result.length == 0){ //如果未抽過，隨機選擇一名不在自己好友名單內的
@@ -565,7 +565,7 @@ app.post('/api/inviteCardFriend', function(req, res){
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
     var insertCardFriend = 'update friend\
-                            set relation = 1\
+                            set relation = 1,user_id_self = \"'+uid+'\",user_id_other = \"'+fid+'\"\
                             where chat_id in \
                             (select chat_id\
                             from (select chat_id\
@@ -590,6 +590,9 @@ io.on('connection', (socket) => {
             if(err)throw err;
             io.emit("msg", msg2);
         })
+    });
+    socket.on("inviteFriend",(userId) => {
+        io.emit("disableButton", userId);
     });
 });
 

@@ -28,7 +28,9 @@ $(document).ready(function(){
                 if(msg[0].user_picture)
                     $('.user_pic').attr('src',msg[0].user_picture);
 				$('.invite').attr('data-whatever',getCookie("token")+" "+msg[0].user_id);
-				$('.lft').attr('data-whatever',msg[0].chat_id+" "+msg[0].user_id+" "+msg[0].user_name);
+                $('.lft').attr('data-whatever',msg[0].chat_id+" "+msg[0].user_id+" "+msg[0].user_name);
+                if(msg[0].relation != 4)
+                    $('.invite').attr('disabled',"disabled");
 			}
 		}
     });
@@ -121,6 +123,7 @@ socket.on("msg", function (d) {
 $('#sendMsg').click(function (event) {
     sameCode(event);   
 });
+
 $("#inputMsg").keyup(function(event){
     if(event.keyCode == 13 || event.which == 13){
         var command_val = $("#inputMsg").val();
@@ -129,6 +132,7 @@ $("#inputMsg").keyup(function(event){
         }
     }
 });
+
 function sameCode(event){
     var ok = true;
     event.preventDefault();
@@ -149,3 +153,15 @@ function sameCode(event){
         socket.emit("send", formData);
     }
 }
+
+$('.invite').click(function(){
+    var recipient = $('.invite').attr('data-whatever');
+    recipient = recipient.split(' ');
+    socket.emit("inviteFriend", recipient[0]);
+    socket.emit("inviteFriend", recipient[0]);
+});
+
+socket.on("disableButton",function(d){
+    if(d == getCookie("token"))
+        $('.invite').attr('disabled',"disabled");
+});
