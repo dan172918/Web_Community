@@ -93,26 +93,23 @@ function acceptFriend(thisFriend){
         data : JSON.stringify(data),
         contentType : "application/json;charset=utf-8",
         success: function(msg) {
-            if(msg = "success"){
-                alertMsg(finishAddFriend);
-                var SearchUsertexthtml = '<div class="row" id=\"'+$(thisFriend).closest(".row").attr("id")+'\">\
-                                            <div class="col-md-2 col-sm-2 col-3">\
-                                                <img src="img/user.svg" class="img-circle" width="60px">\
-                                            </div>\
-                                            <div class="col-md-8 col-sm-8 col-4">\
-                                                <h4><a href="#" id = "FriendName">' + $(thisFriend).closest(".row").find(FriendName).text() + '</a></h4>\
-                                                <br><br>\
-                                            </div>\
-                                        </div>';
-                $('#freindlist').prepend(SearchUsertexthtml);
-                $(thisFriend).closest(".row").remove();
-                if($('#showInvite').html()==null || $('#showInvite').html().length==0)
-                    $("#friendinvite").css("display","none");
-                
-            }
-            else{
-                alertMsg(addFriendError);
-            }   
+            alertMsg(finishAddFriend);
+            var SearchUsertexthtml = '<div class="row" id=\"'+$(thisFriend).closest(".row").attr("id")+'\">\
+                                        <div class="col-md-2 col-sm-2 col-3">\
+                                            <img src="img/user.svg" class="img-circle" width="60px">\
+                                        </div>\
+                                        <div class="col-md-8 col-sm-8 col-4">\
+                                            <h4><a href="#" id = "FriendName">' + $(thisFriend).closest(".row").find(FriendName).text() + '</a></h4>\
+                                            <br><br>\
+                                        </div>\
+                                        <div class="col-sm-2 col-md-2 col-5">\
+                                            <input class="list-group-item chat rr3" data-toggle="modal" data-target="#myModal" data-whatever=\"'+msg[0].chat_id+" "+$(thisFriend).closest(".row").attr("id")+" "+$(thisFriend).closest(".row").find(FriendName).text()+'\" type="button" onclick="scrool()">\
+                                        </div>\
+                                    </div>';
+            $('#freindlist').prepend(SearchUsertexthtml);
+            $(thisFriend).closest(".row").remove();
+            if($('#showInvite').html()==null || $('#showInvite').html().length==0)
+                $("#friendinvite").css("display","none");
         },
         error: function(xhr, ajaxOptions, thrownError) {
             console.log(xhr.responseText);

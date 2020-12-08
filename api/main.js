@@ -414,11 +414,11 @@ app.post('/api/SearchFriend', function(req, res) {
     var SearchUser = 'select user_info.user_id,user_info.user_name,relation\
                     from user_info left join ((select user_id_self as id,relation\
                                             from friend\
-                                            where user_id_other=\"'+uid+'\")\
+                                            where user_id_other=\"'+uid+'\" and relation != 4)\
                                             union\
                                             (select user_id_other as id,relation\
                                             from friend\
-                                            where user_id_self=\"'+uid+'\")) as newTab \
+                                            where user_id_self=\"'+uid+'\" and relation != 4)) as newTab \
                                             on user_info.user_id = newTab.id\
                     where user_name = \"'+name+'\"';
     con.query(SearchUser,function(err,result){
@@ -430,11 +430,36 @@ app.post('/api/SearchFriend', function(req, res) {
 app.post('/api/inviteFriend', function(req, res) {
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
-    var insertFriend = 'insert into friend (user_id_self,user_id_other,relation) value(\"'+uid+'\",\"'+fid+'\",1)';
-    con.query(insertFriend,function(err,result){
+    var checkRep = 'select chat_id\
+                    from friend\
+                    where ((user_id_self = \"'+uid+'\" and user_id_other = \"'+fid+'\") or \
+                        (user_id_self = \"'+fid+'\" and user_id_other = \"'+uid+'\") )and relation = 4';
+    con.query(checkRep,function(err,result){
         if (err) throw err;
-        res.send("success");
+        if(result.length==0){
+            var insertFriend = 'insert into friend (user_id_self,user_id_other,relation) value(\"'+uid+'\",\"'+fid+'\",1)';
+            con.query(insertFriend,function(err,result){
+                if (err) throw err;
+                res.send("success");
+            });
+        }
+        else{
+            var insertCardFriend = 'update friend\
+                                    set relation = 1,user_id_self = \"'+uid+'\",user_id_other = \"'+fid+'\"\
+                                    where chat_id in \
+                                    (select chat_id\
+                                    from (select chat_id\
+                                            from friend\
+                                            where (user_id_self = \"'+uid+'\" and user_id_other = \"'+fid+'\") or \
+                                                    (user_id_self = \"'+fid+'\" and user_id_other = \"'+uid+'\") and \
+                                                    relation = 4) as A)';
+            con.query(insertCardFriend,function(err,result){
+                if (err) throw err;
+                res.send("success");
+            });
+        }
     });
+
 });
 /*顯示交友邀請*/
 app.post('/api/showinvite', function(req, res){
@@ -461,11 +486,16 @@ app.post('/api/acceptFriend', function(req, res){
                     (select *\
                     from (select chat_id\
                         from friend\
-                        where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\") as A)";
-                
+                        where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\" and relation = 1) as A)";   
     con.query(addfriend,function(err,result){
         if (err) throw err;
-        res.send("success");
+        var getFriend = "select chat_id\
+                            from friend\
+                            where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\" and relation = 0";
+        con.query(getFriend,function(err,result){
+            if (err) throw err;
+            res.send(result);
+        });
     });
 
 });
@@ -473,16 +503,37 @@ app.post('/api/acceptFriend', function(req, res){
 app.post('/api/rejectFriend', function(req, res){
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
-    var deleteFriend = "delete from friend\
+    var checkRep = "select meetTime\
+                    from friend\
+                    where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\" and relation = 1";
+    con.query(checkRep,function(err,result){
+        if(result[0].meetTime == null){
+            var deleteFriend = "delete from friend\
                         where chat_id in \
                         (select *\
                         from (select chat_id\
                             from friend\
-                            where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\") as A)";
-    con.query(deleteFriend,function(err,result){
-        if (err) throw err;
-        res.send("success");
+                            where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\" and relation = 1) as A)";
+            con.query(deleteFriend,function(err,result){
+                if (err) throw err;
+                res.send("success");
+            });
+        }
+        else{
+            var addfriend = "update friend\
+                            set relation = 4\
+                            where chat_id in \
+                            (select *\
+                            from (select chat_id\
+                                from friend\
+                                where user_id_self = \""+fid+"\" and user_id_other = \""+uid+"\" and relation = 1) as A)";
+            con.query(addfriend,function(err,result){
+                if (err) throw err;
+                res.send("success");
+            });
+        }
     });
+    
 });
 
 /*訊息載入*/
