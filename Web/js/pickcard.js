@@ -24,8 +24,9 @@ $(document).ready(function(){
 									<h2 class="uName">請耐心等待!</h2>')
 			}
 			else{
-				$('.user_name').text(msg[0].user_name);
-				$('.user_pic').attr('src',msg[0].user_picture);
+                $('.user_name').text(msg[0].user_name);
+                if(msg[0].user_picture)
+                    $('.user_pic').attr('src',msg[0].user_picture);
 				$('.invite').attr('data-whatever',getCookie("token")+" "+msg[0].user_id);
 				$('.lft').attr('data-whatever',msg[0].chat_id+" "+msg[0].user_id+" "+msg[0].user_name);
 			}

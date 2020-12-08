@@ -562,7 +562,6 @@ app.post('/api/showCardFriend', function(req, res){
 
 //邀請卡友
 app.post('/api/inviteCardFriend', function(req, res){
-    console.log(req.body);
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
     var insertCardFriend = 'update friend\
@@ -576,7 +575,7 @@ app.post('/api/inviteCardFriend', function(req, res){
                                             relation = 4) as A)';
     con.query(insertCardFriend,function(err,result){
         if (err) throw err;
-        console.log(uid+"invite CardFriend"+fid);
+        console.log(uid+" <-- Invite CardFriend --> "+fid);
     });
 });
 
