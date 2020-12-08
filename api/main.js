@@ -498,6 +498,87 @@ app.post('/api/loadMsg', function(req, res){
     });
 });
 
+/*載入每日卡友*/
+app.post('/api/showCardFriend', function(req, res){
+    var uid = req.body.user_id.toString();
+    //顯示今天抽出的卡友
+    var showtodayCard = 'select chat_id,user_id,user_name,user_picture\
+                            from user_info,(select chat_id,user_id_self as id\
+                                            from friend\
+                                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4\
+                                            union\
+                                            select chat_id,user_id_other as id\
+                                            from friend\
+                                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4) as newTable\
+                            where user_id=id';
+    //判斷今天是否抽取
+    var isRandSelFriend = 'select user_id_self as id\
+                            from friend\
+                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4\
+                            union\
+                            select user_id_other as id\
+                            from friend\
+                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4';
+    con.query(isRandSelFriend,function(err,result){
+        if(err) throw err;
+        if(result.length == 0){ //如果未抽過，隨機選擇一名不在自己好友名單內的
+            var RandSelFriend = 'select user_id\
+                                    from user_info as A left join (select user_id_self as id\
+                                                                from friend\
+                                                                where user_id_other=\"'+uid+'\" and relation = 0\
+                                                                union\
+                                                                select user_id_other as id\
+                                                                from friend\
+                                                                where user_id_self=\"'+uid+'\" and relation = 0) as B on A.user_id = B.id\
+                                    where B.id is null and A.user_id != \"'+uid+'\"\
+                                    ORDER BY RAND()\
+                                    LIMIT 1';
+            con.query(RandSelFriend,function(err,result){
+                if(err) throw err;
+                if(result.length == 0)  //如果剩餘用戶都是你的好友，銘謝惠顧，下次請早
+                    res.send("tryAgain");
+                else{   //先暫存friend table中
+                    var TemporaryCardFriend = 'insert into friend(user_id_self,user_id_other,meetTime,relation)\
+                                                value(\"'+uid+'\",\"'+result[0].user_id+'\",now(),4)';
+                    con.query(TemporaryCardFriend, function(err,result){
+                        if(err) throw err;
+                        console.log(uid+"selectFinish");
+                        con.query(showtodayCard,function(err,result){
+                            if(err) throw err;
+                            res.send(result);
+                        });
+                    });
+                }
+            });
+        }
+        else{   //如果抽過，直接卡友傳至前端 
+            con.query(showtodayCard,function(err,result){
+                if(err) throw err;
+                res.send(result);
+            });
+        }
+    });
+});
+
+//邀請卡友
+app.post('/api/inviteCardFriend', function(req, res){
+    var uid = req.body.u_id.toString();
+    var fid = req.body.f_id.toString();
+    var insertCardFriend = 'update friend\
+                            set relation = 1\
+                            where chat_id in \
+                            (select chat_id\
+                            from (select chat_id\
+                                    from friend\
+                                    where (user_id_self = \"'+uid+'\" and user_id_other = \"'+fid+'\") or \
+                                            (user_id_self = \"'+fid+'\" and user_id_other = \"'+uid+'\") and \
+                                            relation = 4) as A)';
+    con.query(insertCardFriend,function(err,result){
+        if (err) throw err;
+        console.log(uid+"invite CardFriend"+fid);
+    });
+});
+
 io.on('connection', (socket) => {
     socket.on("testConnect", (msg1) => {
         console.log("UID : "+msg1.user_id+" NAME : "+msg1.user_name+" Connect Success");

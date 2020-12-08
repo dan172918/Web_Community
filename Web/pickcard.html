@@ -26,7 +26,7 @@
 					<li><a href="group.html">社團</a></li>
 					<li><a href="anonymous.html">匿名</a></li>
 					<li><a href="friend.html">好友聊天</a></li>
-					<li><a href="profile.html">個人資料</a></li>
+					<li><a href="profile.html" id="user_name"></a></li>
 					<li><a href="login.html" class="button special">登出</a></li>
 				</ul>
 			</nav>
@@ -43,14 +43,13 @@
 				
 			</div>	
 			<div class="container pcard" style="width: 600px;">
-
 				<img class="picture user_pic" src="img/profile-pic.jpg" width="200px" height="200px">
-				<h2 class="uName user_name">王小美</h2>
+				<h2 class="uName user_name"></h2>
 				<div class="invite" data-toggle="modal" data-target="#inviteModal">送出邀請</div>
 
 				<div class="row">
 					<section class="col-12 d-flex justify-content-center">
-						<input class="pickChat lft " type="button" data-toggle="modal" data-target="#pickModal" >
+						<input class="pickChat lft " type="button" data-toggle="modal" data-target="#pickModal" onclick="scrool()">
 					</section>
 				</div>
 			</div> 
@@ -91,13 +90,14 @@
 								<label for="message-text" class="control-label">聊天內容</label>
 								<div class="box"></div>
 							</div>
-							<div class="form-group">                   
-								<textarea class="form-control"></textarea>
+							<div class="form-group">
+								<h4 for="message-text" class="control-label" id = "errorMsg">輸入欄位不能空白</h4>                   
+								<textarea class="form-control" id="inputMsg"></textarea>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">發送訊息</button>
+						<button type="button" class="btn btn-primary" id="sendMsg">發送訊息</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -108,10 +108,11 @@
 		<script src="fragments/jquery/jquery-3.4.1.min.js"></script>
 		<script src="fragments/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="fragments/bootbox/bootbox.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
 		<script src="js/common.js"></script>
-		<script src="js/index.js"></script>
+		<script src="js/pickcard.js"></script>
 	</body>
 </html>
