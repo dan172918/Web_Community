@@ -158,7 +158,7 @@ $('.invite').click(function(){
     var recipient = $('.invite').attr('data-whatever');
     recipient = recipient.split(' ');
     socket.emit("inviteFriend", recipient[0]);
-    socket.emit("inviteFriend", recipient[0]);
+    socket.emit("inviteFriend", recipient[1]);
 });
 
 socket.on("disableButton",function(d){
