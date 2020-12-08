@@ -562,6 +562,7 @@ app.post('/api/showCardFriend', function(req, res){
 
 //邀請卡友
 app.post('/api/inviteCardFriend', function(req, res){
+    console.log(req.body);
     var uid = req.body.u_id.toString();
     var fid = req.body.f_id.toString();
     var insertCardFriend = 'update friend\
