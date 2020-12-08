@@ -73,7 +73,7 @@ function showinviteFunc(){
                                         <input class="chat rr1" type="button" onclick="acceptFriend(this)">\
                                         <input class="chat rr2" type="button" onclick="rejectFriend(this)">\
                                     </div>\
-                                </div> ';
+                                </div>';
                 $('#showInvite').prepend(texthtml);
             }
             if(msg.length > 0)
