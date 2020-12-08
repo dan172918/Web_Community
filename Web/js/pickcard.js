@@ -33,7 +33,7 @@ $(document).ready(function(){
     });
 });
 
-$('.invite').on('show.bs.modal', function (event) {
+$('#inviteModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
     var recipient = button.data('whatever')
     recipient = recipient.split(' ');
