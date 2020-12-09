@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--css link-->
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="fragments/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<script src="https://kit.fontawesome.com/753b6e1414.js"></script> <!--crossorigin="anonymous"-->
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--title-->
+		<title>Club</title>
+		<!--logo-->
+		<link rel="shortcut icon" href="img/Steam.ico">
+	</head>
+	<body>
+		<div class="load">
+			<div class="letter-holder">
+				<div class="l-1 letter">L</div>
+				<div class="l-2 letter">o</div>
+				<div class="l-3 letter">a</div>
+				<div class="l-4 letter">d</div>
+				<div class="l-5 letter">i</div>
+				<div class="l-6 letter">n</div>
+				<div class="l-7 letter">g</div>
+				<div class="l-8 letter">.</div>
+				<div class="l-9 letter">.</div>
+				<div class="l-10 letter">.</div>
+			  </div>
+		</div>
+		<!-- Header Start-->
+	<div class="waitloading">
+		<header id="header">
+			<h1><a href="index.html">CONNECT</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">首頁</a></li>
+					<li><a href="group.html">社團</a></li>
+					<li><a href="anonymous.html">匿名</a></li>
+					<li><a href="friend.html">好友聊天</a></li>
+					<li><a href="profile.html">個人資料</a></li>
+					<li><a href="login.html" class="button special">登出</a></li>
+				</ul>
+			</nav>
+			<!-- <form action="group.html"> -->
+				<input type="text" id="scrh" name="search" placeholder="請輸入關鍵字" autocomplete="off">
+				<input class="go groupGoSearch" type="submit" value="GO" onclick="SearchUser()">
+			<!-- </form> -->
+		</header>
+		<!-- Header End -->
+
+		<button type="button" id="BackTop" class="toTop-arrow"><span><i class="fas fa-arrow-circle-up"></i></span></button>
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="container">
+				<header class="major">
+					<!--社團搜尋結果-->
+					<div class="showgroup">	
+						<div class="accordion" id="accordionExample">
+							<div class="row row-cols-md-2 justify-content-center">
+								<div class="card group-result">
+									<div class="card-header bg-info" id="headingOne">
+										<div class="row justify-content-end">
+											<h4 class="mb-0 col-6">
+												<button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													吉娃娃的快樂天地
+												</button>
+											</h4>
+											<div class="col-3">
+												<button type="button" class="btn btn-info plusgroup"><i class="fas fa-plus add-pr"></i></button>
+											</div>
+										</div>
+									</div>
+								
+									<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+										<div class="card-body card-pd">
+											<ul class="list-group list-group-flush">
+												<li class="list-group-item"><i class="fas fa-crown"></i>小吉</li>
+												<li class="list-group-item"><i class="fas fa-user"></i>中吉</li>
+												<li class="list-group-item"><i class="fas fa-user"></i>大吉</li>
+												<li class="list-group-item"><i class="fas fa-user"></i>超吉</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>		
+					<!---------------------->		
+
+					<div class="bar">
+						<select name="grp_select" id="grpSelect">
+							<option>回家社</option>
+							<option>社團二</option>
+							<option>社團三</option>
+						</select>
+					</div>
+					<h2>社團動態</h2>
+					<input class="post" type="button" >
+					<div class="justify-content-start container">
+						<div class="col-md-6 article " id="postArticle">
+							<form action="group.html">
+								<h3 class="card-title text-center mb-4 mt-1 title">發表文章</h3>
+								<textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+								
+								<div class="row col-12 col-md-12">
+									<input id="glppic" type="file" multiple onchange="fileUpLoad(this);" class="upload" accept="image/*">
+									<label for="glppic" class="btn btn-secondary pic mr-5"  id="post_Pic" ></label>
+									<input class="btn btn-secondary col-md-3 col-12 " type="submit" id="user_Post" onclick="article()" value="發布">
+									<input class="btn btn-secondary col-md-3 col-12" type="button" id="cancel" value="取消">
+								</div>
+							</form>
+						</div>
+					</div>
+				</header>
+
+				<div id="showImg">
+				</div>
+				<!-- Text -->
+				<div class="lib">
+				</div>
+				
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="container">
+				<div class="row justify-content-end">	
+					<div class="col-9 foo">	
+						滑到底囉<br/>請重新整理來刷新動態
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>	
+
+		<!--js link-->
+		<script src="fragments/jquery/jquery-3.4.1.min.js"></script>
+		<script src="fragments/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="fragments/bootbox/bootbox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/group.js"></script>
+		<!--script src="js/anonymous.js"></script-->
+	</body>
+</html>
