@@ -389,7 +389,7 @@ app.post('/api/show_profile',function(req,res){
     });
  });
 
-  /*社團貼文*/
+  /*show社團貼文*/
   app.post('/api/glparticle',function(req,res){
     var gid = req.body.group_id.toString();
     var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes,article.group_id\
@@ -402,7 +402,7 @@ app.post('/api/show_profile',function(req,res){
         console.log(result);
     });
  });
-
+/*show社團貼文+10*/
  app.post('/api/add_glparticle',function(req,res){
     var gid = req.body.group_id.toString();
     var cook_art = Number(req.body.cookie_art) + 1;
@@ -428,6 +428,7 @@ app.post('/api/show_profile',function(req,res){
     });
  });*/
 
+ /*store社團貼文*/
  app.post('/api/glpindex',function(req,res){
     console.log(req.body);
     var art_text = req.body.article_text.toString();
@@ -447,6 +448,18 @@ app.post('/api/show_profile',function(req,res){
     }
  });
  
+/*show user clubs*/
+ app.post('/api/groups',function(req,res){
+    var u_id = req.body.user_id.toString();
+    var user_groups = 'select club_name,club_id\
+                        from Connect.user_club,Connect.club\
+                        where club.club_id = user_club.club_id and user_club.user_id = \"'+u_id+'\"';
+    con.query(user_groups,function(err,result){
+        if(err) throw err;
+        res.send(result);
+    });
+ });
+
 /*好友名單*/
 app.post('/api/loadFriendlist', function(req, res) {
     var uid = req.body.u_id.toString();

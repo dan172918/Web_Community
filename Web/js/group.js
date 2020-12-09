@@ -24,9 +24,32 @@ $(function(){
 	}).scroll();
 });
 
+
+var select_glp;
 $(document).ready(function()
 {
-	$(".plusgroup").click(function(){$(".showgroup").hide(500);})
+	var uid={
+		user_id :getCookie("token")
+	}
+	/*有哪些社團*/
+	$.ajax({
+		url: "http://"+ host + port +"/api/groups",
+		type: 'POST',
+		data: JSON.stringify(uid),
+		contentType: "application/json;charset=utf-8",
+		success: function(glps){
+			var i;
+			for(i=0;i<glps.length;i++)
+			{
+				var group_form = '<option value='+ glp[i].club_id +'>'+ glp[i].club_name +'</option>';
+				$('#grpSelect').prepend(group_form);
+			}
+		}
+	});
+
+	$('#grpSelect').change(function(){select_glp = $('#grpSelect').val();});
+	
+	$(".plusgroup").click(function(){$(".showgroup").hide(500);});
 	/*發文切換*/
 	$(".post").click(function(){$("#postArticle").fadeToggle(500); });
 	$("#cancel").click(function(){$("#postArticle").hide(500); });
@@ -48,7 +71,7 @@ $(document).ready(function()
 	
 	var data = {
 		user_id :getCookie("token"),
-		group_id :getCookie("gid"),
+		gid :select_glp
 	}
 	/* show article */
 	$.ajax({
@@ -268,7 +291,7 @@ function storelike(thislike){
 }
 function add_article(){
 	var data = {
-		group_id :getCookie("gid"),
+		group_id :select_glp,
 		cookie_art: getCookie("ArtCnt"),
 		user_id :getCookie("token")
 	}
@@ -413,7 +436,7 @@ function glparticle(){
 	}
 	else{
 		var post_data = {
-            group_id : getCookie("gid"),
+            group_id : select_glp,
 			user_id : getCookie("token"),
 			post_level : '2',
 			article_text : $('#Article').val(),
