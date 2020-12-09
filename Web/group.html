@@ -6,7 +6,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="fragments/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
-		<script src="https://kit.fontawesome.com/753b6e1414.js" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/753b6e1414.js"></script> <!--crossorigin="anonymous"-->
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -76,9 +76,9 @@
 								<textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
 								
 								<div class="row col-12 col-md-12">
-									<input id="picInput" type="file" multiple class="upload" accept="image/*">
-									<label for="picInput" class="btn btn-secondary pic mr-5"  id="post_Pic" ></label>
-									<input class="btn btn-secondary col-md-3 col-12 " type="submit" id="user_Post" value="發布">
+									<input id="glppic" type="file" multiple onchange="fileUpLoad(this);" class="upload" accept="image/*">
+									<label for="glppic" class="btn btn-secondary pic mr-5"  id="post_Pic" ></label>
+									<input class="btn btn-secondary col-md-3 col-12 " type="submit" id="user_Post" onclick="article()" value="發布">
 									<input class="btn btn-secondary col-md-3 col-12" type="button" id="cancel" value="取消">
 								</div>
 							</form>
@@ -86,20 +86,12 @@
 					</div>
 				</header>
 
+				<div id="showImg">
+				</div>
 				<!-- Text -->
-				<section>
-					<h3>貼文</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic id sequi placeat ducimus rem magnam saepe aperiam dolorem suscipit atque illo,
-						aliquid eos blanditiis est? Vero harum aliquid delectus distinctio officiis iste consectetur corporis ratione sint vel doloribus iure accusantium 
-						porro dolorum qui modi, nemo reprehenderit numquam exercitationem voluptates omnis similique? Nesciunt quam possimus rerum aperiam dolorem saepe odit quo!</p>
-					<hr />
-
-					<h3>貼文</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic id sequi placeat ducimus rem magnam saepe aperiam dolorem suscipit atque illo,
-						aliquid eos blanditiis est? Vero harum aliquid delectus distinctio officiis iste consectetur corporis ratione sint vel doloribus iure accusantium 
-						porro dolorum qui modi, nemo reprehenderit numquam exercitationem voluptates omnis similique? Nesciunt quam possimus rerum aperiam dolorem saepe odit quo!</p>
-					<hr />
-				</section>
+				<div class="lib">
+				</div>
+				
 			</div>
 		</section>
 
@@ -123,7 +115,7 @@
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
 		<script src="js/common.js"></script>
-		<script src="js/index.js"></script>
-		<script src="js/anonymous.js"></script>
+		<script src="js/group.js"></script>
+		<!--script src="js/anonymous.js"></script-->
 	</body>
 </html>

@@ -389,6 +389,64 @@ app.post('/api/show_profile',function(req,res){
     });
  });
 
+  /*社團貼文*/
+  app.post('/api/glparticle',function(req,res){
+    var gid = req.body.group_id.toString();
+    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes,article.group_id\
+                        from user_info,article left join likes on likes.article_id = article.article_id\
+                        where article.group_id = \"'+ gid +'\" and article.post_level = "2"\
+                        order by article.article_time desc limit 10';
+    con.query(art_text_sql,function(err,result){
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
+    });
+ });
+
+ app.post('/api/add_glparticle',function(req,res){
+    var gid = req.body.group_id.toString();
+    var cook_art = Number(req.body.cookie_art) + 1;
+    console.log(cook_art);
+    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes\
+                        from user_info,,article left join likes on likes.article_id = article.article_id\
+                        where article.group_id = \"'+ gid +'\" and article.post_level = "2"\
+                        order by article.article_time desc limit '+cook_art+',10';
+    con.query(art_text_sql,function(err,result){
+        if(err) throw err;
+        res.send(result);
+    });
+ });
+
+ /*app.post('/api/take_glpcommand',function(req,res){
+
+    var command_text_sql = 'select command.article_id,command.user_command,user_info.user_name\
+                            from command,user_info\
+                            where command.user_id = user_info.user_id;';
+    con.query(command_text_sql,function(err,result){
+        if(err) throw err;
+        res.send(result);
+    });
+ });*/
+
+ app.post('/api/glpindex',function(req,res){
+    console.log(req.body);
+    var art_text = req.body.article_text.toString();
+    var u_id = req.body.user_id.toString();
+    var post_lvl = req.body.post_level.toString();
+    var post_pic = req.body.article_pic.toString();
+    var group_id = Number(req.body.group_id);
+    if(u_id==""){
+        res.send("error");
+    }
+    else{
+        var insert_art_text = 'insert into Connect_db.article(article_text,user_id,article_picture,post_level,article_time,article.group_id) value( \"' + art_text + '\",\"'+u_id+'\",\"'+post_pic+'\",\"'+post_lvl+'\",now(),\"'+group_id+'\")';
+        con.query(insert_art_text, function(err, result) {
+            if (err) throw err;
+            res.send("success");
+        });
+    }
+ });
+ 
 /*好友名單*/
 app.post('/api/loadFriendlist', function(req, res) {
     var uid = req.body.u_id.toString();
