@@ -71,7 +71,7 @@ $(document).ready(function()
 	
 	var data = {
 		user_id :getCookie("token"),
-		gid :select_glp
+		group_id :select_glp
 	}
 	/* show article */
 	$.ajax({
