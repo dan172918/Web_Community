@@ -451,7 +451,7 @@ app.post('/api/show_profile',function(req,res){
 /*show user clubs*/
  app.post('/api/groups',function(req,res){
     var u_id = req.body.user_id.toString();
-    var user_groups = 'select club_name,club_id\
+    var user_groups = 'select club_name,user_club.club_id\
                         from Connect.user_club,Connect.club\
                         where club.club_id = user_club.club_id and user_club.user_id = \"'+u_id+'\"';
     con.query(user_groups,function(err,result){
