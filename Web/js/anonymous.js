@@ -413,7 +413,7 @@ function article(){
 			article_text : $('#AnmsArticle').val(),
 			article_pic : img_string
 		};
-		//console.log(post_data.article_pic);
+		console.log(post_data);
 		$.ajax({
 			url: "http://"+ host + port +"/api/index",
 			type: 'POST',
