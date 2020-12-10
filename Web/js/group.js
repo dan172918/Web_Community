@@ -43,7 +43,7 @@ $(document).ready(function()
 			{
 				var group_form = '<option value='+ glps[i].club_id +'>'+ glps[i].club_name +'</option>';
 				$('#grpSelect').prepend(group_form);
-				console.log(glp[i].club_id,glp[i].club_name);
+				console.log(glps[i].club_id,glps[i].club_name);
 			}
 		}
 	});
