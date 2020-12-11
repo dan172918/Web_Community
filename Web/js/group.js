@@ -496,7 +496,7 @@ function Searchgroup(){
             contentType : "application/json;charset=utf-8",
             success: function(msg){
 				var gname = '<div class=tmpclass id='+ msg[0].club_id +'>'+ msg[0].club_name +'</div>'
-				$('#group_name').replace(gname);
+				$('#group_name').html(gname);
 				
 			}
 		});
