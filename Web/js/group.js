@@ -485,7 +485,7 @@ function SearchUser(){
 }
 
 function Searchgroup(){
-	//$('#showSearch').empty();
+	$('#group_name').empty();
     if($('#scrh').val()!=""){
         var data={
 			group_name :$('#scrh').val()
@@ -499,7 +499,7 @@ function Searchgroup(){
             success: function(msg){
 				console.log(msg);
 				var gname = '<div class=tmpclass id='+ msg[0].club_id +'>'+ msg[0].club_name +'</div>'
-				$('#group_name').html(gname);
+				$('#group_name').append(gname);
 				
 			}
 		});
