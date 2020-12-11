@@ -1838,7 +1838,7 @@
 			animation: spin 2s linear ; */
 			position: absolute;
 			left:50%;
-			top:30%;
+			/* top:30%; */
 			display: none;
 		}
 		.letter {

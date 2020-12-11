@@ -28,6 +28,7 @@ $(function(){
 var select_glp;
 function selectgid(){
 	select_glp = $('#grpSelect').val();
+	console.log(select_glp);
 	var data = {
 		user_id :getCookie("token"),
 		group_id :select_glp
@@ -570,7 +571,7 @@ function glparticle(){
 			article_text : $('#Article').val(),
 			article_pic : img_string
 		};
-		//console.log(post_data.article_pic);
+		console.log(post_data);
 		$.ajax({
 			url: "http://"+ host + port +"/api/glpindex",
 			type: 'POST',
