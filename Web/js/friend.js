@@ -30,7 +30,7 @@ $(document).ready(function(){
                                         <img src="img/user.svg" class="img-circle" width="60px">\
                                     </div>\
                                     <div class="col-sm-8 col-md-8 col-4">\
-                                        <h4><a href="#" id = "FriendName">' + msg[i].user_name + '</a></h4>\
+                                        <h4><a href="profile.html?id='+msg[i].user_id+'" id = "FriendName">' + msg[i].user_name + '</a></h4>\
                                         <br><br>\
                                     </div>\
                                     <div class="col-sm-2 col-md-2 col-5">\
