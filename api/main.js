@@ -450,6 +450,7 @@ app.post('/api/show_profile',function(req,res){
  
 /*show user clubs*/
  app.post('/api/groups',function(req,res){
+    console.log(req.body);
     var u_id = req.body.user_id.toString();
     var user_groups = 'select club_name,user_club.club_id\
                         from user_club,club\
