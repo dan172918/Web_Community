@@ -26,6 +26,11 @@ $(function(){
 
 
 var select_glp;
+function selectgid(){
+	select_glp = $('#grpSelect').val();
+	console.log(select_glp);
+}
+
 $(document).ready(function()
 {
 	var uid={
@@ -65,12 +70,7 @@ $(document).ready(function()
 	});
 	$(".canc").click(function(){
 		$(".go_search").hide(500);
-	});	  
-	if($('#grpSelect').val()!="")
-	{
-		select_glp = $('#grpSelect').val();
-		console.log(select_glp);
-	}
+	});
 	
 
 	var data = {
