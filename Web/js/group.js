@@ -559,7 +559,7 @@ function fileUpLoad(_this){
 }
 console.log(select_glp);
 function glparticle(){
-	if($('#glpart').val() == '' && $('#glppic').val() == ''){
+	if($('#Article').val() == '' && $('#glppic').val() == ''){
 		alertMsg(NullPost);
 	}
 	else{
