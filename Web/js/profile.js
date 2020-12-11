@@ -26,9 +26,19 @@ $(document).ready(function()
 		$(".dataList").show();  //隱藏原個人資料
   		$(".forms").hide(); //顯示編輯模式
   	});
-	
-	var data = {
-		user_id : getCookie("token")
+	if(location.href.indexOf('?')!=-1){
+		var ary1 = url.split('?');
+		ary1 = ary1[1].split('=');
+		var data = {
+			user_id : ary1[1]
+		}
+		$("#editBtn").css("display","none");
+	}
+	else{
+		var data = {
+			user_id : getCookie("token")
+		}
+		$("#editBtn").css("display","block");
 	}
 	$.ajax({
 		url:"http://"+ host + port +"/api/show_profile",
