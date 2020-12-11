@@ -41,7 +41,7 @@ $(document).ready(function()
 			var i;
 			for(i=0;i<glps.length;i++)
 			{
-				var group_form = '<option value='+ glps[i].club_id +'>'+ glps[i].club_name +'</option>';
+				var group_form = '<option value=\"'+ glps[i].club_id +'\">'+ glps[i].club_name +'</option>';
 				$('#grpSelect').prepend(group_form);
 				console.log(glps[i].club_id,glps[i].club_name);
 			}
