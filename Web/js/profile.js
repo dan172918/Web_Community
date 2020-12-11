@@ -1,5 +1,17 @@
 $(document).ready(function()
 {
+	var data1 = {
+		user_id :getCookie("token")
+	}
+    $.ajax({
+		url: "http://"+ host + port +"/api/username",
+		type: 'POST',
+		data: JSON.stringify(data1),
+		contentType: "application/json;charset=utf-8",
+		success: function(name){
+			$('#user_name').text(name[0].user_name);
+		}
+	});
   	$("#editBtn").click(function()
   	{
 		var school = $("#school").text();
@@ -32,7 +44,7 @@ $(document).ready(function()
 		var data = {
 			user_id : ary1[1]
 		}
-		$("#editBtn").css("display","none");
+		$("#editBtn").css("visibility","hidden");
 	}
 	else{
 		var data = {
