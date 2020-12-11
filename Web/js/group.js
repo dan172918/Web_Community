@@ -47,9 +47,6 @@ $(document).ready(function()
 			}
 		}
 	});
-
-	select_glp = $('#grpSelect').val();
-	console.log(select_glp);
 	$(".plusgroup").click(function(){$(".showgroup").hide(500);});
 	/*發文切換*/
 	$(".post").click(function(){$("#postArticle").fadeToggle(500); });
@@ -70,6 +67,9 @@ $(document).ready(function()
 		$(".go_search").hide(500);
 	});	  
 	
+	select_glp = $('#grpSelect').val();
+	console.log(select_glp);
+
 	var data = {
 		user_id :getCookie("token"),
 		group_id :select_glp
