@@ -557,7 +557,7 @@ function fileUpLoad(_this){
 		img_string = this.result
 	}
 }
-
+console.log(select_glp);
 function glparticle(){
 	if($('#glpart').val() == '' && $('#glppic').val() == ''){
 		alertMsg(NullPost);
