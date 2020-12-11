@@ -172,9 +172,9 @@ $(document).ready(function()
 			{
 				var group_form = '<option value=\"'+ glps[i].club_id +'\">'+ glps[i].club_name +'</option>';
 				$('#grpSelect').append(group_form);
-				//console.log(glps[i].club_id,glps[i].club_name);
+				console.log(glps[i].club_id,glps[i].club_name);
 			}
-			console.log(glps[0].club_id,glps[0].club_name);
+			//console.log(glps[0].club_id,glps[0].club_name);
 		}
 	});
 	$(".plusgroup").click(function(){$(".showgroup").hide(500);});

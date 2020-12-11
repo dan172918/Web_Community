@@ -497,8 +497,9 @@ app.post('/api/show_profile',function(req,res){
  app.post('/api/groups',function(req,res){
     console.log(req.body);
     var u_id = req.body.user_id.toString();
-    var user_groups = 'select club_name\
-                        from club';
+    var user_groups = 'select club_name,user_club.club_id\
+                        from club,user_club\
+                        where user_club.user_id = \"' + u_id + '\"';
     con.query(user_groups,function(err,result){
         if(err) throw err;
         res.send(result);
