@@ -28,7 +28,6 @@ $(function(){
 var select_glp;
 function selectgid(){
 	select_glp = $('#grpSelect').val();
-	console.log(select_glp);
 }
 
 $(document).ready(function()
