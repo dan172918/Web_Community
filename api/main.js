@@ -414,7 +414,7 @@ app.post('/api/show_profile',function(req,res){
     var gid = Number(req.body.group_id);
     var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes,article.club_id\
                         from user_info,article left join likes on likes.article_id = article.article_id\
-                        where article.club_id = \"'+ gid +'\" and article.post_level = "2"\
+                        where article.club_id = \"'+ gid +'\" and article.post_level = "2" and user_info.user_id = article.user_id\
                         order by article.article_time desc limit 10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
