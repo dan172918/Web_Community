@@ -557,7 +557,7 @@ function fileUpLoad(_this){
 		img_string = this.result
 	}
 }
-console.log(select_glp);
+
 function glparticle(){
 	if($('#Article').val() == '' && $('#glppic').val() == ''){
 		alertMsg(NullPost);
@@ -577,7 +577,11 @@ function glparticle(){
 			data: JSON.stringify(post_data),
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
-				//alertMsgThenGoToSomewhere(FailedPost, "./index.html")
+				if(msg == "success")
+				{
+					$('#Article').html("");
+					$('#plusbutton').hide(500);
+				}
 			},
 			error: function(xhr, ajaxOptions, thrownError){
 				alertMsg(ErrorMsg);

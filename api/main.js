@@ -422,6 +422,7 @@ app.post('/api/show_profile',function(req,res){
         console.log(result);
     });
  });
+ 
 /*show社團貼文+10*/
  app.post('/api/add_glparticle',function(req,res){
     var gid = Number(req.body.group_id);
