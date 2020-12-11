@@ -48,7 +48,7 @@
 			</nav>
 			<!-- <form action="group.html"> -->
 				<input type="text" id="scrh" name="search" placeholder="請輸入關鍵字" autocomplete="off">
-				<input class="go groupGoSearch" type="submit" value="GO" onclick="SearchUser()">
+				<input class="go groupGoSearch" type="submit" value="GO" onclick="Searchgroup()">
 			<!-- </form> -->
 		</header>
 		<!-- Header End -->
@@ -67,12 +67,12 @@
 									<div class="card-header bg-info" id="headingOne">
 										<div class="row justify-content-end">
 											<h4 class="mb-0 col-6">
-												<button class="btn btn-info btn-title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-													吉娃娃的快樂天地
+												<button class="btn btn-info btn-title" id="group_name" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													
 												</button>
 											</h4>
 											<div class="col-3">
-												<button type="button" class="btn btn-info plusgroup"><i class="fas fa-plus add-pr"></i></button>
+												<button type="button" id="plus" class="btn btn-info plusgroup" onclick="addgroup(_this);"><i class="fas fa-plus add-pr"></i></button>
 											</div>
 										</div>
 									</div>
@@ -96,7 +96,7 @@
 					<!--mobile search-->
 					<div class="mobile-groupsearch">
 						<input type="text" id="scrh" name="search" placeholder="請輸入關鍵字" autocomplete="off">
-						<input class="go groupGoSearch" type="submit" value="GO" onclick="SearchUser()">	
+						<input class="go groupGoSearch" type="submit" value="GO" onclick="Searchgroup()">	
 					</div>
 
 					<div class="bar">

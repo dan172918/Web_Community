@@ -422,7 +422,7 @@ app.post('/api/show_profile',function(req,res){
         console.log(result);
     });
  });
- 
+
 /*show社團貼文+10*/
  app.post('/api/add_glparticle',function(req,res){
     var gid = Number(req.body.group_id);
@@ -469,13 +469,36 @@ app.post('/api/show_profile',function(req,res){
     }
  });
  
+ app.post('/api/SearchGroup',function(req,res){
+    var g_name = req.body.group_name.toString();
+    var art_text_sql = 'select club.club_name,club.club_id\
+                        from club\
+                        where club.club_name = \"'+g_name+'\"';
+    con.query(art_text_sql,function(err,result){
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
+    });
+ });
+
+ app.post('/api/PlusGroup',function(req,res){
+    var gid = req.body.group_id.toString();
+    var uid = req.body.user_id.toString();
+    var pg = 'insert into Connect.user_club(user_id,group_id)\
+                        value(\"' + uid + '\",\"' + gid + '\")';
+    con.query(pg,function(err,result){
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
+    });
+ });
+
 /*show user clubs*/
  app.post('/api/groups',function(req,res){
     console.log(req.body);
     var u_id = req.body.user_id.toString();
-    var user_groups = 'select club_name,user_club.club_id\
-                        from user_club,club\
-                        where club.club_id = user_club.club_id and user_club.user_id = \"'+u_id+'\"';
+    var user_groups = 'select club_name\
+                        from club';
     con.query(user_groups,function(err,result){
         if(err) throw err;
         res.send(result);
