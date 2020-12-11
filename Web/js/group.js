@@ -509,7 +509,7 @@ function Searchgroup(){
 
 function addgroup(_this){
         var data={
-            group_id :$("#"+$(_this).parents("showgroup").find('.tmpclass').attr("id").toString()),
+            group_id :$('#group_name').children('.tmpclass').attr('id'),
 			user_id :getCookie("token")
 		}
 		$.ajax({
