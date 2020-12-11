@@ -485,7 +485,7 @@ app.post('/api/show_profile',function(req,res){
  app.post('/api/PlusGroup',function(req,res){
     var gid = req.body.group_id.toString();
     var uid = req.body.user_id.toString();
-    var pg = 'insert into Connect.user_club(user_id,group_id)\
+    var pg = 'insert into Connect.user_club(user_id,club_id)\
                         value(\"' + uid + '\",\"' + gid + '\")';
     con.query(pg,function(err,result){
         if(err) throw err;
