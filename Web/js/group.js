@@ -1,6 +1,6 @@
 // const { getCiphers } = require("crypto");
 
-window.onload = function() { 
+/*window.onload = function() { 
     setTimeout(function(){
         $(".load").fadeIn(1500);
         $(".load").fadeOut(1500);
@@ -9,7 +9,7 @@ window.onload = function() {
     setTimeout(function(){
       $(".waitloading").css("opacity","1");
     },4000)
-};
+};*/
 
 $(function(){
 	$('#BackTop').click(function(){ 
