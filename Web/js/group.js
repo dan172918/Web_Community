@@ -572,7 +572,7 @@ function glparticle(){
 		};
 		//console.log(post_data.article_pic);
 		$.ajax({
-			url: "http://"+ host + port +"/api/index",
+			url: "http://"+ host + port +"/api/glpindex",
 			type: 'POST',
 			data: JSON.stringify(post_data),
 			contentType: "application/json;charset=utf-8",
