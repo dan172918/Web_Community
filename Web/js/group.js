@@ -486,6 +486,7 @@ function SearchUser(){
 
 function Searchgroup(){
 	$('#group_name').empty();
+	$(".showgroup").show();
     if($('#scrh').val()!=""){
         var data={
 			group_name :$('#scrh').val()
