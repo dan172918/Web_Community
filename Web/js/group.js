@@ -48,7 +48,7 @@ $(document).ready(function()
 		}
 	});
 
-	select_glp = $('#grpSelect').value;
+	select_glp = $('#grpSelect').val();
 	console.log(select_glp);
 	$(".plusgroup").click(function(){$(".showgroup").hide(500);});
 	/*發文切換*/
