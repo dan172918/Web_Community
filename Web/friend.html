@@ -31,8 +31,10 @@
                 </ul>
             </nav>
             <form method="post" target="hideIframe">
-                <input type="text" id="scrh" name="search" placeholder="請輸入關鍵字" autocomplete="off">
-                <input class="go goSearch" type="button" value="GO" onclick="SearchUser()">
+                <div class="websearch">
+                    <input type="text" id="scrh" name="search" placeholder="請輸入關鍵字" autocomplete="off">
+                    <input class="go goSearch tet" type="button" value="GO" onclick="SearchUser(this)">
+                </div>
             </form>
             <iframe id="myIframe" name="hideIframe" style="display:none;"></iframe>    
         </header>
@@ -43,7 +45,7 @@
             <!--mobile search-->
             <div class="mobile-friendsearch">
                 <input type="text" id="scrh" name="search" placeholder="請輸入關鍵字" autocomplete="off">
-                <input class="go goSearch" type="button" value="GO" onclick="SearchUser()">
+                <input class="go goSearch" type="button" value="GO" onclick="SearchUser(this)">
             </div>
 
             <header class="major">

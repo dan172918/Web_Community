@@ -143,12 +143,12 @@ function rejectFriend(thisFriend){
     });
 }
 /*搜尋好友*/
-function SearchUser(){
+function SearchUser(Serthis){
     $('#showSearch').empty();
-    if($('#scrh').val()!=""){
+    if($(Serthis).prev('#scrh').val()!=""){
         var data={
             u_id :getCookie("token"),
-            user_name :$('#scrh').val()
+            user_name :$(Serthis).prev('#scrh').val()
         }
         $.ajax({
             url : "http://"+ host + port +"/api/SearchFriend",
