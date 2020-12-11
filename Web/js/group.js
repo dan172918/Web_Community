@@ -488,7 +488,7 @@ function Searchgroup(){
 	$('#showSearch').empty();
     if($('#scrh').val()!=""){
         var data={
-			group_name :$('#scrh').val()
+			group_name :$('#scrh').text()
 		}
 		$.ajax({
             url : "http://"+ host + port +"/api/SearchGroup",
