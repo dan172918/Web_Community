@@ -470,6 +470,7 @@ app.post('/api/show_profile',function(req,res){
  });
  
  app.post('/api/SearchGroup',function(req,res){
+     console.log(req.body);
     var g_name = req.body.group_name.toString();
     var art_text_sql = 'select club.club_name,club.club_id\
                         from club\

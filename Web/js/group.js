@@ -485,17 +485,19 @@ function SearchUser(){
 }
 
 function Searchgroup(){
-	$('#showSearch').empty();
+	//$('#showSearch').empty();
     if($('#scrh').val()!=""){
         var data={
-			group_name :$('#scrh').text()
+			group_name :$('#scrh').val()
 		}
+		console.log(group_name);
 		$.ajax({
             url : "http://"+ host + port +"/api/SearchGroup",
             type : 'POST',
             data : JSON.stringify(data),
             contentType : "application/json;charset=utf-8",
             success: function(msg){
+				console.log(msg);
 				var gname = '<div class=tmpclass id='+ msg[0].club_id +'>'+ msg[0].club_name +'</div>'
 				$('#group_name').html(gname);
 				
