@@ -27,7 +27,7 @@ $(document).ready(function()
   		$(".forms").hide(); //顯示編輯模式
   	});
 	if(location.href.indexOf('?')!=-1){
-		var ary1 = url.split('?');
+		var ary1 = location.href.split('?');
 		ary1 = ary1[1].split('=');
 		var data = {
 			user_id : ary1[1]
