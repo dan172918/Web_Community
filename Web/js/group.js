@@ -28,7 +28,6 @@ $(function(){
 var select_glp;
 function selectgid(){
 	select_glp = $('#grpSelect').val();
-	console.log(select_glp);
 	var data = {
 		user_id :getCookie("token"),
 		group_id :select_glp
@@ -578,7 +577,7 @@ function glparticle(){
 			data: JSON.stringify(post_data),
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
-				alertMsgThenGoToSomewhere(FailedPost, "./index.html")
+				//alertMsgThenGoToSomewhere(FailedPost, "./index.html")
 			},
 			error: function(xhr, ajaxOptions, thrownError){
 				alertMsg(ErrorMsg);
