@@ -132,6 +132,39 @@ function selectgid(){
 	});
 
 	$.ajax({
+		url: "http://"+ host + port +"/api/show_group_member",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(glpmem){
+			var cnt1;
+			var texthtml1 = '<div class="card group-result">\
+								<div class="card-header bg-info" id="headingOne">\
+									<div class="row justify-content-end">\
+										<h4 class="mb-0 col-6">\
+											<button class="btn btn-info btn-title" id="group_name" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">\
+												<div class="tmpclass">'+ glpmem[0].club_name +'\
+												</div>\
+											</button>\
+										</h4>\
+									</div>\
+								</div>\
+								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">\
+									<div class="card-body card-pd">\
+										<ul class="list-group list-group-flush" id="mem">\
+										</ul>\
+									</div>\
+								</div>\
+							</div>';
+			$('#show_mem').append(texthtml1);
+			for(cnt1=0;cnt1<glpmem.length;cnt1++){
+				var texthtml2 = '<li class="list-group-item"><i class="fas fa-user"></i>'+ glpmem[cnt].user_name +'</li>'				
+				$("#mem").append(texthtml2);
+			}
+		}
+	});
+
+	$.ajax({
 		url: "http://"+ host + port +"/api/take_command",
 		type: 'POST',
 		data: JSON.stringify(data),

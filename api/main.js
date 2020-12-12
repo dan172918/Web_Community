@@ -494,6 +494,20 @@ app.post('/api/show_profile',function(req,res){
     });
  });
 
+
+app.post('/api/show_group_member',function(req,res){
+    console.log(req.body);
+   var gid = req.body.group_id.toString();
+   var groupsearch = 'select club.club_name,user_info.user_name\
+                     from (user_club left join club on user_club.club_id = club.club_id)join user_info on user_info.user_id = user_club.user_id\
+                     where club.club_id = \"' + gid + '\"';
+   con.query(groupsearch,function(err,result){
+       if(err) throw err;
+       res.send(result);
+       console.log(result);
+   });
+});
+
 /*show user clubs*/
  app.post('/api/groups',function(req,res){
     console.log(req.body);
