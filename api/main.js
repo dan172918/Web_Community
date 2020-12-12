@@ -521,6 +521,25 @@ app.post('/api/show_group_member',function(req,res){
     });
  });
 
+ /*create club*/
+ app.post('/api/creategroup',function(req,res){
+    console.log(req.body);
+    var u_id = req.body.user_id.toString();
+    var g_name = req.body.group_name.toString();
+    var insert_group = 'insert into Connect_db.club(club_name)\
+                       value(\"' + g_name + '\")';
+    var insert_user_club = 'insert into Connect_db.user_club(club_id,user_id)\
+                            value((select club_id\
+                                   from club\
+                                   where club_name = \"' + g_name + '\"),\"' + u_id + '\")';
+    con.query(insert_group,function(err,result){
+        if(err) throw err;
+        con.query(insert_user_club,function(err,result){
+            if(err) throw err;
+        });
+    });
+ });
+
 /*好友名單*/
 app.post('/api/loadFriendlist', function(req, res) {
     var uid = req.body.u_id.toString();

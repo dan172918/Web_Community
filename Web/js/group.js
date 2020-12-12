@@ -545,16 +545,31 @@ function Searchgroup(){
 }
 
 function addgroup(_this){
-        var data={
-            group_id :$('#group_name').children('.tmpclass').attr('id'),
-			user_id :getCookie("token")
+	var data={
+		group_id :$('#group_name').children('.tmpclass').attr('id'),
+		user_id :getCookie("token")
+	}
+	$.ajax({
+		url : "http://"+ host + port +"/api/PlusGroup",
+		type : 'POST',
+		data : JSON.stringify(data),
+		contentType : "application/json;charset=utf-8",
+		success: function(msg){
 		}
-		$.ajax({
-            url : "http://"+ host + port +"/api/PlusGroup",
-            type : 'POST',
-            data : JSON.stringify(data),
-            contentType : "application/json;charset=utf-8",
-            success: function(msg){
-			}
-		});
+	});
+}
+
+function creategroup(){
+	var data={
+		group_name :$('#creategroup').val(),
+		user_id :getCookie("token")
+	}
+	$.ajax({
+		url : "http://"+ host + port +"/api/creategroup",
+		type : 'POST',
+		data : JSON.stringify(data),
+		contentType : "application/json;charset=utf-8",
+		success: function(msg){
+		}
+	});
 }
