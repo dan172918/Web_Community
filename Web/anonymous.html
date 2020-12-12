@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--css link-->
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<link rel="stylesheet" href="fragments/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<script src="https://kit.fontawesome.com/753b6e1414.js" crossorigin="anonymous"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--title-->
+		<title>Anonymous</title>
+		<!--logo-->
+		<link rel="shortcut icon" href="img/Steam.ico">
+	</head>
+
+	<body class="anonybg">
+		<div class="load">
+			<div class="letter-holder">
+				<div class="l-1 letter">L</div>
+				<div class="l-2 letter">o</div>
+				<div class="l-3 letter">a</div>
+				<div class="l-4 letter">d</div>
+				<div class="l-5 letter">i</div>
+				<div class="l-6 letter">n</div>
+				<div class="l-7 letter">g</div>
+				<div class="l-8 letter">.</div>
+				<div class="l-9 letter">.</div>
+				<div class="l-10 letter">.</div>
+			  </div>
+		</div>
+		<!-- Header Start -->
+	<div class="waitloading">
+		<header id="header">
+			<h1><a href="index.html">CONNECT</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">首頁</a></li>
+					<li><a href="group.html">社團</a></li>
+					<li><a href="anonymous.html">匿名</a></li>
+					<li><a href="friend.html">好友聊天</a></li>
+					<li><a href="profile.html" id="user_name"></a></li>
+					<li><a href="login.html" class="button special">登出</a></li>
+				</ul>
+			</nav>
+
+		
+		</header>
+		<!-- Header End -->
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="container">
+				<header class="major">
+					<h2>A̽͆̒̑̕n̛͋́o҇̌͆͂̒n͌́͛͠y̒̂͒̾̈́͡m̉́̾̋͡o̊̎̀̚͠ǘ͌̄̄͡s҇̓͗͂͛</h2>
+					<input class="post" type="button">
+					<div class="justify-content-start container">
+						<div class="col-md-6 article " id="postArticle">
+							<form action="anonymous.html">
+								<h3 class="card-title text-center mb-4 mt-1 title">發表文章</h3>
+								<textarea class="form-control" id="AnmsArticle" rows="10"></textarea>
+								
+								<div class="row col-12 col-md-12">
+									<input id="Anmspic" type="file" multiple onchange="fileUpLoad(this);" class="upload" accept="image/*">
+									<label for="Anmspic" class="btn btn-secondary pic mr-5"  id="post_Pic" ></label>
+									<input class="btn btn-secondary col-md-3 col-12 " type="submit" id="user_Post" onclick="article()" value="發布">
+									<input class="btn btn-secondary col-md-3 col-12" type="button" id="cancel" value="取消">
+								</div>
+							</form>
+						</div>
+					</div>
+				</header>
+				<div id="AnmsshowImg">
+				</div>
+				<!-- Text -->
+				<div class="anmslib">
+				</div>
+				<button type="button" id="BackTop" class="toTop-arrow"><span><i class="fas fa-arrow-circle-up"></i></span></button>
+
+			</div>
+
+		</section>
+		
+		<!-- Footer -->
+		<footer id="footer" class="anonyfoo">
+			<div class="container">
+				<div class="row justify-content-end">	
+					<div class="col-9 foo">	
+						滑到底囉<br/>請重新整理來刷新動態
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+	</div>	
+
+		<!--js link-->
+		<script src="fragments/jquery/jquery-3.4.1.min.js"></script>
+		<script src="fragments/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="fragments/bootbox/bootbox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/common.js"></script>
+		<!--script src="js/index.js"></script-->
+		<script src="js/anonymous.js"></script>
+	</body>
+</html>
