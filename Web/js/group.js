@@ -137,6 +137,7 @@ function selectgid(){
 		data: JSON.stringify(data),
 		contentType: "application/json;charset=utf-8",
 		success: function(glpmem){
+			console.log(glpmem);
 			var cnt1;
 			var texthtml1 = '<div class="card group-result">\
 								<div class="card-header bg-info" id="headingOne">\
