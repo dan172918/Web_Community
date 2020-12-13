@@ -206,6 +206,7 @@ $(document).ready(function()
 		contentType: "application/json;charset=utf-8",
 		success: function(glps){
 			var i;
+			console.log(glps);
 			for(i=0;i<glps.length;i++)
 			{
 				var group_form = '<option value=\"'+ glps[i].club_id +'\">'+ glps[i].club_name +'</option>';
