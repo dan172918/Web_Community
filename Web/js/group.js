@@ -562,7 +562,7 @@ function addgroup(_this){
 	});
 }
 
-function creategroup(){
+function Creategroup(){
 	var data={
 		group_name :$('#creategroup').val(),
 		user_id :getCookie("token")
