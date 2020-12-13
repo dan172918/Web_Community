@@ -513,7 +513,7 @@ app.post('/api/show_group_member',function(req,res){
     console.log(req.body);
     var u_id = req.body.user_id.toString();
     var user_groups = 'select club_name,user_club.club_id\
-                        from club,user_club\
+                        from club join user_club on club.club_id = user_club.club_id\
                         where user_club.user_id = \"' + u_id + '\"';
     con.query(user_groups,function(err,result){
         if(err) throw err;
