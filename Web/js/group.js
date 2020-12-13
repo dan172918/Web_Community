@@ -539,9 +539,19 @@ function Searchgroup(){
             contentType : "application/json;charset=utf-8",
             success: function(msg){
 				console.log(msg);
-				var gname = '<div class="tmpclass" id='+ msg[0].club_id +'>'+ msg[0].club_name +'</div>'
-				$('#group_name').append(gname);
-				
+				var gname = '<div class="card group-result">\
+								<div class="card-header bg-info" id="headingOne">\
+									<div class="row justify-content-end">\
+										<h4 class="mb-0 col-6">\
+											<button class="btn btn-info btn-title" id="group_name" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">\
+												<div class="tmpclass" id='+ msg[0].club_id +'>'+ msg[0].club_name +'\
+												</div>\
+											</button>\
+										</h4>\
+									</div>\
+								</div>\
+							</div>'
+				$('#show_mem').append(gname);
 			}
 		});
 	}
