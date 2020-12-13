@@ -518,6 +518,7 @@ app.post('/api/show_group_member',function(req,res){
     con.query(user_groups,function(err,result){
         if(err) throw err;
         res.send(result);
+        console.log(result);
     });
  });
 
