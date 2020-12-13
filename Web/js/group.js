@@ -567,6 +567,7 @@ function creategroup(){
 		group_name :$('#creategroup').val(),
 		user_id :getCookie("token")
 	}
+	console.log(data.group_name);
 	$.ajax({
 		url : "http://"+ host + port +"/api/creategroup",
 		type : 'POST',
