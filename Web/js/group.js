@@ -32,6 +32,7 @@ $(".groupaddbox").click(() => {
 var select_glp;
 function selectgid(){
 	select_glp = $('#grpSelect').val();
+	$(".lib").html("");
 	var data = {
 		user_id :getCookie("token"),
 		group_id :select_glp
