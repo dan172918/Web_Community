@@ -158,7 +158,7 @@ function selectgid(){
 							</div>';
 			$('#show_mem').append(texthtml1);
 			for(cnt1=0;cnt1<glpmem.length;cnt1++){
-				var texthtml2 = '<li class="list-group-item"><i class="fas fa-user"></i>'+ glpmem[cnt].user_name +'</li>'				
+				var texthtml2 = '<li class="list-group-item"><i class="fas fa-user"></i>'+ glpmem[cnt1].user_name +'</li>'				
 				$("#mem").append(texthtml2);
 			}
 		}
