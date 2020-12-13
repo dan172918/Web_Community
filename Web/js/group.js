@@ -531,7 +531,7 @@ function Searchgroup(){
         var data={
 			group_name :$('#scrh').val()
 		}
-		console.log(group_name);
+		console.log(data.group_name);
 		$.ajax({
             url : "http://"+ host + port +"/api/SearchGroup",
             type : 'POST',
