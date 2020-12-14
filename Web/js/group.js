@@ -617,7 +617,8 @@ function Creategroup(){
 				var i,tmp=0;
 				for(i=0;i<chick.length;i++)
 				{
-					if(chick[i].group_name == $('#creategroup').val())
+					console.log(chick[i].club_name)
+					if(chick[i].club_name == $('#creategroup').val())
 					{
 						alert("這個名稱有人用過囉");
 						tmp=1;
