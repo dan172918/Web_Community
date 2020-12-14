@@ -88,7 +88,7 @@ $(document).ready(function()
 										</div>';
 				}
 
-				if(msg[cnt].like_id)
+				if(msg[cnt].user_id == getCookie("token"))
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
@@ -109,7 +109,7 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
-				else if(!msg[cnt].like_id)
+				else if(!msg[cnt].user_id != getCookie("token"))
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
