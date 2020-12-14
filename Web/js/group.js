@@ -33,6 +33,7 @@ var select_glp;
 function selectgid(){
 	select_glp = $('#grpSelect').val();
 	$(".lib").html("");
+	$('#group_name').empty();
 	var data = {
 		user_id :getCookie("token"),
 		group_id :select_glp
@@ -160,7 +161,9 @@ function selectgid(){
 							</div>';
 			$('#show_mem').append(texthtml1);
 			for(cnt1=0;cnt1<glpmem.length;cnt1++){
-				var texthtml2 = '<li class="list-group-item"><i class="fas fa-user"></i>'+ glpmem[cnt1].user_name +'</li>'				
+				var tmp = '<li class="list-group-item"><i class="fas fa-user"></i>'+ glpmem[cnt1].user_name +'</li>';
+				var texthtml2;
+				texthtml2 += tmp;	
 				$("#mem").append(texthtml2);
 			}
 		}
@@ -529,7 +532,8 @@ function Searchgroup(){
 	$(".showgroup").show();
     if($('#scrh').val()!=""){
         var data={
-			group_name :$('#scrh').val()
+			group_name :$('#scrh').val(),
+			user_id :getCookie("token")
 		}
 		console.log(data.group_name);
 		$.ajax({
@@ -539,6 +543,27 @@ function Searchgroup(){
             contentType : "application/json;charset=utf-8",
             success: function(msg){
 				console.log(msg);
+				if(msg)
+				var i;
+				for(i=0;i<msg.length;i++)
+				{
+					if(msg[i].user_id == data.user_id)
+					{
+						var gname = '<div class="card group-result">\
+										<div class="card-header bg-info" id="headingOne">\
+											<div class="row justify-content-end">\
+												<h4 class="mb-0 col-6">\
+													<button class="btn btn-info btn-title" id="group_name" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">\
+														<div class="tmpclass" id='+ msg[0].club_id +'>'+ msg[0].club_name +'\
+														</div>\
+													</button>\
+												</h4>\
+											</div>\
+										</div>\
+									</div>';
+						break;
+					}
+				}
 				var gname = '<div class="card group-result">\
 								<div class="card-header bg-info" id="headingOne">\
 									<div class="row justify-content-end">\
@@ -548,6 +573,9 @@ function Searchgroup(){
 												</div>\
 											</button>\
 										</h4>\
+										<div class="col-3">\
+											<button type="button" id="plus" class="btn btn-info plusgroup" onclick="addgroup(this);"><i class="fas fa-plus add-pr"></i></button>\
+										</div>\
 									</div>\
 								</div>\
 							</div>'
@@ -579,11 +607,31 @@ function Creategroup(){
 	}
 	console.log(data.group_name);
 	$.ajax({
-		url : "http://"+ host + port +"/api/creategroup",
+		url : "http://"+ host + port +"/api/chickgroups",
 		type : 'POST',
-		data : JSON.stringify(data),
 		contentType : "application/json;charset=utf-8",
-		success: function(msg){
+		success: function(chick){
+			var i,tmp=0;
+			for(i=0;i<chick.length;i++)
+			{
+				if(chick[i].group_name == data.group_name)
+				{
+					alert("這個名稱有人用過囉");
+					tmp=1;
+					break;
+				}
+			}
 		}
 	});
+	if(tmp == 0)
+	{
+		$.ajax({
+			url : "http://"+ host + port +"/api/creategroup",
+			type : 'POST',
+			data : JSON.stringify(data),
+			contentType : "application/json;charset=utf-8",
+			success: function(msg){
+			}
+		});
+	}
 }

@@ -472,8 +472,9 @@ app.post('/api/show_profile',function(req,res){
  app.post('/api/SearchGroup',function(req,res){
      console.log(req.body);
     var g_name = req.body.group_name.toString();
-    var art_text_sql = 'select club.club_name,club.club_id\
-                        from club\
+    var uid = req.body.user_id.toString();
+    var art_text_sql = 'select club.club_name,club.club_id,user_club.user_id\
+                        from club join user_club on club.club_id = user_club.club_id\
                         where club.club_name = \"'+g_name+'\"';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
@@ -516,6 +517,16 @@ app.post('/api/show_group_member',function(req,res){
                         from club join user_club on club.club_id = user_club.club_id\
                         where user_club.user_id = \"' + u_id + '\"';
     con.query(user_groups,function(err,result){
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
+    });
+ });
+
+ app.post('/api/chickgroups',function(req,res){
+    console.log(req.body);
+    var select_group_name = 'select club_name from club';
+    con.query(select_group_name,function(err,result){
         if(err) throw err;
         res.send(result);
         console.log(result);
