@@ -166,6 +166,7 @@ function selectgid(){
 				</div>';
 			var finaltexthtml = texthtml1 + texthtml2 + texthtml3;
 			$("#show_mem").append(finaltexthtml);
+			$(".showgroup").show();
 		}
 	});
 
