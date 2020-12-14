@@ -78,7 +78,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">匿名</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreanmsCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -99,7 +99,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">匿名</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreanmsCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -296,7 +296,7 @@ function add_anmsarticle(){
 											<label class="like_counter">'+add[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">匿名</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -317,7 +317,7 @@ function add_anmsarticle(){
 											<label class="like_counter">'+add[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">匿名</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\

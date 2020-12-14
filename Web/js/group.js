@@ -611,37 +611,40 @@ function addgroup(_this){
 }
 
 function Creategroup(){
-	var data={
-		group_name :$('#creategroup').val(),
-		user_id :getCookie("token")
-	}
-	console.log(data.group_name);
-	$.ajax({
-		url : "http://"+ host + port +"/api/chickgroups",
-		type : 'POST',
-		contentType : "application/json;charset=utf-8",
-		success: function(chick){
-			var i,tmp=0;
-			for(i=0;i<chick.length;i++)
-			{
-				if(chick[i].group_name == data.group_name)
+	if($('#creategroup').val() != "")
+	{
+		var data={
+			group_name :$('#creategroup').val(),
+			user_id :getCookie("token")
+		}
+		console.log(data.group_name);
+		$.ajax({
+			url : "http://"+ host + port +"/api/chickgroups",
+			type : 'POST',
+			contentType : "application/json;charset=utf-8",
+			success: function(chick){
+				var i,tmp=0;
+				for(i=0;i<chick.length;i++)
 				{
-					alert("這個名稱有人用過囉");
-					tmp=1;
-					break;
+					if(chick[i].group_name == data.group_name)
+					{
+						alert("這個名稱有人用過囉");
+						tmp=1;
+						break;
+					}
 				}
 			}
-		}
-	});
-	if(tmp == 0)
-	{
-		$.ajax({
-			url : "http://"+ host + port +"/api/creategroup",
-			type : 'POST',
-			data : JSON.stringify(data),
-			contentType : "application/json;charset=utf-8",
-			success: function(msg){
-			}
 		});
+		if(tmp == 0)
+		{
+			$.ajax({
+				url : "http://"+ host + port +"/api/creategroup",
+				type : 'POST',
+				data : JSON.stringify(data),
+				contentType : "application/json;charset=utf-8",
+				success: function(msg){
+				}
+			});
+		}
 	}
 }
