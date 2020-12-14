@@ -203,22 +203,16 @@ app.post('/api/index',function(req,res){
 
  app.post('/api/article',function(req,res){
     var u_id = req.body.user_id.toString();
-    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.user_id,article.likes\
-                        from user_info,(select user_id\
-                                        from user_info,((select user_id_self as id\
-                                                        from friend\
-                                                        where user_id_other=\"'+u_id+'\")\
-                                                        union\
-                                                        (select user_id_other as id\
-                                                        from friend\
-                                                        where user_id_self=\"'+u_id+'\")\
-                                                        union\
-                                                        (select user_info.user_id\
-                                                        from user_info\
-                                                        where user_id = \"'+u_id+'\")) as newTable0\
-                                        where user_id=id) as newTable1\
-                                        ,article left join likes on likes.article_id = article.article_id\
-                        where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id and article.post_level = "0"\
+    var art_text_sql = 'select article.article_id,article.article_text,article.article_picture,user_info.user_name,likes.user_id,article.likes\
+                        from user_info,((select user_id_self as id\
+                            from friend\
+                            where user_id_other=\"'+u_id+'\" or user_id_self=\"'+u_id+'\")\
+                            union\
+                            (select user_id_other as id\
+                            from friend\
+                            where user_id_self=\"'+u_id+'\" or user_id_other=\"'+u_id+'\")) as newTable0\
+                            ,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+u_id+'\"\
+                        where article.user_id = newTable0.id and newTable0.id = user_info.user_id and article.post_level = "0"\
                         order by article.article_time desc limit 10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
@@ -232,22 +226,16 @@ app.post('/api/index',function(req,res){
     var u_id = req.body.user_id.toString();
     var cook_art = Number(req.body.cookie_art) + 1;
     console.log(cook_art);
-    var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.user_id,article.likes\
-                        from user_info,(select user_id\
-                                        from user_info,((select user_id_self as id\
-                                                        from friend\
-                                                        where user_id_other=\"'+u_id+'\")\
-                                                        union\
-                                                        (select user_id_other as id\
-                                                        from friend\
-                                                        where user_id_self=\"'+u_id+'\")\
-                                                        union\
-                                                        (select user_info.user_id\
-                                                        from user_info\
-                                                        where user_id = \"'+u_id+'\")) as newTable0\
-                                        where user_id=id) as newTable1\
-                                        ,article left join likes on likes.article_id = article.article_id\
-                        where user_info.user_id = newTable1.user_id and article.user_id = newTable1.user_id and user_info.user_id = article.user_id and article.post_level = "0"\
+    var art_text_sql = 'select article.article_id,article.article_text,article.article_picture,user_info.user_name,likes.user_id,article.likes\
+                        from user_info,((select user_id_self as id\
+                            from friend\
+                            where user_id_other=\"'+u_id+'\" or user_id_self=\"'+u_id+'\")\
+                            union\
+                            (select user_id_other as id\
+                            from friend\
+                            where user_id_self=\"'+u_id+'\" or user_id_other=\"'+u_id+'\")) as newTable0\
+                            ,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+u_id+'\"\
+                        where article.user_id = newTable0.id and newTable0.id = user_info.user_id and article.post_level = "0"\
                         order by article.article_time desc limit '+cook_art+',10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
