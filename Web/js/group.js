@@ -24,11 +24,6 @@ $(function(){
 	}).scroll();
 });
 
-$(".groupaddbox").click(() => {
-	// if($(".groupbox").val() !== "")
-		swal("創建成功!", "快邀請朋友加入你的社團吧", "success");
-});
-
 var select_glp;
 function selectgid(){
 	select_glp = $('#grpSelect').val();
@@ -639,6 +634,7 @@ function Creategroup(){
 						success: function(msg){
 						}
 					});
+					swal("創建成功!", "快邀請朋友加入你的社團吧", "success");
 				}
 			}
 		});
