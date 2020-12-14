@@ -529,7 +529,7 @@ function SearchUser(){
 }
 
 function Searchgroup(){
-	$('#group_name').empty();
+	$('#show_mem').empty();
 	$(".showgroup").show();
     if($('#scrh').val()!=""){
         var data={
