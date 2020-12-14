@@ -158,6 +158,7 @@ function selectgid(){
 			for(cnt1=0;cnt1<glpmem.length;cnt1++){
 				var tmp = '<li class="list-group-item"><i class="fas fa-user"></i>'+ glpmem[cnt1].user_name +'</li>';
 				var texthtml2;
+				console.log(texthtml2);
 				texthtml2 += tmp;
 			}
 			var texthtml3 = '</ul>\
