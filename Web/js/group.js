@@ -154,18 +154,18 @@ function selectgid(){
 								</div>\
 								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">\
 									<div class="card-body card-pd">\
-										<ul class="list-group list-group-flush" id="mem">\
-										</ul>\
-									</div>\
-								</div>\
-							</div>';
-			$('#show_mem').append(texthtml1);
+										<ul class="list-group list-group-flush">';
 			for(cnt1=0;cnt1<glpmem.length;cnt1++){
 				var tmp = '<li class="list-group-item"><i class="fas fa-user"></i>'+ glpmem[cnt1].user_name +'</li>';
 				var texthtml2;
-				texthtml2 += tmp;	
-				$("#mem").append(texthtml2);
+				texthtml2 += tmp;
 			}
+			var texthtml3 = '</ul>\
+						</div>\
+					</div>\
+				</div>';
+			var finaltexthtml = texthtml1 + texthtml2 + texthtml3;
+			$("#show_mem").append(finaltexthtml);
 		}
 	});
 
