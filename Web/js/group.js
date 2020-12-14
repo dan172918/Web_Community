@@ -633,10 +633,13 @@ function Creategroup(){
 						data : JSON.stringify(data),
 						contentType : "application/json;charset=utf-8",
 						success: function(msg){
+							var delayInMilliseconds = 2000;
 							if(msg=="success")
 							{
 								swal("創建成功!", "快邀請朋友加入你的社團吧", "success");
-								location.reload();
+								setTimeout(function() {
+									location.reload();
+								}, delayInMilliseconds);
 							}
 						}
 					});
