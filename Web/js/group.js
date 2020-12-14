@@ -566,6 +566,7 @@ function Searchgroup(_this){
 										</div>\
 									</div>';
 						tmp=1;
+						$('#show_mem').append(gname);
 						$('#plus').css("visibility","hidden");
 						break;
 					}
@@ -587,8 +588,8 @@ function Searchgroup(_this){
 										</div>\
 									</div>\
 								</div>'
+					$('#show_mem').append(gname);
 				}
-				$('#show_mem').append(gname);
 			}
 		});
 	}
