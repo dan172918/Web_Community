@@ -545,10 +545,10 @@ function Searchgroup(){
             success: function(msg){
 				console.log(msg);
 				if(msg)
-				var i;
+				var i,tmp=0;
 				for(i=0;i<msg.length;i++)
 				{
-					if(msg[i].user_id == data.user_id)
+					if(msg[i].user_id == getCookie("token"))
 					{
 						var gname = '<div class="card group-result">\
 										<div class="card-header bg-info" id="headingOne">\
@@ -562,24 +562,28 @@ function Searchgroup(){
 											</div>\
 										</div>\
 									</div>';
+						tmp=1;
 						break;
 					}
 				}
-				var gname = '<div class="card group-result">\
-								<div class="card-header bg-info" id="headingOne">\
-									<div class="row justify-content-end">\
-										<h4 class="mb-0 col-6">\
-											<button class="btn btn-info btn-title" id="group_name" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">\
-												<div class="tmpclass" id='+ msg[0].club_id +'>'+ msg[0].club_name +'\
-												</div>\
-											</button>\
-										</h4>\
-										<div class="col-3">\
-											<button type="button" id="plus" class="btn btn-info plusgroup" onclick="addgroup(this);"><i class="fas fa-plus add-pr"></i></button>\
+				if(tmp==0)
+				{
+					var gname = '<div class="card group-result">\
+									<div class="card-header bg-info" id="headingOne">\
+										<div class="row justify-content-end">\
+											<h4 class="mb-0 col-6">\
+												<button class="btn btn-info btn-title" id="group_name" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">\
+													<div class="tmpclass" id='+ msg[0].club_id +'>'+ msg[0].club_name +'\
+													</div>\
+												</button>\
+											</h4>\
+											<div class="col-3">\
+												<button type="button" id="plus" class="btn btn-info plusgroup" onclick="addgroup(this);"><i class="fas fa-plus add-pr"></i></button>\
+											</div>\
 										</div>\
 									</div>\
-								</div>\
-							</div>'
+								</div>'
+				}
 				$('#show_mem').append(gname);
 			}
 		});
