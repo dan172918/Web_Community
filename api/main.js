@@ -535,6 +535,7 @@ app.post('/api/show_group_member',function(req,res){
         if(err) throw err;
         con.query(insert_user_club,function(err,result){
             if(err) throw err;
+            res.send("success");
         });
     });
  });
