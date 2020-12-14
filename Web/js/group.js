@@ -528,12 +528,12 @@ function SearchUser(){
 	$(".showgroup").show();
 }
 
-function Searchgroup(){
+function Searchgroup(_this){
 	$('#show_mem').empty();
 	$(".showgroup").show();
-    if($('#scrh').val()!=""){
+    if($(_this).prev('#scrh').val()!=""){
         var data={
-			group_name :$('#scrh').val(),
+			group_name :$(_this).prev('#scrh').val(),
 			user_id :getCookie("token")
 		}
 		console.log(data.group_name);
@@ -559,10 +559,14 @@ function Searchgroup(){
 														</div>\
 													</button>\
 												</h4>\
+												<div class="col-3">\
+													<button type="button" id="plus" class="btn btn-info plusgroup" onclick="addgroup(this);"><i class="fas fa-plus add-pr"></i></button>\
+												</div>\
 											</div>\
 										</div>\
 									</div>';
 						tmp=1;
+						$('#plus').css("visibility","hidden");
 						break;
 					}
 				}
