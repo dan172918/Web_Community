@@ -524,10 +524,6 @@ function glparticle(){
 	}
 };
 
-function SearchUser(){
-	$(".showgroup").show();
-}
-
 function Searchgroup(_this){
 	$('#show_mem').empty();
 	$(".showgroup").show();
@@ -633,18 +629,19 @@ function Creategroup(){
 						break;
 					}
 				}
+				if(tmp == 0)
+				{
+					$.ajax({
+						url : "http://"+ host + port +"/api/creategroup",
+						type : 'POST',
+						data : JSON.stringify(data),
+						contentType : "application/json;charset=utf-8",
+						success: function(msg){
+						}
+					});
+				}
 			}
 		});
-		if(tmp == 0)
-		{
-			$.ajax({
-				url : "http://"+ host + port +"/api/creategroup",
-				type : 'POST',
-				data : JSON.stringify(data),
-				contentType : "application/json;charset=utf-8",
-				success: function(msg){
-				}
-			});
-		}
+		
 	}
 }
