@@ -26,6 +26,7 @@ $(function(){
 
 var select_glp;
 function selectgid(){
+	setArt(glparticle,0);
 	select_glp = $('#grpSelect').val();
 	$(".lib").html("");
 	$('#show_mem').empty();
@@ -516,12 +517,87 @@ function glparticle(){
 			data: JSON.stringify(post_data),
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
-				if(msg == "success")
+				$('#Article').html("");
+				$('#plusbutton').hide(500);
+				if(msg[0].article_text && msg[0].article_picture)
 				{
-					$('#Article').html("");
-					$('#plusbutton').hide(500);
-					location.reload();
+					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[0].article_id+'\">\
+										<div>\
+											<h3 class="user_id">'+msg[0].user_name+'</h3>\
+											<p class="article_test">'+ msg[0].article_text +'<br/><br/><img class="resImg" src= "'+ msg[0].article_picture +'"/></p>\
+										</div>';
 				}
+				else if(msg[0].article_text && !msg[0].article_picture)
+				{
+					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[0].article_id+'\">\
+										<div>\
+											<h3 class="user_id">'+msg[0].user_name+'</h3>\
+											<p class="article_test">'+ msg[0].article_text +'</p>\
+										</div>';
+				}
+				else if(!msg[0].article_text && msg[0].article_picture)
+				{
+					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[0].article_id+'\">\
+										<div>\
+											<h3 class="user_id">'+msg[0].user_name+'</h3>\
+											<p class="article_test"><br/><br/><img class="resImg" src="'+ msg[0].article_picture +'"/></p>\
+										</div>';
+				}
+
+				if(msg[0].like_id)
+				{
+					var texthtml2 = '<div class="command"><!--文章底下-->\
+											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
+											<label class="like_counter">'+msg[0].likes+'</label>\
+											<hr/>\
+											<div class="form-group row col-12 col-md-12">\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
+												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
+											</div>\
+											<div class="container">\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
+												<div class="row col-12 pdpd">\
+													<div class="col-12 command_box">\
+														<!--這邊放留言-->\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</section><br>';
+				}
+				else if(!msg[0].like_id)
+				{
+					var texthtml2 = '<div class="command"><!--文章底下-->\
+											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
+											<label class="like_counter">'+msg[0].likes+'</label>\
+											<hr/>\
+											<div class="form-group row col-12 col-md-12">\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
+												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
+											</div>\
+											<div class="container">\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
+												<div class="row col-12 pdpd">\
+													<div class="col-12 command_box">\
+														<!--這邊放留言-->\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</section><br>';
+				}
+				var finialhtml = texthtml1+texthtml2;
+				setArt(glparticle,gat(glparticle)+1);
+				if(gat(glparticle) % 2 == 0){
+					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
+					$(".lib").append(newHtml);
+					setArt("ArtCnt",cookcnt++);
+				}else{
+					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
+					$(".lib").append(secondHtml);
+					setArt("ArtCnt",cookcnt++);
+				}	
+
 			},
 			error: function(xhr, ajaxOptions, thrownError){
 				alertMsg(ErrorMsg);
@@ -662,3 +738,6 @@ function Creategroup(){
 		
 	}
 }
+
+
+

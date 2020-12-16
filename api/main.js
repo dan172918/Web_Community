@@ -399,7 +399,14 @@ app.post('/api/show_profile',function(req,res){
         var insert_art_text = 'insert into Connect_db.article(article_text,user_id,article_picture,post_level,article_time,article.club_id) value( \"' + art_text + '\",\"'+u_id+'\",\"'+post_pic+'\",\"'+post_lvl+'\",now(),\"'+gid+'\")';
         con.query(insert_art_text, function(err, result) {
             if (err) throw err;
-            res.send("success");
+            var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes,article.club_id\
+                                from user_info,article left join likes on likes.article_id = article.article_id\
+                                where article.club_id = \"'+ gid +'\" and article.post_level = "2" and user_info.user_id = article.user_id\
+                                order by article.article_time desc limit 1';
+            con.query(art_text_sql,function(err,result){
+                if(err) throw err;
+                res.send(result);
+            });
         });
     }
  });
