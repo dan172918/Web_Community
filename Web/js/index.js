@@ -366,12 +366,13 @@ function add_article(){
 					articleArray+=add[cnt].article_id;
 				else
 					articleArray+=add[cnt].article_id+',';
-				console.log(articleArray);
 			}
 
 		}
 	});
-	console.log(articleArray);
+	var data = {
+		article_id: [articleArray]
+	}
 	$.ajax({
 		url: "http://"+ host + port +"/api/take_command",
 		type: 'POST',
@@ -388,16 +389,6 @@ function add_article(){
 			}
 		}
 	});
-	
-	$.ajax({
-		url: "http://"+ host + port +"/api/username",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(name){
-			$('#user_name').text(name[0].user_name);
-		}
-	})
 }
 
 
