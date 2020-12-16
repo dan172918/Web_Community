@@ -400,7 +400,7 @@ app.post('/api/show_profile',function(req,res){
         con.query(insert_art_text, function(err, result) {
             if (err) throw err;
             var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes,article.club_id\
-                                from user_info,article left join likes on likes.article_id = article.article_id\
+                                from user_info,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+ u_id +'\"\
                                 where article.club_id = \"'+ gid +'\" and article.post_level = "2" and user_info.user_id = article.user_id\
                                 order by article.article_time desc limit 1';
             con.query(art_text_sql,function(err,result){
@@ -413,9 +413,10 @@ app.post('/api/show_profile',function(req,res){
 
   /*show社團貼文*/
   app.post('/api/glparticle',function(req,res){
+    var u_id = req.body.user_id.toString();
     var gid = Number(req.body.group_id);
     var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes,article.club_id\
-                        from user_info,article left join likes on likes.article_id = article.article_id\
+                        from user_info,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+ u_id +'\"\
                         where article.club_id = \"'+ gid +'\" and article.post_level = "2" and user_info.user_id = article.user_id\
                         order by article.article_time desc limit 10';
     con.query(art_text_sql,function(err,result){
@@ -427,11 +428,12 @@ app.post('/api/show_profile',function(req,res){
 
 /*show社團貼文+10*/
  app.post('/api/add_glparticle',function(req,res){
+    var u_id = req.body.user_id.toString();
     var gid = Number(req.body.group_id);
     var cook_art = Number(req.body.cookie_art) + 1;
     //console.log(cook_art);
     var art_text_sql = 'select article.article_text,article.article_id,article.article_picture,user_info.user_name,likes.like_id,article.likes,article.club_id\
-                        from user_info,article left join likes on likes.article_id = article.article_id\
+                        from user_info,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+ u_id +'\"\
                         where article.club_id = \"'+ gid +'\" and article.post_level = "2" and user_info.user_id = article.user_id\
                         order by article.article_time desc limit '+cook_art+',10';
     con.query(art_text_sql,function(err,result){
