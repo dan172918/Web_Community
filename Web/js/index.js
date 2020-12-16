@@ -195,7 +195,8 @@ $(function(){
 
 function collapse(cthis){
 	console.log(cthis);
-	$("#"+$(cthis).parents("section").attr("id").toString()).find(".command_box").slideToggle(500);
+	//$("#"+$(cthis).parents("section").attr("id").toString()).find(".command_box").slideToggle(500);
+	$(cthis).next().find('.command_box').slideToggle(500);
 }
 
 function StoreCmd(thiscmd,event){
