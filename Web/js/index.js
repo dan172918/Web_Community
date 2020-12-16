@@ -105,7 +105,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -126,7 +126,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -294,7 +294,6 @@ function add_article(){
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(add){
-			//console.log(add);
 			var cnt;
 			for(cnt=0;cnt<add.length;cnt++){
 				if(add[cnt].article_text && add[cnt].article_picture)
@@ -329,7 +328,7 @@ function add_article(){
 											<label class="like_counter">'+add[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -350,7 +349,7 @@ function add_article(){
 											<label class="like_counter">'+add[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+add[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
