@@ -366,6 +366,7 @@ function add_article(){
 					articleArray.append(add[cnt].article_id);
 				else
 					articleArray.append(add[cnt].article_id+',');
+				console.log(articleArray);
 			}
 
 		}
