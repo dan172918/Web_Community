@@ -26,6 +26,7 @@ $(function(){
 
 var select_glp;
 function selectgid(){
+	setArt("glparticle",0);
 	select_glp = $('#grpSelect').val();
 	$(".lib").html("");
 	$('#show_mem').empty();
@@ -201,7 +202,6 @@ function selectgid(){
 
 $(document).ready(function()
 {
-	setArt(glparticle,0);
 	var uid={
 		user_id :getCookie("token")
 	}
@@ -587,8 +587,8 @@ function glparticle(){
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				setArt(glparticle,gat(glparticle)+1);
-				if(gat(glparticle) % 2 == 0){
+				setArt("glparticle",gat("glparticle")+1);
+				if(gat("glparticle") % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);
