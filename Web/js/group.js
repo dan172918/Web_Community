@@ -145,6 +145,9 @@ function selectgid(){
 												</div>\
 											</button>\
 										</h4>\
+										<div class="col-3">\
+											<button type="button" id="plus" class="btn btn-info plusgroup" onclick="addgroup(this);"><i class="fas fa-plus add-pr"></i></button>\
+										</div>\
 									</div>\
 								</div>\
 								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">\
@@ -161,6 +164,7 @@ function selectgid(){
 				</div>';
 			var finaltexthtml = texthtml1 + texthtml2;
 			$("#show_mem").append(finaltexthtml);
+			$('#plus').css("visibility","hidden");
 			$(".showgroup").show();
 		}
 	});
