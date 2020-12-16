@@ -26,7 +26,7 @@ function login(){
 					// if account invalid
 					alertMsg(pwdError);
 				} else {
-					setCookie("token", msg[0], 10);
+					setCookie("token", msg[0], 30);
 					location.href = msg[1];
 				}
 	        },
