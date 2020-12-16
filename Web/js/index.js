@@ -371,7 +371,7 @@ function add_article(){
 		}
 	});
 	var data = {
-		article_id: [articleArray]
+		article_id: articleArray
 	}
 	$.ajax({
 		url: "http://"+ host + port +"/api/take_command",
