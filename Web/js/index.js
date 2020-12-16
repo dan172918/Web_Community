@@ -269,6 +269,7 @@ function storelike(thislike){
 
 
 function add_article(){
+	var articleArray="";
 	var data = {
 		cookie_art: getCookie("ArtCnt"),
 		user_id :getCookie("token")
@@ -361,11 +362,15 @@ function add_article(){
 					$(".lib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
+				if(add.length-1 ==cnt)
+					articleArray.append(add[cnt].article_id);
+				else
+					articleArray.append(add[cnt].article_id+',');
 			}
 
 		}
 	});
-	
+	console.log(articleArray);
 	$.ajax({
 		url: "http://"+ host + port +"/api/take_command",
 		type: 'POST',
