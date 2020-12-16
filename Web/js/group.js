@@ -601,6 +601,8 @@ function addgroup(_this){
 		data : JSON.stringify(data),
 		contentType : "application/json;charset=utf-8",
 		success: function(msg){
+			if(msg == "Success")
+				location.reload();
 		}
 	});
 }

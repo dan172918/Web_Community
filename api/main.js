@@ -477,8 +477,7 @@ app.post('/api/show_profile',function(req,res){
                         value(\"' + uid + '\",\"' + gid + '\")';
     con.query(pg,function(err,result){
         if(err) throw err;
-        res.send(result);
-        console.log(result);
+        res.send("Success");
     });
  });
 
