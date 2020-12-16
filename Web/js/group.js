@@ -520,6 +520,7 @@ function glparticle(){
 				{
 					$('#Article').html("");
 					$('#plusbutton').hide(500);
+					location.reload();
 				}
 			},
 			error: function(xhr, ajaxOptions, thrownError){
