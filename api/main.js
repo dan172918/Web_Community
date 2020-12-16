@@ -736,16 +736,16 @@ app.post('/api/showCardFriend', function(req, res){
                                     LIMIT 1';
             con.query(RandSelFriend,function(err,result1){
                 if(err) throw err;
-                if(result.length == 0)  //如果剩餘用戶都是你的好友，銘謝惠顧，下次請早
+                if(result1.length == 0)  //如果剩餘用戶都是你的好友，銘謝惠顧，下次請早
                     res.send("tryAgain");
                 else{   //先暫存friend table中
                     var inviteFasterCard = 'select chat_id,user_id_self as id\
                                             from friend\
-                                            where user_id_other=\"'+uid+'\" and user_id_self = \"'+result[0].user_id+'\" and relation = 1\
+                                            where user_id_other=\"'+uid+'\" and user_id_self = \"'+result1[0].user_id+'\" and relation = 1\
                                             union\
                                             select chat_id,user_id_other as id\
                                             from friend\
-                                            where user_id_self=\"'+uid+'\" and user_id_other = \"'+result[0].user_id+'\" and relation = 1';
+                                            where user_id_self=\"'+uid+'\" and user_id_other = \"'+result1[0].user_id+'\" and relation = 1';
                     con.query(inviteFasterCard,function(err,result){
                         if(err) throw err;
                         console.log(result1);
