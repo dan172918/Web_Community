@@ -257,9 +257,15 @@ app.post('/api/command',function(req,res){
 
 app.post('/api/take_command',function(req,res){
     console.log(req.body);
+    var articleArray = req.body.article_id.split(',');
     var command_text_sql = 'select command.article_id,command.user_command,user_info.user_name\
                             from command,user_info\
-                            where command.user_id = user_info.user_id;';
+                            where command.user_id = user_info.user_id and (';
+    for (var i = 0; i < articleArray.length; i++)
+        if(i == articleArray.length-1)
+            command_text_sql+="article_id = "+articleArray[i]+")";
+        else
+            command_text_sql+="article_id = "+articleArray[i]+" or ";
     con.query(command_text_sql,function(err,result){
         if(err) throw err;
         res.send(result);
