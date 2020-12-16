@@ -138,10 +138,13 @@ $(document).ready(function()
 		var comd_data = {
 			article_id: articleArray
 		}
+		console.log(comd_data);
 		$.ajax({
 			url: "http://"+ host + port +"/api/take_anmscommand",
 			type: 'POST',
-			success: function(comd_data){
+			data: JSON.stringify(comd_data),
+			contentType: "application/json;charset=utf-8",
+			success: function(comd){
 				var cnt1;
 				for(cnt1=0;cnt1<comd.length;cnt1++){
 					var texthtml1 = '<p class="command_user">沒有人\
