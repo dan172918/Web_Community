@@ -50,6 +50,15 @@ $(document).ready(function()
 	var data = {
 		user_id :getCookie("token")
 	}
+	$.ajax({
+		url: "http://"+ host + port +"/api/username",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(name){
+			$('#user_name').text(name[0].user_name);
+		}
+	});
 	var articleArray="";
 	/* show article */
 	$.ajax({
@@ -173,15 +182,7 @@ $(document).ready(function()
 	}
 	
 
-	$.ajax({
-		url: "http://"+ host + port +"/api/username",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(name){
-			$('#user_name').text(name[0].user_name);
-		}
-	});
+
 	
 	$(window).scroll(function(){
 		var totalheight = $("body").height() - $(window).height()-50;
