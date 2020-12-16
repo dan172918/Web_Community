@@ -141,7 +141,7 @@ $(document).ready(function()
 		$.ajax({
 			url: "http://"+ host + port +"/api/take_anmscommand",
 			type: 'POST',
-			success: function(comd){
+			success: function(comd_data){
 				var cnt1;
 				for(cnt1=0;cnt1<comd.length;cnt1++){
 					var texthtml1 = '<p class="command_user">沒有人\
