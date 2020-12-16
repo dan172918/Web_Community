@@ -33,6 +33,7 @@ function selectgid(){
 		user_id :getCookie("token"),
 		group_id :select_glp
 	}
+	var articleArray="";
 	/* show article */
 	$.ajax({
 		url: "http://"+ host + port +"/api/glparticle",
@@ -78,11 +79,11 @@ function selectgid(){
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -99,7 +100,7 @@ function selectgid(){
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+msg[cnt].user_name+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -123,10 +124,36 @@ function selectgid(){
 					$(".lib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
+				if(msg.length-1 == cnt)
+					articleArray+=msg[cnt].article_id;
+				else
+					articleArray+=msg[cnt].article_id+',';
 			}
 
 		}
 	});
+	if(articleArray!="")
+	{
+		var data = {
+			article_id: articleArray
+		}
+		$.ajax({
+			url: "http://"+ host + port +"/api/take_command",
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: "application/json;charset=utf-8",
+			success: function(comd){
+				var cnt1;
+				for(cnt1=0;cnt1<comd.length;cnt1++){
+					var texthtml1 = '<p class="command_user">'+comd[cnt1].user_name+'\
+										<span class="command_line">'+comd[cnt1].user_command+'\
+										</span>\
+									</p>';
+					$("#"+comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+				}
+			}
+		});
+	}
 
 	$.ajax({
 		url: "http://"+ host + port +"/api/show_group_member",
@@ -168,33 +195,6 @@ function selectgid(){
 			$(".showgroup").show();
 		}
 	});
-
-	$.ajax({
-		url: "http://"+ host + port +"/api/take_command",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(comd){
-			var cnt1;
-			for(cnt1=0;cnt1<comd.length;cnt1++){
-				var texthtml1 = '<p class="command_user">'+comd[cnt1].user_name+'\
-									<span class="command_line">'+comd[cnt1].user_command+'\
-									</span>\
-								</p>';
-				$("#"+comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
-			}
-		}
-	});
-
-	$.ajax({
-		url: "http://"+ host + port +"/api/username",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(name){
-			$('#user_name').text(name[0].user_name);
-		}
-	});
 }
 
 $(document).ready(function()
@@ -224,13 +224,6 @@ $(document).ready(function()
 	/*發文切換*/
 	$(".post").click(function(){$("#postArticle").fadeToggle(500); });
 	$("#cancel").click(function(){$("#postArticle").hide(500); });
-	/*modal對話框切換*/
-	/*$('#myModal').on('show.bs.modal', function (event) {
-		var button = $(event.relatedTarget); // 按下訊息按鈕觸發以下事件
-		var name = button.data('whatever'); // data-whatever的內容
-		var modal = $(this);  //指向事件物件本身
-		modal.find('.modal-title').text(name);  //更改modal-title
-	});*/
 	/*好友搜尋展示*/
 	$(".goSearch").click(function(){
 		if($("#scrh").val() !== '')
@@ -351,6 +344,7 @@ function storelike(thislike){
 	});
 }
 function add_article(){
+	var articleArray="";
 	var data = {
 		group_id :select_glp,
 		cookie_art: getCookie("ArtCnt"),
@@ -403,7 +397,7 @@ function add_article(){
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -424,7 +418,7 @@ function add_article(){
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -444,27 +438,37 @@ function add_article(){
 					$(".lib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
+				if(add.length-1 ==cnt)
+					articleArray+=add[cnt].article_id;
+				else
+					articleArray+=add[cnt].article_id+',';
 			}
 
 		}
 	});
-	
-	$.ajax({
-		url: "http://"+ host + port +"/api/take_command",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(add_comd){
-			var cnt1;
-			for(cnt1=0;cnt1<add_comd.length;cnt1++){
-				var texthtml1 = '<p class="command_user">'+add_comd[cnt1].user_name+'\
-									<span class="command_line">'+add_comd[cnt1].user_command+'\
-									</span>\
-								</p>';
-				$("#"+add_comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
-			}
+	if(articleArray!="")
+	{
+		var data = {
+			article_id: articleArray
 		}
-	});
+		$.ajax({
+			url: "http://"+ host + port +"/api/take_command",
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: "application/json;charset=utf-8",
+			success: function(add_comd){
+				var cnt1;
+				for(cnt1=0;cnt1<add_comd.length;cnt1++){
+					var texthtml1 = '<p class="command_user">'+add_comd[cnt1].user_name+'\
+										<span class="command_line">'+add_comd[cnt1].user_command+'\
+										</span>\
+									</p>';
+					$("#"+add_comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+				}
+			}
+		});
+	}
+
 }
 
 var img_string="";
