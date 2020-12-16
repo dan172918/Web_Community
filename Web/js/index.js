@@ -50,6 +50,7 @@ $(document).ready(function()
 	var data = {
 		user_id :getCookie("token")
 	}
+	var articleArray="";
 	/* show article */
 	$.ajax({
 		url: "http://"+ host + port +"/api/article",
@@ -140,11 +141,17 @@ $(document).ready(function()
 					$(".lib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
+				if(add.length-1 ==cnt)
+					articleArray+=msg[cnt].article_id;
+				else
+					articleArray+=msg[cnt].article_id+',';
 			}
 
 		}
 	});
-	
+	var data = {
+		article_id: articleArray
+	}
 	$.ajax({
 		url: "http://"+ host + port +"/api/take_command",
 		type: 'POST',
