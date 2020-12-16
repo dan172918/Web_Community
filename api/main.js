@@ -748,6 +748,7 @@ app.post('/api/showCardFriend', function(req, res){
                                             where user_id_self=\"'+uid+'\" and user_id_other = \"'+result[0].user_id+'\" and relation = 1';
                     con.query(inviteFasterCard,function(err,result){
                         if(err) throw err;
+                        console.log(result);
                         if(result.length == 0)
                         {
                             var TemporaryCardFriend = 'insert into friend(user_id_self,user_id_other,meetTime,relation)\
