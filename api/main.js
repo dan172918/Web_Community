@@ -257,7 +257,8 @@ app.post('/api/command',function(req,res){
 
 app.post('/api/take_command',function(req,res){
     console.log(req.body);
-    var articleArray = req.body.article_id.split(',');
+    var article_id = req.body.article_id.toString();
+    var articleArray=article_id.split(',');
     var command_text_sql = 'select command.article_id,command.user_command,user_info.user_name\
                             from command,user_info\
                             where command.user_id = user_info.user_id and (';
