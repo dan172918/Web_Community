@@ -10,18 +10,7 @@ window.onload = function() {
     setTimeout(function(){
       $(".waitloading").css("opacity","1");
 	},4000)
-	var data = {
-		user_id :getCookie("token")
-	}
-	$.ajax({
-		url: "http://"+ host + port +"/api/username",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(name){
-			$('#user_name').text(name[0].user_name);
-		}
-	});
+	
 };
 
 $(function(){
@@ -46,16 +35,7 @@ $(document).ready(function()
 	
 	var data = {
 		user_id :getCookie("token")
-	}/*
-	$.ajax({
-		url: "http://"+ host + port +"/api/username",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(name){
-			$('#user_name').text(name[0].user_name);
-		}
-	});*/
+	}
 	var articleArray="";
 	/* show article */
 	$.ajax({
@@ -102,7 +82,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id"></label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -123,7 +103,7 @@ $(document).ready(function()
 											<label class="like_counter">'+msg[cnt].likes+'</label>\
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
-												<label for="" class="col-3 col-md-2 col-form-label command_id">'+$("#user_name").text()+'</label>\
+												<label for="" class="col-3 col-md-2 col-form-label command_id"></label>\
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
@@ -153,6 +133,16 @@ $(document).ready(function()
 					articleArray+=msg[cnt].article_id+',';
 			}
 
+		}
+	});
+	$.ajax({
+		url: "http://"+ host + port +"/api/username",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(name){
+			$('#user_name').text(name[0].user_name);
+			$('.command_id').text(name[0].user_name);
 		}
 	});
 	if(articleArray!="")
