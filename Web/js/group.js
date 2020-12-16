@@ -257,7 +257,7 @@ $(document).ready(function()
 	});
 
 	$(window).scroll(function(){
-		var totalheight = $("body").height() - $(window).height();
+		var totalheight = $("body").height() - $(window).height()-50;
 		if($(window).scrollTop()>=totalheight)
 		{
 			add_article();
