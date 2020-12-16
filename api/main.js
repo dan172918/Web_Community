@@ -734,7 +734,7 @@ app.post('/api/showCardFriend', function(req, res){
                                     where B.id is null and A.user_id != \"'+uid+'\"\
                                     ORDER BY RAND()\
                                     LIMIT 1';
-            con.query(RandSelFriend,function(err,result){
+            con.query(RandSelFriend,function(err,result1){
                 if(err) throw err;
                 if(result.length == 0)  //如果剩餘用戶都是你的好友，銘謝惠顧，下次請早
                     res.send("tryAgain");
@@ -748,11 +748,11 @@ app.post('/api/showCardFriend', function(req, res){
                                             where user_id_self=\"'+uid+'\" and user_id_other = \"'+result[0].user_id+'\" and relation = 1';
                     con.query(inviteFasterCard,function(err,result){
                         if(err) throw err;
-                        console.log(result);
+                        console.log(result1);
                         if(result.length == 0)
                         {
                             var TemporaryCardFriend = 'insert into friend(user_id_self,user_id_other,meetTime,relation)\
-                                                value(\"'+uid+'\",\"'+result[0].id+'\",now(),4)';
+                                                value(\"'+uid+'\",\"'+result1[0].id+'\",now(),4)';
                         }
                         else
                         {
