@@ -26,7 +26,7 @@ $(function(){
 
 var select_glp;
 function selectgid(){
-	setArt("glparticle",0);
+	setArt("glparticle","");
 	select_glp = $('#grpSelect').val();
 	$(".lib").html("");
 	$('#show_mem').empty();
@@ -518,7 +518,7 @@ function glparticle(){
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
 				$('#Article').html("");
-				//$('#plusbutton').hide(500);
+				$('#plusbutton').hide(500);
 				if(msg[0].article_text && msg[0].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[0].article_id+'\">\
@@ -588,7 +588,7 @@ function glparticle(){
 				}
 				var finialhtml = texthtml1+texthtml2;
 				setArt("glparticle",getCookie("glparticle")+1);
-				if(getCookie("glparticle") % 2 == 0){
+				if(getCookie("glparticle").length % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").prepend(newHtml);
 					setArt("ArtCnt",cookcnt++);
