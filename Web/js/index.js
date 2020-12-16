@@ -282,7 +282,7 @@ function add_article(){
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(add){
-			console.log(add);
+			//console.log(add);
 			var cnt;
 			for(cnt=0;cnt<add.length;cnt++){
 				if(add[cnt].article_text && add[cnt].article_picture)
@@ -363,9 +363,9 @@ function add_article(){
 					setArt("ArtCnt",cookcnt++);
 				}
 				if(add.length-1 ==cnt)
-					articleArray.append(add[cnt].article_id);
+					articleArray+=add[cnt].article_id;
 				else
-					articleArray.append(add[cnt].article_id+',');
+					articleArray+=add[cnt].article_id+',';
 				console.log(articleArray);
 			}
 
