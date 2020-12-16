@@ -86,7 +86,7 @@ $(document).ready(function()
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -320,7 +320,7 @@ function add_article(){
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -341,7 +341,7 @@ function add_article(){
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
