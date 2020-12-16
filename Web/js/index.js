@@ -9,7 +9,19 @@ window.onload = function() {
     
     setTimeout(function(){
       $(".waitloading").css("opacity","1");
-    },4000)
+	},4000)
+	var data = {
+		user_id :getCookie("token")
+	}
+	$.ajax({
+		url: "http://"+ host + port +"/api/username",
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: "application/json;charset=utf-8",
+		success: function(name){
+			$('#user_name').text(name[0].user_name);
+		}
+	});
 };
 
 $(function(){
@@ -31,25 +43,10 @@ $(document).ready(function()
 	/*發文切換*/
 	$(".post").click(function(){$("#postArticle").fadeToggle(500); });
 	$("#cancel").click(function(){$("#postArticle").hide(500); });
-	/*modal對話框切換*/
-	/*$('#myModal').on('show.bs.modal', function (event) {
-		var button = $(event.relatedTarget); // 按下訊息按鈕觸發以下事件
-		var name = button.data('whatever'); // data-whatever的內容
-		var modal = $(this);  //指向事件物件本身
-		modal.find('.modal-title').text(name);  //更改modal-title
-	});*/
-	/*好友搜尋展示*/
-	$(".goSearch").click(function(){
-		if($("#scrh").val() !== '')
-			$(".go_search").css("display","block");
-	});
-	$(".canc").click(function(){
-		$(".go_search").hide(500);
-	});	  
 	
 	var data = {
 		user_id :getCookie("token")
-	}
+	}/*
 	$.ajax({
 		url: "http://"+ host + port +"/api/username",
 		type: 'POST',
@@ -58,7 +55,7 @@ $(document).ready(function()
 		success: function(name){
 			$('#user_name').text(name[0].user_name);
 		}
-	});
+	});*/
 	var articleArray="";
 	/* show article */
 	$.ajax({
