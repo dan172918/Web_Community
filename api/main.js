@@ -363,8 +363,16 @@ app.post('/api/show_profile',function(req,res){
 
  /*匿名留言貼文*/
  app.post('/api/take_anmscommand',function(req,res){
-    var show_anmscommand_text= 'select command.article_id,command.user_command\
-                            from command';
+    var article_id = req.body.article_id.toString();
+    var articleArray=article_id.split(',');
+    var show_anmscommand_text = 'select command.article_id,command.user_command\
+                            from command,user_info\
+                            where (';
+    for (var i = 0; i < articleArray.length; i++)
+        if(i == articleArray.length-1)
+            command_text_sql+="article_id = "+articleArray[i]+")";
+        else
+            command_text_sql+="article_id = "+articleArray[i]+" or ";
     con.query(show_anmscommand_text,function(err,result){
         if(err) throw err;
         res.send(result);

@@ -33,6 +33,7 @@ $(document).ready(function()
 	var data = {
 		user_id :getCookie("token")
 	}
+	var articleArray="";
 	/* show article */
 	$.ajax({
 		url: "http://"+ host + port +"/api/anmsarticle",
@@ -123,25 +124,35 @@ $(document).ready(function()
 					$(".anmslib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
+				if(msg.length-1 == cnt)
+					articleArray+=msg[cnt].article_id;
+				else
+					articleArray+=msg[cnt].article_id+',';
 			}
 
 		}
 	});
-	
-	$.ajax({
-		url: "http://"+ host + port +"/api/take_anmscommand",
-		type: 'POST',
-		success: function(comd){
-			var cnt1;
-			for(cnt1=0;cnt1<comd.length;cnt1++){
-				var texthtml1 = '<p class="command_user">沒有人\
-									<span class="command_line">'+comd[cnt1].user_command+'\
-									</span>\
-								</p>';
-				$("#"+comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
-			}
+
+	if(articleArray!="")
+	{
+		var comd_data = {
+			article_id: articleArray
 		}
-	});
+		$.ajax({
+			url: "http://"+ host + port +"/api/take_anmscommand",
+			type: 'POST',
+			success: function(comd){
+				var cnt1;
+				for(cnt1=0;cnt1<comd.length;cnt1++){
+					var texthtml1 = '<p class="command_user">沒有人\
+										<span class="command_line">'+comd[cnt1].user_command+'\
+										</span>\
+									</p>';
+					$("#"+comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+				}
+			}
+		});
+	}
 
 	$.ajax({
 		url: "http://"+ host + port +"/api/username",
@@ -250,6 +261,7 @@ function storelike(thislike){
 
 
 function add_anmsarticle(){
+	var articleArray="";
 	var data = {
 		cookie_art: getCookie("ArtCnt"),
 		user_id: getCookie("token")
@@ -342,28 +354,37 @@ function add_anmsarticle(){
 					$(".anmslib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
+				if(add.length-1 ==cnt)
+					articleArray+=add[cnt].article_id;
+				else
+					articleArray+=add[cnt].article_id+',';
 			}
 
 		}
 	});
-	
-	$.ajax({
-		url: "http://"+ host + port +"/api/take_anmscommand",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(add_comd){
-			var cnt1;
-			for(cnt1=0;cnt1<add_comd.length;cnt1++){
-				var texthtml1 = '<p class="command_user">沒有人\
-									<span class="command_line">'+add_comd[cnt1].user_command+'\
-									</span>\
-								</p>';
-				$("#"+add_comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
-			}
+	if(articleArray!="")
+	{
+		var comd_data = {
+			article_id: articleArray
 		}
-	});
-	
+		$.ajax({
+			url: "http://"+ host + port +"/api/take_anmscommand",
+			type: 'POST',
+			data: JSON.stringify(comd_data),
+			contentType: "application/json;charset=utf-8",
+			success: function(add_comd){
+				var cnt1;
+				for(cnt1=0;cnt1<add_comd.length;cnt1++){
+					var texthtml1 = '<p class="command_user">沒有人\
+										<span class="command_line">'+add_comd[cnt1].user_command+'\
+										</span>\
+									</p>';
+					$("#"+add_comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+				}
+			}
+		});
+	}
+
 	$.ajax({
 		url: "http://"+ host + port +"/api/username",
 		type: 'POST',
