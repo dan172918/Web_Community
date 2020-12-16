@@ -715,11 +715,11 @@ app.post('/api/showCardFriend', function(req, res){
     //判斷今天是否抽取
     var isRandSelFriend = 'select user_id_self as id\
                             from friend\
-                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4\
+                            where user_id_other=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW())\
                             union\
                             select user_id_other as id\
                             from friend\
-                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW()) and relation = 4';
+                            where user_id_self=\"'+uid+'\" and TO_DAYS(meetTime) = TO_DAYS(NOW())';
     con.query(isRandSelFriend,function(err,result){
         if(err) throw err;
         if(result.length == 0){ //如果未抽過，隨機選擇一名不在自己好友名單內的
@@ -739,16 +739,15 @@ app.post('/api/showCardFriend', function(req, res){
                 if(result1.length == 0)  //如果剩餘用戶都是你的好友，銘謝惠顧，下次請早
                     res.send("tryAgain");
                 else{   //先暫存friend table中
-                    var inviteFasterCard = 'select chat_id,user_id_self as id\
+                    var inviteFasterCard = 'select chat_id\
                                             from friend\
                                             where user_id_other=\"'+uid+'\" and user_id_self = \"'+result1[0].user_id+'\" and relation = 1\
                                             union\
-                                            select chat_id,user_id_other as id\
+                                            select chat_id\
                                             from friend\
                                             where user_id_self=\"'+uid+'\" and user_id_other = \"'+result1[0].user_id+'\" and relation = 1';
                     con.query(inviteFasterCard,function(err,result){
                         if(err) throw err;
-                        console.log(result1);
                         if(result.length == 0)
                         {
                             var TemporaryCardFriend = 'insert into friend(user_id_self,user_id_other,meetTime,relation)\
