@@ -37,7 +37,7 @@ $(document).ready(function()
 	$.ajax({
 		url: "http://"+ host + port +"/api/anmsarticle",
 		type: 'POST',
-		data: JSON.stringify(),
+		data: JSON.stringify(data),
 		contentType: "application/json;charset=utf-8",
 		async: false,
 		success: function(msg){
@@ -71,7 +71,7 @@ $(document).ready(function()
 										</div>';
 				}
 
-				if(msg[cnt].like_id)
+				if(msg[cnt].user_id == getCookie("token"))
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
@@ -82,7 +82,7 @@ $(document).ready(function()
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreanmsCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -92,7 +92,7 @@ $(document).ready(function()
 										</div>\
 									</section><br>';
 				}
-				else if(!msg[cnt].like_id)
+				else if(!msg[cnt].user_id != getCookie("token"))
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
@@ -251,11 +251,12 @@ function storelike(thislike){
 
 function add_anmsarticle(){
 	var data = {
-		cookie_art: getCookie("ArtCnt")
+		cookie_art: getCookie("ArtCnt"),
+		user_id: getCookie("token")
 	}
 
 	$.ajax({
-		url: "http://"+ host + port +"/api/add_article",
+		url: "http://"+ host + port +"/api/add_anmsarticle",
 		type: 'POST',
 		data: JSON.stringify(data),
 		contentType: "application/json;charset=utf-8",
@@ -289,7 +290,7 @@ function add_anmsarticle(){
 										</div>';
 				}
 
-				if(add[cnt].like_id)
+				if(add[cnt].user_id == getCookie("token"))
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" style="background:red" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
@@ -300,7 +301,7 @@ function add_anmsarticle(){
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -310,7 +311,7 @@ function add_anmsarticle(){
 										</div>\
 									</section><br>';
 				}
-				else if(!add[cnt].like_id)
+				else if(add[cnt].user_id != getCookie("token"))
 				{
 					var texthtml2 = '<div class="command"><!--文章底下-->\
 											<img class="like" src="img/heart2.svg" alt="" width="30px" height="30px" onclick = "storelike(this)">\
@@ -321,7 +322,7 @@ function add_anmsarticle(){
 												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
 											</div>\
 											<div class="container">\
-												<button type="button" class="btn btn-secondary  open" onclick = "collapse()">展開/收合</button>\
+												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
 												<div class="row col-12 pdpd">\
 													<div class="col-12 command_box">\
 														<!--這邊放留言-->\
@@ -332,7 +333,7 @@ function add_anmsarticle(){
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				if(add[cnt].article_id % 2 == 0){
+				if(cnt % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".anmslib").append(newHtml);
 					setArt("ArtCnt",cookcnt++);

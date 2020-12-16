@@ -348,10 +348,11 @@ app.post('/api/show_profile',function(req,res){
 
 /*匿名顯示貼文*/
  app.post('/api/anmsarticle',function(req,res){
-    var show_anmsart_text = 'select article.article_id,article.article_text,article.article_picture,likes.like_id,article.likes\
-                       from article left join likes on likes.article_id = article.article_id\
-                       where article.post_level = "3"\
-                       order by article.article_time desc limit 10';
+    var u_id = req.body.user_id.toString();
+    var show_anmsart_text = 'select article.article_id,article.article_text,article.article_picture,likes.user_id,article.likes\
+                            from user_info,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+ u_id +'\"\
+                            where article.post_level = "3" and article.user_id = user_info.user_id\
+                            order by article.article_time desc limit 10';
 
     con.query(show_anmsart_text,function(err,result){
         if(err) throw err;
@@ -373,10 +374,11 @@ app.post('/api/show_profile',function(req,res){
 /*匿名顯示多10篇貼文*/
  app.post('/api/add_anmsarticle',function(req,res){
     var cook_art = Number(req.body.cookie_art) + 1;
+    var u_id = req.body.user_id.toString();
     console.log(cook_art);
-    var art_text_sql = 'select article.article_id,article.article_text,article.article_picture,likes.like_id,article.likes\
-                        from article left join likes on likes.article_id = article.article_id\
-                        where article.post_level = "3"\
+    var art_text_sql = 'select article.article_id,article.article_text,article.article_picture,likes.user_id,article.likes\
+                        from user_info,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+ u_id +'\"\
+                        where article.post_level = "3" and article.user_id = user_info.user_id\
                         order by article.article_time desc limit '+cook_art+',10';
     con.query(art_text_sql,function(err,result){
         if(err) throw err;
