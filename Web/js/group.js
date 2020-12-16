@@ -26,7 +26,6 @@ $(function(){
 
 var select_glp;
 function selectgid(){
-	setArt(glparticle,0);
 	select_glp = $('#grpSelect').val();
 	$(".lib").html("");
 	$('#show_mem').empty();
@@ -202,6 +201,7 @@ function selectgid(){
 
 $(document).ready(function()
 {
+	setArt(glparticle,0);
 	var uid={
 		user_id :getCookie("token")
 	}
