@@ -149,25 +149,29 @@ $(document).ready(function()
 
 		}
 	});
-	var data = {
-		article_id: articleArray
-	}
-	$.ajax({
-		url: "http://"+ host + port +"/api/take_command",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(comd){
-			var cnt1;
-			for(cnt1=0;cnt1<comd.length;cnt1++){
-				var texthtml1 = '<p class="command_user">'+comd[cnt1].user_name+'\
-									<span class="command_line">'+comd[cnt1].user_command+'\
-									</span>\
-								</p>';
-				$("#"+comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
-			}
+	if(articleArray!="")
+	{
+		var data = {
+			article_id: articleArray
 		}
-	});
+		$.ajax({
+			url: "http://"+ host + port +"/api/take_command",
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: "application/json;charset=utf-8",
+			success: function(comd){
+				var cnt1;
+				for(cnt1=0;cnt1<comd.length;cnt1++){
+					var texthtml1 = '<p class="command_user">'+comd[cnt1].user_name+'\
+										<span class="command_line">'+comd[cnt1].user_command+'\
+										</span>\
+									</p>';
+					$("#"+comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+				}
+			}
+		});
+	}
+	
 
 	$.ajax({
 		url: "http://"+ host + port +"/api/username",
@@ -377,26 +381,29 @@ function add_article(){
 
 		}
 	});
-	console.log(articleArray);
-	var data = {
-		article_id: articleArray
-	}
-	$.ajax({
-		url: "http://"+ host + port +"/api/take_command",
-		type: 'POST',
-		data: JSON.stringify(data),
-		contentType: "application/json;charset=utf-8",
-		success: function(add_comd){
-			var cnt1;
-			for(cnt1=0;cnt1<add_comd.length;cnt1++){
-				var texthtml1 = '<p class="command_user">'+add_comd[cnt1].user_name+'\
-									<span class="command_line">'+add_comd[cnt1].user_command+'\
-									</span>\
-								</p>';
-				$("#"+add_comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
-			}
+	if(articleArray!="")
+	{
+		var data = {
+			article_id: articleArray
 		}
-	});
+		$.ajax({
+			url: "http://"+ host + port +"/api/take_command",
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: "application/json;charset=utf-8",
+			success: function(add_comd){
+				var cnt1;
+				for(cnt1=0;cnt1<add_comd.length;cnt1++){
+					var texthtml1 = '<p class="command_user">'+add_comd[cnt1].user_name+'\
+										<span class="command_line">'+add_comd[cnt1].user_command+'\
+										</span>\
+									</p>';
+					$("#"+add_comd[cnt1].article_id.toString()).find(".command_box").prepend(texthtml1);
+				}
+			}
+		});
+	}
+	
 }
 
 
