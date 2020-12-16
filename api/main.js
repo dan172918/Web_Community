@@ -726,11 +726,11 @@ app.post('/api/showCardFriend', function(req, res){
             var RandSelFriend = 'select user_id\
                                     from user_info as A left join (select user_id_self as id\
                                                                 from friend\
-                                                                where user_id_other=\"'+uid+'\" and relation = 0\
+                                                                where (user_id_other=\"'+uid+'\" and relation = 0) or TO_DAYS(meetTime) = TO_DAYS(NOW())\
                                                                 union\
                                                                 select user_id_other as id\
                                                                 from friend\
-                                                                where user_id_self=\"'+uid+'\" and relation = 0) as B on A.user_id = B.id\
+                                                                where (user_id_self=\"'+uid+'\" and relation = 0) or TO_DAYS(meetTime) = TO_DAYS(NOW())) as B on A.user_id = B.id\
                                     where B.id is null and A.user_id != \"'+uid+'\"\
                                     ORDER BY RAND()\
                                     LIMIT 1';
