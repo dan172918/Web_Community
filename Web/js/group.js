@@ -587,7 +587,7 @@ function glparticle(){
 									</section><br>';
 				}
 				var finialhtml = texthtml1+texthtml2;
-				setArt("glparticle",get("glparticle")+1);
+				setArt("glparticle",getCookie("glparticle")+1);
 				if(gat("glparticle") % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
 					$(".lib").append(newHtml);
