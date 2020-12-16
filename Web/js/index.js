@@ -370,6 +370,7 @@ function add_article(){
 
 		}
 	});
+	console.log(articleArray);
 	var data = {
 		article_id: articleArray
 	}
