@@ -518,7 +518,7 @@ function glparticle(){
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
 				$('#Article').html("");
-				$('#plusbutton').hide(500);
+				$('#postArticle').hide(500);
 				if(msg[0].article_text && msg[0].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[0].article_id+'\">\
