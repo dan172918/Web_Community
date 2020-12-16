@@ -590,11 +590,11 @@ function glparticle(){
 				setArt("glparticle",getCookie("glparticle")+1);
 				if(getCookie("glparticle") % 2 == 0){
 					var newHtml = finialhtml.replace('%%', 'background:#FFF7FB');
-					$(".lib").append(newHtml);
+					$(".lib").prepend(newHtml);
 					setArt("ArtCnt",cookcnt++);
 				}else{
 					var secondHtml = finialhtml.replace('%%', 'background:#ECFFFF');
-					$(".lib").append(secondHtml);
+					$(".lib").prepend(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}	
 
