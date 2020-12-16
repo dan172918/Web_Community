@@ -366,7 +366,7 @@ app.post('/api/show_profile',function(req,res){
     var article_id = req.body.article_id.toString();
     var articleArray=article_id.split(',');
     var show_anmscommand_text = 'select command.article_id,command.user_command\
-                            from command,user_info\
+                            from command\
                             where (';
     for (var i = 0; i < articleArray.length; i++)
         if(i == articleArray.length-1)
