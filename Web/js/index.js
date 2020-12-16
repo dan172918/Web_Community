@@ -141,7 +141,7 @@ $(document).ready(function()
 					$(".lib").append(secondHtml);
 					setArt("ArtCnt",cookcnt++);
 				}
-				if(add.length-1 ==cnt)
+				if(msg.length-1 == cnt)
 					articleArray+=msg[cnt].article_id;
 				else
 					articleArray+=msg[cnt].article_id+',';
