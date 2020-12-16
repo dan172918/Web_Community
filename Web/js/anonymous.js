@@ -420,10 +420,10 @@ function article(){
 			data: JSON.stringify(post_data),
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
-				if(msg=="success")
-					location.reload();
-				else
-					alertMsgThenGoToSomewhere(FailedPost, "./index.html")
+				// if(msg=="success")
+				// 	location.reload();
+				// else
+				// 	alertMsgThenGoToSomewhere(FailedPost, "./index.html")
 			},
 			error: function(xhr, ajaxOptions, thrownError){
 				alertMsg(ErrorMsg);
