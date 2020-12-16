@@ -154,7 +154,9 @@ function selectgid(){
 			}
 		});
 	}
-
+	var data = {
+		group_id :select_glp
+	}
 	$.ajax({
 		url: "http://"+ host + port +"/api/show_group_member",
 		type: 'POST',
