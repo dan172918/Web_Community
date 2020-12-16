@@ -376,6 +376,7 @@ app.post('/api/show_profile',function(req,res){
     con.query(show_anmscommand_text,function(err,result){
         if(err) throw err;
         res.send(result);
+        console.log(result);
     });
  });
 

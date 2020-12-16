@@ -146,6 +146,7 @@ $(document).ready(function()
 			contentType: "application/json;charset=utf-8",
 			success: function(comd){
 				var cnt1;
+				console.log(comd);
 				for(cnt1=0;cnt1<comd.length;cnt1++){
 					var texthtml1 = '<p class="command_user">沒有人\
 										<span class="command_line">'+comd[cnt1].user_command+'\
