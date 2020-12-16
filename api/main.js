@@ -370,9 +370,9 @@ app.post('/api/show_profile',function(req,res){
                             where (';
     for (var i = 0; i < articleArray.length; i++)
         if(i == articleArray.length-1)
-            command_text_sql+="article_id = "+articleArray[i]+")";
+            show_anmscommand_text+="article_id = "+articleArray[i]+")";
         else
-            command_text_sql+="article_id = "+articleArray[i]+" or ";
+            show_anmscommand_text+="article_id = "+articleArray[i]+" or ";
     con.query(show_anmscommand_text,function(err,result){
         if(err) throw err;
         res.send(result);
