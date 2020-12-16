@@ -752,7 +752,7 @@ app.post('/api/showCardFriend', function(req, res){
                         if(result.length == 0)
                         {
                             var TemporaryCardFriend = 'insert into friend(user_id_self,user_id_other,meetTime,relation)\
-                                                value(\"'+uid+'\",\"'+result1[0].id+'\",now(),4)';
+                                                value(\"'+uid+'\",\"'+result1[0].user_id+'\",now(),4)';
                         }
                         else
                         {
@@ -762,7 +762,7 @@ app.post('/api/showCardFriend', function(req, res){
                         }
                         con.query(TemporaryCardFriend, function(err,result){
                             if(err) throw err;
-                            console.log(uid+"selectFinish");
+                            console.log(uid+" selectFinish");
                             con.query(showtodayCard,function(err,result){
                                 if(err) throw err;
                                 res.send(result);
