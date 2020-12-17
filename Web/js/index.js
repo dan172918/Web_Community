@@ -1,4 +1,5 @@
 window.onload = function() { 
+	checkCookie('./login.html');
 	var height = document.body.clientHeight;
 	height = height*0.3;
 	$(".load").css('padding-top',height);
