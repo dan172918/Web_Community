@@ -513,7 +513,6 @@ function glparticle(){
 			article_pic : img_string
 		};
 		console.log(post_data);
-		$("#Article").val("");
 		$.ajax({
 			url: "http://"+ host + port +"/api/glpindex",
 			type: 'POST',
@@ -522,6 +521,7 @@ function glparticle(){
 			success: function(msg){
 				$('#showImg').empty();
 				$('#postArticle').hide(500);
+				$("#Article").val("");
 				if(msg[0].article_text && msg[0].article_picture)
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[0].article_id+'\">\
