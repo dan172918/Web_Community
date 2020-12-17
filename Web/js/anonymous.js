@@ -285,7 +285,7 @@ function add_anmsarticle(){
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+add[cnt].article_id+'\">\
 										<div>\
-											<h3 class="user_id">沒有人</h3>\
+											<h3 class="user_id">第'+(cookcnt+1)+'篇文章</h3>\
 											<p class="article_test">'+ add[cnt].article_text +'<br/><br/><img class="resImg" src= "'+ add[cnt].article_picture +'"/></p>\
 										</div>';
 				}
@@ -293,7 +293,7 @@ function add_anmsarticle(){
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+add[cnt].article_id+'\">\
 										<div>\
-											<h3 class="user_id">沒有人</h3>\
+											<h3 class="user_id">第'+(cookcnt+1)+'篇文章</h3>\
 											<p class="article_test">'+ add[cnt].article_text +'</p>\
 										</div>';
 				}
@@ -301,7 +301,7 @@ function add_anmsarticle(){
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+add[cnt].article_id+'\">\
 										<div>\
-											<h3 class="user_id">沒有人</h3>\
+											<h3 class="user_id">第'+(cookcnt+1)+'篇文章</h3>\
 											<p class="article_test"><br/><br/><img class="resImg" src="'+ add[cnt].article_picture +'"/></p>\
 										</div>';
 				}
