@@ -517,7 +517,7 @@ function glparticle(){
 			data: JSON.stringify(post_data),
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
-				$('#Article').html("");
+				$('#Article').empty();
 				$('#showImg').empty();
 				$('#postArticle').hide(500);
 				if(msg[0].article_text && msg[0].article_picture)
