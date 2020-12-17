@@ -204,7 +204,7 @@ function StoreanmsCmd(thiscmd,event){
 				user_id: getCookie("token"),
 				command_text: command_val
 			};
-			var texthtml1 = '<p class="command_user">沒有人\
+			var texthtml1 = '<p class="command_user">ʕっ•ᴥ•ʔっ\
 								<span class="command_line">'+command_val+'\
 								</span>\
 							</p>';
