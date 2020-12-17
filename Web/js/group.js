@@ -513,7 +513,7 @@ function glparticle(){
 			article_pic : img_string
 		};
 		console.log(post_data);
-		$('#Article').text("");
+		$("#Article").val("");
 		$.ajax({
 			url: "http://"+ host + port +"/api/glpindex",
 			type: 'POST',
