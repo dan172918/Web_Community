@@ -118,8 +118,9 @@ function profile(){
 		type: 'POST',
 		data: JSON.stringify(profile_data),
 		contentType : "application/json;charset=utf-8",
-		success: function(){
-			alerMsgThenGoToSomewhere(ProfileSucess,"./profile.html");
+		success: function(msg){
+			if(msg == "success")
+				alerMsgThenGoToSomewhere(ProfileSucess,"./profile.html");
 		}
 	})
 }
