@@ -315,7 +315,7 @@ function add_anmsarticle(){
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">匿名</label>\
-												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
+												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreanmsCmd(this,event)">\
 											</div>\
 											<div class="container">\
 												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
@@ -336,7 +336,7 @@ function add_anmsarticle(){
 											<hr/>\
 											<div class="form-group row col-12 col-md-12">\
 												<label for="" class="col-3 col-md-2 col-form-label command_id">匿名</label>\
-												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreCmd(this,event)">\
+												<input type="text" class="col-5 col-md-6 form-control cmd" id="cmd" name="user_text" placeholder="留言..." onkeyup="StoreanmsCmd(this,event)">\
 											</div>\
 											<div class="container">\
 												<button type="button" class="btn btn-secondary  open" onclick = "collapse(this)">展開/收合</button>\
