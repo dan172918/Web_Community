@@ -51,7 +51,7 @@ $(document).ready(function()
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
-											<h3 class="user_id">第'+Number(getCookie("ArtCnt"))+1+'篇文章</h3>\
+											<h3 class="user_id">第'+parseInt(getCookie("ArtCnt"))+1+'篇文章</h3>\
 											<p class="article_test">'+ msg[cnt].article_text +'<br/><br/><img class="resImg" src= "'+ msg[cnt].article_picture +'"/></p>\
 										</div>';
 				}
@@ -59,7 +59,7 @@ $(document).ready(function()
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
-											<h3 class="user_id">'+Number(getCookie("ArtCnt"))+1+'</h3>\
+											<h3 class="user_id">'+parseInt(getCookie("ArtCnt"))+1+'</h3>\
 											<p class="article_test">'+ msg[cnt].article_text +'</p>\
 										</div>';
 				}
@@ -67,7 +67,7 @@ $(document).ready(function()
 				{
 					var texthtml1 = '<section style="%%" class="article_id" id=\"'+msg[cnt].article_id+'\">\
 										<div>\
-											<h3 class="user_id">'+Number(getCookie("ArtCnt"))+1+'</h3>\
+											<h3 class="user_id">'+parseInt(getCookie("ArtCnt"))+1+'</h3>\
 											<p class="article_test"><br/><br/><img class="resImg" src="'+ msg[cnt].article_picture +'"/></p>\
 										</div>';
 				}
