@@ -120,7 +120,8 @@ function profile(){
 		contentType : "application/json;charset=utf-8",
 		success: function(msg){
 			if(msg == "success")
-				alerMsgThenGoToSomewhere(ProfileSucess,"./profile.html");
+				
+				alertMsgThenGoToSomewhere(ProfileSucess, "./profile.html");
 		}
 	})
 }
