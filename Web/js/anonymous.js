@@ -148,7 +148,7 @@ $(document).ready(function()
 				var cnt1;
 				console.log(comd);
 				for(cnt1=0;cnt1<comd.length;cnt1++){
-					var texthtml1 = '<p class="command_user">沒有人\
+					var texthtml1 = '<p class="command_user">ʕっ•ᴥ•ʔっ\
 										<span class="command_line">'+comd[cnt1].user_command+'\
 										</span>\
 									</p>';
@@ -379,7 +379,7 @@ function add_anmsarticle(){
 			success: function(add_comd){
 				var cnt1;
 				for(cnt1=0;cnt1<add_comd.length;cnt1++){
-					var texthtml1 = '<p class="command_user">沒有人\
+					var texthtml1 = '<p class="command_user">ʕっ•ᴥ•ʔっ\
 										<span class="command_line">'+add_comd[cnt1].user_command+'\
 										</span>\
 									</p>';
