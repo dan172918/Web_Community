@@ -348,7 +348,7 @@ app.post('/api/show_profile',function(req,res){
 
 /*匿名顯示貼文*/
  app.post('/api/anmsarticle',function(req,res){
-    console(req.body);
+    console.log(req.body);
     var u_id = req.body.user_id.toString();
     var show_anmsart_text = 'select article.article_id,article.article_text,article.article_picture,likes.user_id,article.likes\
                             from user_info,article left join likes on likes.article_id = article.article_id and likes.user_id = \"'+ u_id +'\"\
