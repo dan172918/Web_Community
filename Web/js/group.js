@@ -10,7 +10,9 @@
       $(".waitloading").css("opacity","1");
     },4000)
 };*/
-
+window.onload = function() { 
+	checkCookie('./login.html');
+};
 $(function(){
 	$('#BackTop').click(function(){ 
 		$('html,body').animate({scrollTop:0}, 333);
@@ -511,13 +513,13 @@ function glparticle(){
 			article_pic : img_string
 		};
 		console.log(post_data);
+		$('#Article').text("");
 		$.ajax({
 			url: "http://"+ host + port +"/api/glpindex",
 			type: 'POST',
 			data: JSON.stringify(post_data),
 			contentType: "application/json;charset=utf-8",
 			success: function(msg){
-				$('#Article').text("");
 				$('#showImg').empty();
 				$('#postArticle').hide(500);
 				if(msg[0].article_text && msg[0].article_picture)

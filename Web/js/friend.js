@@ -1,3 +1,6 @@
+window.onload = function() { 
+	checkCookie('./login.html');
+};
 $(document).ready(function(){
     $(".canc").click(function(){
 		$(".go_search").hide(500);

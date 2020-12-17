@@ -1,4 +1,5 @@
 window.onload = function() { 
+	checkCookie('./login.html');
     setTimeout(function(){
         $(".load").fadeIn(1500);
         $(".load").fadeOut(1500);

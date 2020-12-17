@@ -1,3 +1,6 @@
+window.onload = function() { 
+	checkCookie('./login.html');
+};
 $(document).ready(function()
 {
 	var data1 = {
