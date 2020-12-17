@@ -331,7 +331,7 @@ app.post('/api/profile',function(req,res){
     }
     con.query(insert_profile_info, function(err, result) {
         if (err) throw err;
-        res.send(success);
+        res.send("success");
     });
 });
 
