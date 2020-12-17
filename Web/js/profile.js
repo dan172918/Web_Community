@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+	alertMsg("測試");
 	var data1 = {
 		user_id :getCookie("token")
 	}
